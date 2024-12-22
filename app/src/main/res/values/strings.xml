@@ -5,4 +5,5 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="reg_page_title">Create Your Account and Start Shopping Today!</string>
 </resources>
