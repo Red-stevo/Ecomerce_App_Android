@@ -61,10 +61,10 @@
         tools:layout_editor_absoluteY="397dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/register_btn"
         android:layout_width="150dp"
         android:layout_height="47dp"
-        android:text="Button"
+        android:text="@string/register"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="492dp" />
 
@@ -72,7 +72,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/textview"
         tools:layout_editor_absoluteX="134dp"
         tools:layout_editor_absoluteY="571dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
