@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/reg_page_bg"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="56dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -31,27 +31,30 @@
         tools:targetApi="p" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/reg_username"
         android:layout_width="306dp"
         android:layout_height="47dp"
+        android:background="@drawable/border_shape"
         android:ems="10"
         android:inputType="text"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="254dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/reg_password"
         android:layout_width="306dp"
         android:layout_height="47dp"
+        android:background="@drawable/border_shape"
         android:ems="10"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="325dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/reg_confirm_password"
         android:layout_width="306dp"
         android:layout_height="47dp"
+        android:background="@drawable/border_shape"
         android:ems="10"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="53dp"
