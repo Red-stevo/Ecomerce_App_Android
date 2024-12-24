@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/bg_login_description"
         android:scaleType="centerCrop"
         android:src="@drawable/login_page_bg" />
 
