@@ -24,9 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         /*Handle moving to the registration page.*/
         TextView registrationPageLink = findViewById(R.id.register_link);
         registrationPageLink.setOnClickListener(view -> {
-            Intent registerIntent = new Intent(
-                    LoginActivity.this, RegistrationActivity.class);
-            startActivity(registerIntent);
+            startActivity(new Intent(
+                    LoginActivity.this, RegistrationActivity.class));
         });
 
         /*Handle the login click*/
