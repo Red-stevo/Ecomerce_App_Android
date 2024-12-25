@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         /*Handle moving to the registration page.*/
         TextView registrationPageLink = findViewById(R.id.register_link);
         registrationPageLink.setOnClickListener(view -> {
-            Intent registerIntent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            Intent registerIntent = new Intent(
+                    LoginActivity.this, RegistrationActivity.class);
             startActivity(registerIntent);
         });
 
@@ -40,7 +42,10 @@ public class LoginActivity extends AppCompatActivity {
             EditText loginPasswordInput = findViewById(R.id.password_input);
             String password = String.valueOf(loginPasswordInput.getText());
 
-
+            /*Check if the fields are empty*/
+            if(userName.isEmpty() || password.isEmpty())
+                Toast.makeText(LoginActivity.this,
+                        "All fields Must Be Filled!", Toast.LENGTH_LONG).show();
         });
 
     }

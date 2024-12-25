@@ -175,5 +175,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         /*handle user registration.*/
 
+
     }
 }
