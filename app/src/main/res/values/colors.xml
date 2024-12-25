@@ -4,4 +4,6 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#0E28E4</color>
     <color name="fade_blue">#D0001DFF</color>
+    <color name="red">#FF000A</color>
+    <color name="green">#17FF00</color>
 </resources>
