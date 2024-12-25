@@ -3,5 +3,5 @@ import CustomerException.weakPasswordException;
 
 public interface InputCheck {
 
-    Boolean passwordStrength(String password) throws weakPasswordException;
+    void passwordStrength(String password) throws weakPasswordException;
 }
