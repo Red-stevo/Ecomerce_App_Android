@@ -1,6 +1,4 @@
-package com.redstevo.ecomerce_app;
-
-import com.redstevo.ecomerce_app.Accessories.InputCheck;
+package com.redstevo.ecomerce_app.Accessories;
 
 import java.util.regex.Pattern;
 

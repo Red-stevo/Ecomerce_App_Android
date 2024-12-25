@@ -1,10 +1,13 @@
-package com.redstevo.ecomerce_app;
+package com.redstevo.ecomerce_app.Activities.Registration;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
+import com.redstevo.ecomerce_app.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
