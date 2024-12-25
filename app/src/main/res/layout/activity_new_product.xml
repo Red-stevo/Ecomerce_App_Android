@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.AddProductActivity">
+
+    <TextView
+        android:id="@+id/new_product_title"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="@string/new_product_title"
+        android:textAlignment="center"
+        android:textAppearance="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="309dp"
+        android:layout_height="105dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="121dp"
+        android:layout_height="36dp"
+        android:text="new Intent(&#xA;                    LoginActivity.this, RegistrationActivity.class)"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="176dp"
+        android:layout_height="49dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="611dp" />
+
+    <!--Product name input-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

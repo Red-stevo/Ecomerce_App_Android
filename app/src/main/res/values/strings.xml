@@ -10,4 +10,5 @@
     <string name="bg_login_description">login background image.</string>
     <string name="reg_page_desc">registration page background image</string>
     <string name="con_password">Confirm Password</string>
+    <string name="new_product_title">New Product\n</string>
 </resources>
