@@ -32,11 +32,13 @@ public class LoginActivity extends AppCompatActivity {
 
             /*username input login page*/
             EditText usernameInput = findViewById(R.id.username_input);
-            Toast.makeText(LoginActivity.this, usernameInput.getText(), Toast.LENGTH_LONG).show();
+             String userName = String.valueOf(usernameInput.getText());
 
             /*password input registration page.*/
             EditText loginPasswordInput = findViewById(R.id.password_input);
-            Toast.makeText(LoginActivity.this,loginPasswordInput.getText(), Toast.LENGTH_LONG).show();
+            String password = String.valueOf(loginPasswordInput.getText());
+
+            /*Check the password strength*/
         });
 
     }
