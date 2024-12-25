@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -15,63 +16,97 @@
         android:textAppearance="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="313dp"
+        android:id="@+id/product_title"
+        android:layout_width="340dp"
         android:layout_height="48dp"
+        android:layout_marginTop="84dp"
+        android:autofillHints="Product Name."
+        android:background="@drawable/black_border"
         android:ems="10"
+        android:hint="@string/product_name"
         android:inputType="text"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_product_title" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="309dp"
+        android:id="@+id/product_description"
+        android:layout_width="340dp"
         android:layout_height="105dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="Description"
+        android:background="@drawable/black_border"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/product_description"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="248dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_title" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="117dp"
+        android:id="@+id/product_price"
+        android:layout_width="135dp"
         android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:autofillHints="100.0"
+        android:background="@drawable/black_border"
         android:ems="10"
+        android:hint="@string/product_price"
         android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="405dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="121dp"
-        android:layout_height="36dp"
-        android:text="new Intent(&#xA;                    LoginActivity.this, RegistrationActivity.class)"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="409dp" />
+        app:layout_constraintEnd_toStartOf="@+id/product_discount"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_description" />
 
     <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="307dp"
-        android:layout_height="48dp"
+        android:id="@+id/product_discount"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="36dp"
+        android:autofillHints="100.0"
+        android:background="@drawable/black_border"
         android:ems="10"
+        android:hint="@string/product_discount"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_description" />
+
+    <EditText
+        android:id="@+id/product_count"
+        android:layout_width="340dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="132dp"
+        android:autofillHints="34"
+        android:background="@drawable/black_border"
+        android:ems="10"
+        android:hint="@string/product_count"
         android:inputType="number"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="473dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_description" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/save_products"
         android:layout_width="176dp"
         android:layout_height="49dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="611dp" />
-
-    <!--Product name input-->
+        android:layout_marginTop="96dp"
+        android:background="@drawable/black_border"
+        android:text="@string/save_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_count" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

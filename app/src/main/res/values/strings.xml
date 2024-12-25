@@ -11,4 +11,10 @@
     <string name="reg_page_desc">registration page background image</string>
     <string name="con_password">Confirm Password</string>
     <string name="new_product_title">New Product\n</string>
+    <string name="save_all">Save All</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_price">Price</string>
+    <string name="product_discount">Discount</string>
+    <string name="product_count">Product Count</string>
 </resources>
