@@ -3,6 +3,8 @@ package com.redstevo.ecomerce_app.Activities.Registration;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,6 +76,85 @@ public class RegistrationActivity extends AppCompatActivity {
             /*Set the red border to the field.*/
             passwordRegInput.setBackground(redBorderBackground);
             confirmPasswordRegInput.setBackground(redBorderBackground);
+
+            passwordRegInput.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    // Load the custom shape drawable from the XML file
+                    Drawable whiteBgBorder =
+                            getResources().getDrawable(R.drawable.border_shape);
+
+                    /*Set the red border to the field.*/
+                    passwordRegInput.setBackground(whiteBgBorder);
+                    confirmPasswordRegInput.setBackground(whiteBgBorder);
+
+                    passwordRegInput.removeTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+            confirmPasswordRegInput.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    // Load the custom shape drawable from the XML file
+                    Drawable whiteBgBorder =
+                            getResources().getDrawable(R.drawable.border_shape);
+
+                    /*Set the red border to the field.*/
+                    passwordRegInput.setBackground(whiteBgBorder);
+                    confirmPasswordRegInput.setBackground(whiteBgBorder);
+
+                    confirmPasswordRegInput.removeTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
 
             return;
         }
