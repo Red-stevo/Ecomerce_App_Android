@@ -157,13 +157,23 @@ public class RegistrationActivity extends AppCompatActivity {
             });
 
             return;
+        }else {
+            Drawable greenBorderBg = getResources().getDrawable(R.drawable.green_border);
+            /*Set the red border to the field.*/
+            passwordRegInput.setBackground(greenBorderBg);
+            confirmPasswordRegInput.setBackground(greenBorderBg);
         }
+
 
         try {
             inputCheck.passwordStrength(password);
         }catch (Exception exception){
             Toast.makeText(RegistrationActivity.this,
                     exception.getMessage(), Toast.LENGTH_LONG).show();
+            return;
         }
+
+        /*handle user registration.*/
+
     }
 }
