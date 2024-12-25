@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             EditText loginPasswordInput = findViewById(R.id.password_input);
             String password = String.valueOf(loginPasswordInput.getText());
 
-            /*Check the password strength*/
+
         });
 
     }
