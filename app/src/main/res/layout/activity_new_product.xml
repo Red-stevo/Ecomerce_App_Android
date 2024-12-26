@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activities.AddProductActivity">
 
     <TextView
@@ -105,6 +106,7 @@
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:hint="@string/product_count"
+        android:textColorHint="@color/white"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -125,30 +127,12 @@
         app:layout_constraintVertical_bias="0.922" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/handleAddImageVideo"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:contentDescription="@string/add_image_video"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/new_product_title"
-        app:layout_constraintVertical_bias="0.787"
-        app:rippleColor="@color/white"
-        app:srcCompat="@android:drawable/stat_sys_upload" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="324dp"
-        android:layout_height="143dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
-
+        app:srcCompat="@android:drawable/stat_sys_upload"
+        tools:layout_editor_absoluteX="314dp"
+        tools:layout_editor_absoluteY="525dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
