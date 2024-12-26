@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Ecomerce_App"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.AddProductActivity"
+            android:name=".Activities.Login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Registration.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.Login.LoginActivity"
+            android:name=".Activities.AddProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

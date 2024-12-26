@@ -103,27 +103,28 @@
         android:id="@+id/save_products"
         android:layout_width="176dp"
         android:layout_height="49dp"
-        android:layout_marginTop="200dp"
         android:background="@drawable/black_border"
         android:text="@string/save_all"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product_count" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.922" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/handleAddImageVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:focusable="true"
         android:contentDescription="@string/add_image_video"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/new_product_title"
-        app:layout_constraintVertical_bias="0.787"
+        app:layout_constraintVertical_bias="0.776"
         app:rippleColor="@color/white"
         app:srcCompat="@android:drawable/stat_sys_upload" />
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ecommerce_App</string>
+    <string name="app_name">Onshop</string>
     <string name="login_title">WellCome Back, Please Login</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
