@@ -32,8 +32,9 @@ public class AddProductActivity extends AppCompatActivity {
         addImageVideo.setOnClickListener(event -> {
             Intent uploadIntent = new Intent(Intent.ACTION_GET_CONTENT);
             uploadIntent.setType("image/** | video/**");
-            uploadIntent.putExtra(Intent.EXTRA_QUIET_MODE, Activity.RESULT_OK);
+            System.out.println("The Data"+uploadIntent);
             startActivityForResult(uploadIntent, RESULT_OK);
+            System.out.println("The Data"+uploadIntent);
         });
     }
 
@@ -42,10 +43,11 @@ public class AddProductActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         Toast.makeText(AddProductActivity.this, requestCode, Toast.LENGTH_LONG).show();
 
+        System.out.println("The Image Data"+data);
         assert data != null;
         Uri uploadedData = data.getData();
 
-        Toast.makeText(AddProductActivity.this, String.valueOf(uploadedData), Toast.LENGTH_LONG).show();
+        Toast.makeText(AddProductActivity.this, "The Image URI Data"+String.valueOf(uploadedData), Toast.LENGTH_LONG).show();
     }
 
 }
