@@ -2,7 +2,9 @@ package com.redstevo.ecomerce_app.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -14,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.redstevo.ecomerce_app.R;
+
+import java.net.URL;
 
 public class AddProductActivity extends AppCompatActivity {
 
@@ -36,8 +40,12 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(AddProductActivity.this, requestCode, Toast.LENGTH_LONG).show();
 
+        assert data != null;
+        Uri uploadedData = data.getData();
 
+        Toast.makeText(AddProductActivity.this, String.valueOf(uploadedData), Toast.LENGTH_LONG).show();
     }
 
 }
