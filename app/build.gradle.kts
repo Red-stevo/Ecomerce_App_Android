@@ -37,11 +37,11 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.material)
-    implementation(libs.recyclerview.v7)
-    implementation(libs.cardview.v7)
+    // implementation(libs.recyclerview.v7)
+    // implementation(libs.cardview.v7)
 
     // Unit Testing Dependencies
-    testImplementation(libs.junit)
+    //testImplementation(libs.junit)
 
     // Instrumented Testing Dependencies
     androidTestImplementation(libs.junit.v115)
