@@ -3,19 +3,16 @@
     android:id="@+id/image_preview_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image_preview_field"
-            android:layout_width="166dp"
-            android:layout_height="166dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:contentDescription="@string/image_desc" />
 
     </androidx.cardview.widget.CardView>

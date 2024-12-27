@@ -31,20 +31,19 @@ public class ImageVideoPreviewAdapter extends RecyclerView.Adapter<ImageVideoPre
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        viewGroup.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         return new ViewHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.image_preview, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ImagePreviewModel imagePreviewModel = imagePreviewModelList.get(i);
 
+        ImagePreviewModel imagePreviewModel = imagePreviewModelList.get(i);
         Uri imageUri = imagePreviewModel.getImageVideoUri();
 
-        if (imageUri != null)
-            viewHolder.imagePreview.setImageURI(imageUri);
-        else
-            Toast.makeText(context, "Error, Image Uri Not is Null", Toast.LENGTH_LONG).show();
+        if (imageUri != null) viewHolder.imagePreview.setImageURI(imageUri);
+        else Toast.makeText(context, "Error, Image Uri Not is Null", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -54,14 +53,6 @@ public class ImageVideoPreviewAdapter extends RecyclerView.Adapter<ImageVideoPre
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imagePreview;
-
-        public ImageView getImagePreview() {
-            return imagePreview;
-        }
-
-        public void setImagePreview(ImageView imagePreview) {
-            this.imagePreview = imagePreview;
-        }
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

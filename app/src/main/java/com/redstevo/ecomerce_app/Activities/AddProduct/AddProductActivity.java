@@ -49,7 +49,8 @@ public class AddProductActivity extends AppCompatActivity {
                             RecyclerView recyclerView = findViewById(R.id.preview_image_and_videos);
                             recyclerView.setLayoutManager(new LinearLayoutManager(this));
                             recyclerView.setHasFixedSize(true);
-                            recyclerView.setAdapter(new ImageVideoPreviewAdapter(imagePreviewModelList, this));
+                            recyclerView.setAdapter(
+                                    new ImageVideoPreviewAdapter(imagePreviewModelList, this));
                         }
                     } else {
                         Log.d("ActivityResult", "Operation failed or canceled");
