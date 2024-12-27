@@ -11,8 +11,8 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="166dp"
+            android:layout_height="166dp"
             android:contentDescription="@string/image_desc" />
 
     </android.support.v7.widget.CardView>
