@@ -1,12 +1,8 @@
 package com.redstevo.ecomerce_app.Accessories;
 
-import android.widget.Toast;
-
-import com.redstevo.ecomerce_app.Activities.Registration.RegistrationActivity;
-
 import java.util.regex.Pattern;
 
-import CustomerException.weakPasswordException;
+import com.redstevo.ecomerce_app.CustomerException.weakPasswordException;
 
 public class AccessoriesImpl implements InputCheck {
     @Override

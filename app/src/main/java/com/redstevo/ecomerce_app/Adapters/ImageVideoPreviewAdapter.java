@@ -1,4 +1,4 @@
-package Adapters;
+package com.redstevo.ecomerce_app.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,7 +14,7 @@ import com.redstevo.ecomerce_app.R;
 
 import java.util.List;
 
-import Models.ImagePreviewModel;
+import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 
 public class ImageVideoPreviewAdapter extends RecyclerView.Adapter<ImageVideoPreviewAdapter.ViewHolder> {
 

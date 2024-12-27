@@ -1,4 +1,4 @@
-package Models;
+package com.redstevo.ecomerce_app.Models;
 
 import android.net.Uri;
 
