@@ -2,13 +2,15 @@ package com.redstevo.ecomerce_app.Activities.AddProduct;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,18 +20,24 @@ import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> activityResultLauncher;
-    private static final List<ImagePreviewModel> imagePreviewModelList = new ArrayList<>();
+    private List<ImagePreviewModel> imagePreviewModelList = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+
+
+        EditText productTitle = findViewById(R.id.product_title);
+        EditText productDescription = findViewById(R.id.product_description);
+        EditText productPrice = findViewById(R.id.product_price);
+        EditText productDiscount = findViewById(R.id.product_discount);
+        EditText productCount = findViewById(R.id.product_count);
 
 
         // Initialize the ActivityResultLauncher
@@ -43,8 +51,6 @@ public class AddProductActivity extends AppCompatActivity {
                             ImagePreviewModel imagePreviewModel = new ImagePreviewModel();
                             imagePreviewModel.setImageVideoUri(data.getData());
                             imagePreviewModelList.add(imagePreviewModel);
-
-                            Log.d("Upload", "onCreate: data"+imagePreviewModel);
 
                             RecyclerView recyclerView = findViewById(R.id.preview_image_and_videos);
                             recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_add_product"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:scrollX="@dimen/cardview_compat_inset_shadow"
     tools:context=".Activities.AddProduct.AddProductActivity">
 
     <TextView
@@ -115,16 +116,16 @@
 
     <Button
         android:id="@+id/save_products"
-        android:layout_width="176dp"
-        android:layout_height="49dp"
+        android:layout_width="138dp"
+        android:layout_height="47dp"
         android:background="@drawable/black_border"
         android:text="@string/save_all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintVertical_bias="0.894" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/upload_image_and_videos"
@@ -138,31 +139,57 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805"
+        app:layout_constraintVertical_bias="0.737"
         app:srcCompat="@android:drawable/stat_sys_upload" />
 
     <LinearLayout
         android:layout_width="318dp"
         android:layout_height="100dp"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
+        android:textDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792">
+        app:layout_constraintVertical_bias="0.736">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/preview_image_and_videos"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:textDirection="ltr"
             android:orientation="horizontal"
+            android:textDirection="ltr"
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.796" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/previous_btn"
+        android:layout_width="95dp"
+        android:layout_height="47dp"
+        android:text="@string/previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896" />
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="95dp"
+        android:layout_height="47dp"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

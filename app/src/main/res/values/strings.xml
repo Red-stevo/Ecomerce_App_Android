@@ -21,4 +21,6 @@
     <string name="upload">Upload images and video</string>
     <string name="image_desc">Selected Product Image</string>
     <string name="remove_image_icon">Remove Image Icon</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>
