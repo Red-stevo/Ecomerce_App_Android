@@ -18,4 +18,5 @@
     <string name="product_discount">Discount</string>
     <string name="product_count">Product Count</string>
     <string name="add_image_video">Add product Image or Video\n</string>
+    <string name="upload">Upload images and video</string>
 </resources>

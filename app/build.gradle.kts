@@ -37,6 +37,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.material)
+    implementation(libs.recyclerview.v7)
+    implementation(libs.cardview.v7)
 
     // Unit Testing Dependencies
     testImplementation(libs.junit)
