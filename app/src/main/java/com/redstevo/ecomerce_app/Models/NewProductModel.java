@@ -5,16 +5,16 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 public class NewProductModel {
-
     public NewProductModel(
-            String productName, String productDescription, Float productPrice,
-            Float productDiscount, Integer productCount, List<Bitmap> productImages) {
+            String productName, String productDescription, Float productPrice, Float productDiscount,
+            Integer productCount, List<Bitmap> productImages, List<ImagePreviewModel> productImagesUri) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.productDiscount = productDiscount;
         this.productCount = productCount;
         this.productImages = productImages;
+        this.productImagesUri = productImagesUri;
     }
 
     public String getProductName() {
@@ -65,6 +65,14 @@ public class NewProductModel {
         this.productImages = productImages;
     }
 
+    public List<ImagePreviewModel> getProductImagesUri() {
+        return productImagesUri;
+    }
+
+    public void setProductImagesUri(List<ImagePreviewModel> productImagesUri) {
+        this.productImagesUri = productImagesUri;
+    }
+
     private String productName;
 
     private String productDescription;
@@ -76,4 +84,6 @@ public class NewProductModel {
     private Integer productCount;
 
     private List<Bitmap> productImages;
+
+    private List<ImagePreviewModel> productImagesUri;
 }

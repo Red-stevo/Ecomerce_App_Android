@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,11 +34,14 @@ import java.util.Objects;
 public class AddProductActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
-    private List<NewProductModel> newProductModelList;
+    private final List<NewProductModel> newProductModelList;
+
+    private int currentProduct;
 
 
     public AddProductActivity() {
         newProductModelList = new ArrayList<>();
+        currentProduct = -1;
     }
 
     @Override
@@ -62,8 +64,33 @@ public class AddProductActivity extends AppCompatActivity {
 
 
         previousButton.setOnClickListener(view -> {
+            /*Check if the there is previous*/
+            if (newProductModelList.isEmpty() || currentProduct == 0){
+                Toast.makeText(this, "No Previous Product", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
+            if(currentProduct == -1) currentProduct = newProductModelList.size();
+            else  --currentProduct;
+
+            NewProductModel currentNewProductModel =  newProductModelList.get(currentProduct);
+
+            /*Set current product data to view.*/
+            productTitle.setText(currentNewProductModel.getProductName());
+            productDescription.setText(currentNewProductModel.getProductDescription());
+            productPrice.setText(String.valueOf(currentNewProductModel.getProductPrice()));
+            productDiscount.setText(String.valueOf(currentNewProductModel.getProductDiscount()));
+            productCount.setText(String.valueOf(currentNewProductModel.getProductCount()));
+            imagePreviewModelList.clear();
+            imagePreviewModelList.addAll(currentNewProductModel.getProductImagesUri());
+            productBitmapData.clear();
+            productBitmapData.addAll(currentNewProductModel.getProductImages());
+
+            populateRecycleView(imagePreviewModelList);
         });
+
+
+
 
         nextButton.setOnClickListener(view -> {
 
@@ -78,7 +105,8 @@ public class AddProductActivity extends AppCompatActivity {
                     productTitle.getText().toString(), productDescription.getText().toString(),
                     Float.parseFloat(productPrice.getText().toString()),
                     Float.parseFloat(productDiscount.getText().toString()),
-                    Integer.parseInt(productCount.getText().toString()), productBitmapData));
+                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                    imagePreviewModelList));
 
             //clear the input fields
             clearFields(editTexts, productBitmapData, imagePreviewModelList);
@@ -102,21 +130,19 @@ public class AddProductActivity extends AppCompatActivity {
                             populateRecycleView(imagePreviewModelList);
 
                             try {
-                                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                                        this.getContentResolver(),
-                                        Uri.parse(Objects.requireNonNull(data.getData()).toString()));
+                                productBitmapData.add(
+                                        MediaStore.Images.Media.getBitmap(this.getContentResolver(),
+                                        Uri.parse(Objects.requireNonNull(data.getData()).toString())));
                             } catch (IOException e) {
                                 imagePreviewModelList.remove(imagePreviewModelList.size() - 1);
                                 Toast.makeText(this, "Could Fetch The Image",
                                         Toast.LENGTH_LONG + 1).show();
                             }
-
                         }
 
-                    } else {
-                        Log.d("ActivityResult", "Operation failed or canceled");
-                    }
-
+                    } else
+                        Toast.makeText(this, "Operation failed or canceled",
+                                Toast.LENGTH_SHORT).show();
                 }
         );
 
@@ -169,8 +195,6 @@ public class AddProductActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG + 1).show();
             return true;
         }
-
-
         return false;
     }
 
