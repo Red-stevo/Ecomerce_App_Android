@@ -11,6 +11,7 @@
         android:padding="10dp">
 
         <ImageView
+            android:id="@+id/image_preview"
             android:layout_width="166dp"
             android:layout_height="166dp"
             android:contentDescription="@string/image_desc" />
