@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
@@ -71,7 +72,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
 
             // Load the custom shape drawable from the XML file
-            Drawable redBorderBackground = getResources().getDrawable(R.drawable.red_border);
+            Drawable redBorderBackground = AppCompatResources
+                    .getDrawable(RegistrationActivity.this, R.drawable.red_border);
 
             /*Set the red border to the field.*/
             passwordRegInput.setBackground(redBorderBackground);
@@ -86,8 +88,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     // Load the custom shape drawable from the XML file
-                    Drawable whiteBgBorder =
-                            getResources().getDrawable(R.drawable.border_shape);
+                    Drawable whiteBgBorder = AppCompatResources.getDrawable(
+                            RegistrationActivity.this, R.drawable.border_shape);
+
 
                     /*Set the red border to the field.*/
                     passwordRegInput.setBackground(whiteBgBorder);
@@ -125,8 +128,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     // Load the custom shape drawable from the XML file
-                    Drawable whiteBgBorder =
-                            getResources().getDrawable(R.drawable.border_shape);
+                    Drawable whiteBgBorder = AppCompatResources.getDrawable(
+                            RegistrationActivity.this, R.drawable.border_shape);
+
 
                     /*Set the red border to the field.*/
                     passwordRegInput.setBackground(whiteBgBorder);
@@ -158,7 +162,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
             return;
         }else {
-            Drawable greenBorderBg = getResources().getDrawable(R.drawable.green_border);
+            Drawable greenBorderBg = AppCompatResources.getDrawable(
+                    RegistrationActivity.this, R.drawable.green_border);
+
             /*Set the red border to the field.*/
             passwordRegInput.setBackground(greenBorderBg);
             confirmPasswordRegInput.setBackground(greenBorderBg);
