@@ -66,15 +66,28 @@ public class AddProductActivity extends AppCompatActivity {
 
 /*Handle Previous Button*/
     previousButton.setOnClickListener(view -> {
+
         /*Check if the there is previous*/
-        if (newProductModelList.isEmpty() || currentProduct == 0){
-            Toast.makeText(this, "No Previous Product", Toast.LENGTH_SHORT).show();
+        if (newProductModelList.isEmpty() || currentProduct == 0 ){
+            Toast.makeText(this, "No Previous Product"+ currentProduct, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(currentProduct == -1) currentProduct = newProductModelList.size()-1;
-        else  --currentProduct;
+        /*Check if the field is empty*/
+        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
+                productPrice, productDiscount, productCount));
 
+        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
+
+        newProductModelList.set(currentProduct, new NewProductModel(
+                productTitle.getText().toString(), productDescription.getText().toString(),
+                Float.parseFloat(productPrice.getText().toString()),
+                Float.parseFloat(productDiscount.getText().toString()),
+                Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                imagePreviewModelList));
+
+
+        --currentProduct;
         repopulateProductInputFields(productTitle, productDescription,
                 productPrice, productDiscount, productCount, imagePreviewModelList,
                 productBitmapData);
@@ -84,16 +97,21 @@ public class AddProductActivity extends AppCompatActivity {
 
     /*Handle next Button*/
     nextButton.setOnClickListener(view -> {
-        if(currentProduct == -1) currentProduct = newProductModelList.size()-1;
-        else  ++currentProduct;
 
-        if (currentProduct == newProductModelList.size() -1 ) {
-            /*Check if the field is empty*/
-            List<EditText> editTexts =
-                    new ArrayList<>(List.of(productTitle, productDescription,
-                            productPrice, productDiscount, productCount));
+        if (currentProduct == newProductModelList.size()){
+            Toast.makeText(this, "No Next Product", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
+        if(currentProduct == -1) currentProduct = newProductModelList.size() - 1;
+
+        /*Check if the field is empty*/
+        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
+                productPrice, productDiscount, productCount));
+
+        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
+
+        if (currentProduct == newProductModelList.size() -1) {
 
             newProductModelList.add(new NewProductModel(
                     productTitle.getText().toString(), productDescription.getText().toString(),
@@ -108,8 +126,20 @@ public class AddProductActivity extends AppCompatActivity {
             /*Clear images preview */
             populateRecycleView(imagePreviewModelList);
 
-        } else {
+            ++currentProduct;
 
+        } else {
+            newProductModelList.set(currentProduct, new NewProductModel(
+                    productTitle.getText().toString(), productDescription.getText().toString(),
+                    Float.parseFloat(productPrice.getText().toString()),
+                    Float.parseFloat(productDiscount.getText().toString()),
+                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                    imagePreviewModelList));
+
+            ++currentProduct;
+
+            repopulateProductInputFields(productTitle, productDescription, productPrice,
+                    productDiscount, productCount, imagePreviewModelList, productBitmapData);
         }
 
     });
