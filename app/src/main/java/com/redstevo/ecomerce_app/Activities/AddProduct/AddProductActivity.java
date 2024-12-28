@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
@@ -23,10 +25,19 @@ import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.R;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> activityResultLauncher;
+
+    private List<ImagePreviewModel> imagePreviewModels;
+
+    private List<Bitmap> imageBitmapData;
+
+    private int currentProductView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +55,20 @@ public class AddProductActivity extends AppCompatActivity {
 
 
 
-        /*Handle Previous Button*/
-        previousButton.setOnClickListener(view -> {
+        /*Handle next Button*/
+        nextButton.setOnClickListener(view -> {
+            imagePreviewModels = new ArrayList<>();
+            imageBitmapData = new ArrayList<>();
+
+
+
         });
 
 
+        /*Handle Previous Button*/
+        previousButton.setOnClickListener(view -> {
 
-        /*Handle next Button*/
-        nextButton.setOnClickListener(view -> {
+
         });
 
         // Initialize the ActivityResultLauncher
@@ -65,9 +82,14 @@ public class AddProductActivity extends AppCompatActivity {
                             ImagePreviewModel imagePreviewModel = new ImagePreviewModel();
                             imagePreviewModel.setImageVideoUri(data.getData());
 
+                            try {
+                                MediaStore.Images.Media.getBitmap(this.getContentResolver(),
+                                Uri.parse(Objects.requireNonNull(data.getData()).toString()));
 
-                         /*   MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-                            Uri.parse(Objects.requireNonNull(data.getData()).toString()))*/
+
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
 
                         }
 
