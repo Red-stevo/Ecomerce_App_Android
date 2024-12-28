@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -81,11 +82,11 @@ public class AddProductActivity extends AppCompatActivity {
 
         if (currentProduct == newProductModelList.size())
             newProductModelList.add(new NewProductModel(
-                    productTitle.getText().toString(), productDescription.getText().toString(),
-                    Float.parseFloat(productPrice.getText().toString()),
-                    Float.parseFloat(productDiscount.getText().toString()),
-                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                    imagePreviewModelList));
+                productTitle.getText().toString(), productDescription.getText().toString(),
+                Float.parseFloat(productPrice.getText().toString()),
+                Float.parseFloat(productDiscount.getText().toString()),
+                Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                imagePreviewModelList));
         else
             newProductModelList.set(currentProduct, new NewProductModel(
                     productTitle.getText().toString(), productDescription.getText().toString(),
@@ -93,7 +94,6 @@ public class AddProductActivity extends AppCompatActivity {
                     Float.parseFloat(productDiscount.getText().toString()),
                     Integer.parseInt(productCount.getText().toString()), productBitmapData,
                     imagePreviewModelList));
-
 
         --currentProduct;
         repopulateProductInputFields(productTitle, productDescription,
@@ -106,18 +106,19 @@ public class AddProductActivity extends AppCompatActivity {
     /*Handle next Button*/
     nextButton.setOnClickListener(view -> {
 
+        /*Check if the field is empty*/
+        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
+                productPrice, productDiscount, productCount));
+
+        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
+
+
         if (currentProduct == newProductModelList.size()){
             Toast.makeText(this, "No Next Product", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(currentProduct == -1) currentProduct = 0;
-
-        /*Check if the field is empty*/
-        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
-                productPrice, productDiscount, productCount));
-
-        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
 
         if (currentProduct == newProductModelList.size() - 1 || newProductModelList.isEmpty()) {
 
@@ -201,18 +202,18 @@ public class AddProductActivity extends AppCompatActivity {
 
         NewProductModel currentNewProductModel =  newProductModelList.get(currentProduct);
 
+
         /*Set current product data to view.*/
         productTitle.setText(currentNewProductModel.getProductName());
         productDescription.setText(currentNewProductModel.getProductDescription());
         productPrice.setText(String.valueOf(currentNewProductModel.getProductPrice()));
         productDiscount.setText(String.valueOf(currentNewProductModel.getProductDiscount()));
         productCount.setText(String.valueOf(currentNewProductModel.getProductCount()));
-        imagePreviewModelList.clear();
-        imagePreviewModelList.addAll(currentNewProductModel.getProductImagesUri());
-        productBitmapData.clear();
-        productBitmapData.addAll(currentNewProductModel.getProductImages());
 
-        Toast.makeText(this, currentNewProductModel.getProductImagesUri().toString(), Toast.LENGTH_SHORT).show();
+        imagePreviewModelList = new ArrayList<>();
+        imagePreviewModelList.addAll(currentNewProductModel.getProductImagesUri());
+        productBitmapData = new ArrayList<>();
+        productBitmapData.addAll(currentNewProductModel.getProductImages());
 
         populateRecycleView(imagePreviewModelList);
     }
