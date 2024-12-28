@@ -79,12 +79,20 @@ public class AddProductActivity extends AppCompatActivity {
 
         if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
 
-        newProductModelList.set(currentProduct, new NewProductModel(
-                productTitle.getText().toString(), productDescription.getText().toString(),
-                Float.parseFloat(productPrice.getText().toString()),
-                Float.parseFloat(productDiscount.getText().toString()),
-                Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                imagePreviewModelList));
+        if (currentProduct == newProductModelList.size())
+            newProductModelList.add(new NewProductModel(
+                    productTitle.getText().toString(), productDescription.getText().toString(),
+                    Float.parseFloat(productPrice.getText().toString()),
+                    Float.parseFloat(productDiscount.getText().toString()),
+                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                    imagePreviewModelList));
+        else
+            newProductModelList.set(currentProduct, new NewProductModel(
+                    productTitle.getText().toString(), productDescription.getText().toString(),
+                    Float.parseFloat(productPrice.getText().toString()),
+                    Float.parseFloat(productDiscount.getText().toString()),
+                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
+                    imagePreviewModelList));
 
 
         --currentProduct;
@@ -103,7 +111,7 @@ public class AddProductActivity extends AppCompatActivity {
             return;
         }
 
-        if(currentProduct == -1) currentProduct = newProductModelList.size() - 1;
+        if(currentProduct == -1) currentProduct = 0;
 
         /*Check if the field is empty*/
         List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
@@ -111,7 +119,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
 
-        if (currentProduct == newProductModelList.size() -1) {
+        if (currentProduct == newProductModelList.size() - 1 || newProductModelList.isEmpty()) {
 
             newProductModelList.add(new NewProductModel(
                     productTitle.getText().toString(), productDescription.getText().toString(),
@@ -137,7 +145,6 @@ public class AddProductActivity extends AppCompatActivity {
                     imagePreviewModelList));
 
             ++currentProduct;
-
             repopulateProductInputFields(productTitle, productDescription, productPrice,
                     productDiscount, productCount, imagePreviewModelList, productBitmapData);
         }
@@ -205,7 +212,7 @@ public class AddProductActivity extends AppCompatActivity {
         productBitmapData.clear();
         productBitmapData.addAll(currentNewProductModel.getProductImages());
 
-        Toast.makeText(this, imagePreviewModelList.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, currentNewProductModel.getProductImagesUri().toString(), Toast.LENGTH_SHORT).show();
 
         populateRecycleView(imagePreviewModelList);
     }
