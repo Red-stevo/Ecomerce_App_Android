@@ -4,12 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,35 +21,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
-import com.redstevo.ecomerce_app.Models.NewProductModel;
 import com.redstevo.ecomerce_app.R;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> activityResultLauncher;
-
-    private final List<NewProductModel> newProductModelList;
-
-    private int currentProduct;
-
-
-    public AddProductActivity() {
-        newProductModelList = new ArrayList<>();
-        currentProduct = -1;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
-
-        List<ImagePreviewModel> imagePreviewModelList = new ArrayList<>();
-        List<Bitmap> productBitmapData = new ArrayList<>();
-
 
         EditText productTitle = findViewById(R.id.product_title);
         EditText productDescription = findViewById(R.id.product_description);
@@ -65,92 +44,15 @@ public class AddProductActivity extends AppCompatActivity {
 
 
 
-/*Handle Previous Button*/
-    previousButton.setOnClickListener(view -> {
-
-        /*Check if the there is previous*/
-        if (newProductModelList.isEmpty() || currentProduct == 0 ){
-            Toast.makeText(this, "No Previous Product"+ currentProduct, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        /*Check if the field is empty*/
-        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
-                productPrice, productDiscount, productCount));
-
-        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
-
-        if (currentProduct == newProductModelList.size())
-            newProductModelList.add(new NewProductModel(
-                productTitle.getText().toString(), productDescription.getText().toString(),
-                Float.parseFloat(productPrice.getText().toString()),
-                Float.parseFloat(productDiscount.getText().toString()),
-                Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                imagePreviewModelList));
-        else
-            newProductModelList.set(currentProduct, new NewProductModel(
-                    productTitle.getText().toString(), productDescription.getText().toString(),
-                    Float.parseFloat(productPrice.getText().toString()),
-                    Float.parseFloat(productDiscount.getText().toString()),
-                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                    imagePreviewModelList));
-
-        --currentProduct;
-        repopulateProductInputFields(productTitle, productDescription,
-                productPrice, productDiscount, productCount, imagePreviewModelList,
-                productBitmapData);
-    });
+        /*Handle Previous Button*/
+        previousButton.setOnClickListener(view -> {
+        });
 
 
 
-    /*Handle next Button*/
-    nextButton.setOnClickListener(view -> {
-
-        /*Check if the field is empty*/
-        List<EditText> editTexts = new ArrayList<>(List.of(productTitle, productDescription,
-                productPrice, productDiscount, productCount));
-
-        if (checkEmptyFields(editTexts, imagePreviewModelList)) return;
-
-
-        if (currentProduct == newProductModelList.size()){
-            Toast.makeText(this, "No Next Product", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(currentProduct == -1) currentProduct = 0;
-
-        if (currentProduct == newProductModelList.size() - 1 || newProductModelList.isEmpty()) {
-
-            newProductModelList.add(new NewProductModel(
-                    productTitle.getText().toString(), productDescription.getText().toString(),
-                    Float.parseFloat(productPrice.getText().toString()),
-                    Float.parseFloat(productDiscount.getText().toString()),
-                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                    imagePreviewModelList));
-
-            //clear the input fields
-            clearFields(editTexts, productBitmapData, imagePreviewModelList);
-
-            /*Clear images preview */
-            populateRecycleView(imagePreviewModelList);
-
-            ++currentProduct;
-
-        } else {
-            newProductModelList.set(currentProduct, new NewProductModel(
-                    productTitle.getText().toString(), productDescription.getText().toString(),
-                    Float.parseFloat(productPrice.getText().toString()),
-                    Float.parseFloat(productDiscount.getText().toString()),
-                    Integer.parseInt(productCount.getText().toString()), productBitmapData,
-                    imagePreviewModelList));
-
-            ++currentProduct;
-            repopulateProductInputFields(productTitle, productDescription, productPrice,
-                    productDiscount, productCount, imagePreviewModelList, productBitmapData);
-        }
-
-    });
+        /*Handle next Button*/
+        nextButton.setOnClickListener(view -> {
+        });
 
         // Initialize the ActivityResultLauncher
         activityResultLauncher = registerForActivityResult(
@@ -162,19 +64,11 @@ public class AddProductActivity extends AppCompatActivity {
                         if (data != null) {
                             ImagePreviewModel imagePreviewModel = new ImagePreviewModel();
                             imagePreviewModel.setImageVideoUri(data.getData());
-                            imagePreviewModelList.add(imagePreviewModel);
 
-                            populateRecycleView(imagePreviewModelList);
 
-                            try {
-                                productBitmapData.add(
-                                        MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-                                        Uri.parse(Objects.requireNonNull(data.getData()).toString())));
-                            } catch (IOException e) {
-                                imagePreviewModelList.remove(imagePreviewModelList.size() - 1);
-                                Toast.makeText(this, "Could Fetch The Image",
-                                        Toast.LENGTH_LONG + 1).show();
-                            }
+                         /*   MediaStore.Images.Media.getBitmap(this.getContentResolver(),
+                            Uri.parse(Objects.requireNonNull(data.getData()).toString()))*/
+
                         }
 
                     } else
@@ -195,28 +89,6 @@ public class AddProductActivity extends AppCompatActivity {
         });
     }
 
-    private void repopulateProductInputFields(
-            EditText productTitle, EditText productDescription, EditText productPrice,
-            EditText productDiscount, EditText productCount, List<ImagePreviewModel>
-                    imagePreviewModelList, List<Bitmap> productBitmapData) {
-
-        NewProductModel currentNewProductModel =  newProductModelList.get(currentProduct);
-
-
-        /*Set current product data to view.*/
-        productTitle.setText(currentNewProductModel.getProductName());
-        productDescription.setText(currentNewProductModel.getProductDescription());
-        productPrice.setText(String.valueOf(currentNewProductModel.getProductPrice()));
-        productDiscount.setText(String.valueOf(currentNewProductModel.getProductDiscount()));
-        productCount.setText(String.valueOf(currentNewProductModel.getProductCount()));
-
-        imagePreviewModelList = new ArrayList<>();
-        imagePreviewModelList.addAll(currentNewProductModel.getProductImagesUri());
-        productBitmapData = new ArrayList<>();
-        productBitmapData.addAll(currentNewProductModel.getProductImages());
-
-        populateRecycleView(imagePreviewModelList);
-    }
 
     private boolean checkEmptyFields(List<EditText> editTexts, List<ImagePreviewModel> imagePreviewModelList) {
 
