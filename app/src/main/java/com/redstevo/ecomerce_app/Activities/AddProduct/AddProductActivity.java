@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
 import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.Models.NewProductModel;
@@ -113,8 +112,9 @@ public class AddProductActivity extends AppCompatActivity {
 
             /*Check that all fields are saved.*/
             if(checkEmptyFields(
-                    List.of(productTitle, productDescription, productPrice, productDiscount, productCount),
-                    imagePreviewModels)) return;
+                    List.of(productTitle, productDescription, productPrice, productDiscount, productCount))) return;
+
+            if (currentProductView == -1) currentProductView = 0;
 
             String productTitleValue = String.valueOf(productTitle.getText());
             String productDescriptionValue = String.valueOf(productDescription.getText());
@@ -123,7 +123,8 @@ public class AddProductActivity extends AppCompatActivity {
             Integer productCountValue = Integer.parseInt(String.valueOf(productCount.getText()));
 
 
-            if (currentProductView == -1 || currentProductView == newProductModels.size()){
+            if (currentProductView == -1 || currentProductView == newProductModels.size() ||
+                    currentProductView == newProductModels.size()-1){
                 NewProductModel newProductModel = new NewProductModel(
                         productTitleValue, productDescriptionValue,productPriceValue,
                         productDiscountValue,productCountValue, imageBitmapData, imagePreviewModels
@@ -132,13 +133,14 @@ public class AddProductActivity extends AppCompatActivity {
                 /*Save the current products Model*/
                 newProductModels.add(newProductModel);
 
-                clearFields(List.of(
-                        productTitle,productDescription,productPrice,productDiscount,productCount));
+                clearFields(productTitle,productDescription,productPrice,productDiscount,productCount);
 
                 imageBitmapData = new ArrayList<>();
                 imagePreviewModels = new ArrayList<>();
 
                 populateRecycleView(imagePreviewModels);
+
+                ++currentProductView;
             }else {
 
                 /*Update the current view of the current products Model*/
@@ -156,6 +158,8 @@ public class AddProductActivity extends AppCompatActivity {
                 NewProductModel currentProductModel = newProductModels.get(currentProductView);
                 repopulateField(productTitle, productDescription, productPrice, productDiscount,
                         productCount, currentProductModel);
+
+
             }
 
         });
@@ -210,6 +214,17 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
+    private void clearFields(
+            EditText productTitle, EditText productDescription, EditText productPrice,
+            EditText productDiscount, EditText productCount) {
+
+        productTitle.setText("");
+        productDescription.setText("");
+        productPrice.setText(String.valueOf(0.00));
+        productDiscount.setText(String.valueOf(0.00));
+        productCount.setText("0");
+    }
+
 
     private void repopulateField(EditText title, EditText description, EditText price,
                                  EditText discount, EditText count, NewProductModel newProductModel){
@@ -220,12 +235,14 @@ public class AddProductActivity extends AppCompatActivity {
         price.setText(String.valueOf(newProductModel.getProductPrice()));
         discount.setText(String.valueOf(newProductModel.getProductDiscount()));
         count.setText(String.valueOf(newProductModel.getProductCount()));
+        imagePreviewModels = newProductModel.getProductImagesUri();
+        imageBitmapData = newProductModel.getProductImages();
 
     }
 
 
     private boolean checkEmptyFields(
-            List<EditText> editTexts, List<ImagePreviewModel> imagePreviewModelList) {
+            List<EditText> editTexts) {
 
         // Load the custom shape drawable from the XML file
         Drawable redBorderBackground=AppCompatResources.getDrawable(AddProductActivity.this,
@@ -257,18 +274,14 @@ public class AddProductActivity extends AppCompatActivity {
             }
         }
 
-        if (imagePreviewModelList.isEmpty()){
+      /*  if (imagePreviewModelList.isEmpty()){
             Toast.makeText(this, "At Least One Image Is Required.",
                     Toast.LENGTH_LONG + 1).show();
             return true;
-        }
+        }*/
         return false;
     }
 
-    private void clearFields(List<EditText> editTextList) {
-        /*Clear the field.*/
-        for (EditText editText : editTextList) editText.setText("");
-    }
 
     private void populateRecycleView(List<ImagePreviewModel> imagePreviewModelList) {
         RecyclerView recyclerView = findViewById(R.id.preview_image_and_videos);
