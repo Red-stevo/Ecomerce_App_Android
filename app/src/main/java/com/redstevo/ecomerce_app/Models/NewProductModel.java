@@ -1,11 +1,6 @@
 package com.redstevo.ecomerce_app.Models;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.redstevo.ecomerce_app.Activities.AddProduct.AddProductActivity;
 
 import java.util.List;
 
@@ -20,6 +15,7 @@ public class NewProductModel {
         this.productCount = productCount;
         this.productImages = productImages;
         this.productImagesUri = productImagesUri;
+        isFilled = true;
     }
 
     public String getProductName() {
@@ -82,6 +78,14 @@ public class NewProductModel {
 
     private String productDescription;
 
+    public Boolean getFilled() {
+        return isFilled;
+    }
+
+    public void setFilled(Boolean filled) {
+        isFilled = filled;
+    }
+
     private Float productPrice;
 
     private Float productDiscount;
@@ -91,4 +95,6 @@ public class NewProductModel {
     private List<Bitmap> productImages;
 
     private List<ImagePreviewModel> productImagesUri;
+
+    private Boolean isFilled;
 }

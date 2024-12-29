@@ -94,9 +94,10 @@ public class AddProductActivity extends AppCompatActivity {
                                         MediaStore.Images.Media.getBitmap(this.getContentResolver(),
                                                 Uri.parse(Objects.requireNonNull(data.getData()).toString())));
                             } catch (IOException e) {
-                                throw new RuntimeException(e);
+                                imagePreviewModels.remove(imagePreviewModel);
+                                Toast.makeText(this, "Error Getting he Media!",
+                                        Toast.LENGTH_SHORT).show();
                             }
-
                         }
 
                     } else
@@ -108,10 +109,12 @@ public class AddProductActivity extends AppCompatActivity {
 
         /*Handle next Button*/
 
-
-        /*Save the current view to the next products Model*/
         nextButton.setOnClickListener(view -> {
 
+            /*Check that all fields are saved.*/
+            if(checkEmptyFields(
+                    List.of(productTitle, productDescription, productPrice, productDiscount, productCount),
+                    imagePreviewModels)) return;
 
             String productTitleValue = String.valueOf(productTitle.getText());
             String productDescriptionValue = String.valueOf(productDescription.getText());
@@ -126,6 +129,7 @@ public class AddProductActivity extends AppCompatActivity {
                         productDiscountValue,productCountValue, imageBitmapData, imagePreviewModels
                 );
 
+                /*Save the current products Model*/
                 newProductModels.add(newProductModel);
 
                 clearFields(List.of(
@@ -136,6 +140,8 @@ public class AddProductActivity extends AppCompatActivity {
 
                 populateRecycleView(imagePreviewModels);
             }else {
+
+                /*Update the current view of the current products Model*/
                 NewProductModel newProductModel = newProductModels.get(currentProductView);
                 newProductModel.setProductName(productTitleValue);
                 newProductModel.setProductDescription(productDescriptionValue);
@@ -150,7 +156,6 @@ public class AddProductActivity extends AppCompatActivity {
                 NewProductModel currentProductModel = newProductModels.get(currentProductView);
                 repopulateField(productTitle, productDescription, productPrice, productDiscount,
                         productCount, currentProductModel);
-
             }
 
         });
@@ -158,10 +163,53 @@ public class AddProductActivity extends AppCompatActivity {
 
         /*Handle Previous Button*/
         previousButton.setOnClickListener(view -> {
-            currentProductView = 0;
+            NewProductModel newProductModel;
+
+            if (newProductModels.isEmpty() || currentProductView == 0){
+                Toast.makeText(this, "No previous Model.",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
+            String productTitleValue = String.valueOf(productTitle.getText());
+            String productDescriptionValue = String.valueOf(productDescription.getText());
+            Float productPriceValue = Float.parseFloat(String.valueOf(productPrice.getText()));
+            Float productDiscountValue = Float.parseFloat(String.valueOf(productDiscount.getText()));
+            Integer productCountValue = Integer.parseInt(String.valueOf(productCount.getText()));
+
+
+            if(currentProductView == newProductModels.size()){
+                newProductModel = new NewProductModel(
+                        productTitleValue, productDescriptionValue,productPriceValue,
+                        productDiscountValue,productCountValue, imageBitmapData, imagePreviewModels
+                );
+
+                newProductModels.add(newProductModel);
+            }else {
+                newProductModel = newProductModels.get(currentProductView);
+                newProductModel.setProductName(productTitleValue);
+                newProductModel.setProductDescription(productDescriptionValue);
+                newProductModel.setProductPrice(productPriceValue);
+                newProductModel.setProductDiscount(productDiscountValue);
+                newProductModel.setProductCount(productCountValue);
+                newProductModel.setProductImagesUri(imagePreviewModels);
+                newProductModel.setProductImages(imageBitmapData);
+            }
+
+            checkIfAllFieldsAreField(List.of(productTitle, productDescription,
+                    productPrice, productDiscount, productCount), newProductModel);
+
+            //move to the previous field.
+            currentProductView -=1;
+            NewProductModel currentProductModel = newProductModels.get(currentProductView);
+            repopulateField(productTitle, productDescription, productPrice, productDiscount,
+                    productCount, currentProductModel);
+
         });
 
     }
+
 
     private void repopulateField(EditText title, EditText description, EditText price,
                                  EditText discount, EditText count, NewProductModel newProductModel){
@@ -227,5 +275,14 @@ public class AddProductActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new ImageVideoPreviewAdapter(imagePreviewModelList, this));
+    }
+
+    private void checkIfAllFieldsAreField(List<EditText> editTexts, NewProductModel newProductModel) {
+        for (EditText editText : editTexts){
+            if(editText.getText().toString().isEmpty()){
+               newProductModel.setFilled(false);
+               return;
+            }
+        }
     }
 }

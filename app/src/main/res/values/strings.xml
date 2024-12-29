@@ -23,4 +23,6 @@
     <string name="remove_image_icon">Remove Image Icon</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+    <string name="zero">0</string>
+    <string name="float_zero">0.00</string>
 </resources>
