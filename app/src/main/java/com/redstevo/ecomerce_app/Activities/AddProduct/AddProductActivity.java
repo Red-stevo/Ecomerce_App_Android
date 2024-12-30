@@ -2,7 +2,6 @@ package com.redstevo.ecomerce_app.Activities.AddProduct;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -110,60 +109,7 @@ public class AddProductActivity extends AppCompatActivity {
         /*Handle next Button*/
 
         nextButton.setOnClickListener(view -> {
-
-            /*Check that all fields are saved.*/
-            if (checkEmptyFields(
-                    List.of(productTitle, productDescription, productPrice, productDiscount,
-                            productCount))) return;
-
-            if (currentProductView == -1) currentProductView = 0;
-
-            String productTitleValue = String.valueOf(productTitle.getText());
-            String productDescriptionValue = String.valueOf(productDescription.getText());
-            Float productPriceValue = Float.parseFloat(String.valueOf(productPrice.getText()));
-            Float productDiscountValue = Float.parseFloat(String.valueOf(productDiscount.getText()));
-            Integer productCountValue = Integer.parseInt(String.valueOf(productCount.getText()));
-
-
-            if (currentProductView == -1 || currentProductView == newProductModels.size() ||
-                    currentProductView == newProductModels.size() - 1) {
-                NewProductModel newProductModel = new NewProductModel(
-                        productTitleValue, productDescriptionValue, productPriceValue,
-                        productDiscountValue, productCountValue, imageBitmapData, imagePreviewModels
-                );
-
-                /*Save the current products Model*/
-                newProductModels.add(newProductModel);
-
-                clearFields(productTitle, productDescription, productPrice, productDiscount, productCount);
-
-                imageBitmapData = new ArrayList<>();
-                imagePreviewModels = new ArrayList<>();
-
-                populateRecycleView(imagePreviewModels);
-
-                ++currentProductView;
-            } else {
-
-                /*Update the current view of the current products Model*/
-                NewProductModel newProductModel = newProductModels.get(currentProductView);
-                newProductModel.setProductName(productTitleValue);
-                newProductModel.setProductDescription(productDescriptionValue);
-                newProductModel.setProductPrice(productPriceValue);
-                newProductModel.setProductDiscount(productDiscountValue);
-                newProductModel.setProductCount(productCountValue);
-                newProductModel.setProductImagesUri(imagePreviewModels);
-                newProductModel.setProductImages(imageBitmapData);
-
-                //move to the next field.
-                currentProductView += 1;
-                NewProductModel currentProductModel = newProductModels.get(currentProductView);
-                repopulateField(productTitle, productDescription, productPrice, productDiscount,
-                        productCount, currentProductModel);
-
-
-            }
-
+            handleNextButton(productTitle, productDescription, productPrice, productDiscount, productCount);
         });
 
 
@@ -203,9 +149,6 @@ public class AddProductActivity extends AppCompatActivity {
                 newProductModel.setProductImages(imageBitmapData);
             }
 
-            checkIfAllFieldsAreField(List.of(productTitle, productDescription,
-                    productPrice, productDiscount, productCount), newProductModel);
-
             //move to the previous field.
             currentProductView -= 1;
             NewProductModel currentProductModel = newProductModels.get(currentProductView);
@@ -214,53 +157,65 @@ public class AddProductActivity extends AppCompatActivity {
 
         });
 
-
-
         /*Handle Save Products.*/
         saveAll.setOnClickListener(event -> {
+            handleNextButton(productTitle, productDescription, productPrice, productDiscount,
+                    productCount);
+        });
+    }
 
-            if (currentProductView == -1 || currentProductView == newProductModels.size()) {
+    private void handleNextButton(EditText productTitle, EditText productDescription, EditText productPrice, EditText productDiscount, EditText productCount) {
+        NewProductModel newProductModel;
+        /*Check that all fields are saved.*/
+        if (checkEmptyFields(
+                List.of(productTitle, productDescription, productPrice, productDiscount, productCount
+                ),imagePreviewModels, imageBitmapData)) return;
 
-                if (checkEmptyFields(
-                        List.of(productTitle, productDescription, productPrice, productDiscount,
-                                productCount))) return;
+        if (currentProductView == -1) currentProductView = 0;
 
-                String productTitleValue = String.valueOf(productTitle.getText());
-                String productDescriptionValue = String.valueOf(productDescription.getText());
-                Float productPriceValue = Float.parseFloat(String.valueOf(productPrice.getText()));
-                Float productDiscountValue = Float.parseFloat(String.valueOf(productDiscount.getText()));
-                Integer productCountValue = Integer.parseInt(String.valueOf(productCount.getText()));
+        String productTitleValue = String.valueOf(productTitle.getText());
+        String productDescriptionValue = String.valueOf(productDescription.getText());
+        Float productPriceValue = Float.parseFloat(String.valueOf(productPrice.getText()));
+        Float productDiscountValue = Float.parseFloat(String.valueOf(productDiscount.getText()));
+        Integer productCountValue = Integer.parseInt(String.valueOf(productCount.getText()));
 
-                NewProductModel newProductModel = new NewProductModel(productTitleValue,
-                        productDescriptionValue, productPriceValue, productDiscountValue,
-                        productCountValue, imageBitmapData, imagePreviewModels);
 
-                newProductModels.add(newProductModel);
-            } else {
+        if (currentProductView == -1 || currentProductView == newProductModels.size() ||
+                currentProductView == newProductModels.size() - 1) {
+            newProductModel = new NewProductModel(
+                    productTitleValue, productDescriptionValue, productPriceValue,
+                    productDiscountValue, productCountValue, imageBitmapData, imagePreviewModels
+            );
 
-                for (int i = 0; i < newProductModels.size(); i++) {
-                    if (!newProductModels.get(i).getFilled()) {
-                        currentProductView = i;
-
-                        NewProductModel currentProductModel = newProductModels.get(currentProductView);
-                        repopulateField(productTitle, productDescription, productPrice, productDiscount,
-                                productCount, currentProductModel);
-                        Toast.makeText(this, "Field(s) Not Populated.",
-                                Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
-            }
+            /*Save the current products Model*/
+            newProductModels.add(newProductModel);
 
             clearFields(productTitle, productDescription, productPrice, productDiscount, productCount);
-            newProductModels.forEach(item -> {
-                        System.out.println(item.getFilled());
-                        System.out.println(item.getProductName());
-                        System.out.println(item.getProductDescription());
-                    }
-            );
-        });
 
+            imageBitmapData = new ArrayList<>();
+            imagePreviewModels = new ArrayList<>();
+
+            populateRecycleView(imagePreviewModels);
+
+            ++currentProductView;
+        } else {
+
+            /*Update the current view of the current products Model*/
+            newProductModel = newProductModels.get(currentProductView);
+            newProductModel.setProductName(productTitleValue);
+            newProductModel.setProductDescription(productDescriptionValue);
+            newProductModel.setProductPrice(productPriceValue);
+            newProductModel.setProductDiscount(productDiscountValue);
+            newProductModel.setProductCount(productCountValue);
+            newProductModel.setProductImagesUri(imagePreviewModels);
+            newProductModel.setProductImages(imageBitmapData);
+
+            //move to the next field.
+            currentProductView += 1;
+            NewProductModel currentProductModel = newProductModels.get(currentProductView);
+            repopulateField(productTitle, productDescription, productPrice, productDiscount,
+                    productCount, currentProductModel);
+        }
     }
 
     private void clearFields(
@@ -291,7 +246,8 @@ public class AddProductActivity extends AppCompatActivity {
 
 
     private boolean checkEmptyFields(
-            List<EditText> editTexts) {
+            List<EditText> editTexts, List<ImagePreviewModel> imagePreviewModels, List<Bitmap>
+            imageBitmapData) {
 
         // Load the custom shape drawable from the XML file
         Drawable redBorderBackground = AppCompatResources.getDrawable(AddProductActivity.this,
@@ -321,6 +277,12 @@ public class AddProductActivity extends AppCompatActivity {
                 });
                 return true;
             }
+
+            if (imageBitmapData.isEmpty() || imagePreviewModels.isEmpty()){
+                Toast.makeText(this, "At Least One Image is Required.",
+                        Toast.LENGTH_LONG).show();
+                return true;
+            }
         }
         return false;
     }
@@ -333,12 +295,4 @@ public class AddProductActivity extends AppCompatActivity {
         recyclerView.setAdapter(new ImageVideoPreviewAdapter(imagePreviewModelList, this));
     }
 
-    private void checkIfAllFieldsAreField(List<EditText> editTexts, NewProductModel newProductModel) {
-        for (EditText editText : editTexts) {
-            if (editText.getText().toString().isEmpty()) {
-                newProductModel.setFilled(false);
-                return;
-            }
-        }
-    }
 }
