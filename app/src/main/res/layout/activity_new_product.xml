@@ -145,31 +145,19 @@
         app:layout_constraintVertical_bias="0.737"
         app:srcCompat="@android:drawable/stat_sys_upload" />
 
-    <LinearLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/preview_image_and_videos"
         android:layout_width="318dp"
-        android:layout_height="100dp"
-        android:layoutDirection="ltr"
+        android:layout_height="108dp"
         android:orientation="horizontal"
         android:textDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/preview_image_and_videos"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:textDirection="ltr"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.796" />
-
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.715" />
 
     <Button
         android:id="@+id/previous_btn"

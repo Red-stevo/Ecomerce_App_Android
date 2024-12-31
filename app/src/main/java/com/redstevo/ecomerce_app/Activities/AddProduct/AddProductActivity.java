@@ -290,7 +290,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void populateRecycleView(List<ImagePreviewModel> imagePreviewModelList) {
         RecyclerView recyclerView = findViewById(R.id.preview_image_and_videos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new ImageVideoPreviewAdapter(imagePreviewModelList, this));
     }
