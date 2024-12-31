@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Activities.GeneralView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,19 @@ public class GeneralActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ImageView userProfile = findViewById(R.id.user_profile);
+        userProfile.setOnClickListener(event -> {
 
+        });
 
+        ImageView userCart = findViewById(R.id.user_cart);
+        userCart.setOnClickListener(event -> {
+
+        });
+
+        ImageView trackOrder = findViewById(R.id.track_order);
+        trackOrder.setOnClickListener(event -> {
+
+        });
     }
 }

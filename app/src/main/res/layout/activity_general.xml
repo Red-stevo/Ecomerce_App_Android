@@ -44,23 +44,25 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="60dp"
+        android:contentDescription="@string/user_profile_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/user_cart"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/username_icon" />
 
     <ImageView
         android:id="@+id/user_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:contentDescription="@string/user_cart_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/track_order"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cart_icon" />
 
     <ImageView
@@ -69,11 +71,12 @@
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/track_order_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/user_cart"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/order_track" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

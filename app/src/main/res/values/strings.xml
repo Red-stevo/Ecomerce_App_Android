@@ -66,4 +66,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="search">Search Product</string>
+    <string name="user_profile_link">Icon to user Profile page</string>
+    <string name="user_cart_link">Link To User Cart Page</string>
+    <string name="track_order_link">Link To Track Orders Page.</string>
 </resources>
