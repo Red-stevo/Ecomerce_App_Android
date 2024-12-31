@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/cart_image_desc" />
+
+    <TextView
+        android:layout_width="133dp"
+        android:layout_height="match_parent"
+        android:text="@string/product_name" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="130dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="54dp"
+            android:contentDescription="@string/add"
+            tools:layout_editor_absoluteX="5dp"
+            tools:layout_editor_absoluteY="6dp" />
+
+        <EditText
+            android:layout_width="29dp"
+            android:layout_height="55dp"
+            android:text="4"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="3dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/add"
+            android:contentDescription="@string/subtract"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.571" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="77dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+</LinearLayout>

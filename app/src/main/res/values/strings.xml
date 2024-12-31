@@ -69,4 +69,7 @@
     <string name="user_profile_link">Icon to user Profile page</string>
     <string name="user_cart_link">Link To User Cart Page</string>
     <string name="track_order_link">Link To Track Orders Page.</string>
+    <string name="cart_image_desc">Cart product image</string>
+    <string name="add">Add quantity Icon</string>
+    <string name="subtract">Minus the quantity of products.</string>
 </resources>

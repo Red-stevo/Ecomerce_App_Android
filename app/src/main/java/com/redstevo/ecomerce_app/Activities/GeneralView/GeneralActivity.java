@@ -3,7 +3,6 @@ package com.redstevo.ecomerce_app.Activities.GeneralView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -14,8 +13,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.redstevo.ecomerce_app.R;
-
-import java.util.Objects;
 
 public class GeneralActivity extends AppCompatActivity {
 
@@ -54,3 +51,6 @@ public class GeneralActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
