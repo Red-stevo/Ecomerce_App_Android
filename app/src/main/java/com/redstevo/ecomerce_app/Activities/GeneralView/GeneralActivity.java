@@ -1,4 +1,4 @@
-package com.redstevo.ecomerce_app.Activities;
+package com.redstevo.ecomerce_app.Activities.GeneralView;
 
 import android.os.Bundle;
 

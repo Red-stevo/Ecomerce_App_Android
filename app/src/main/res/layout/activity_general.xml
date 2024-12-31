@@ -5,6 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.GeneralActivity">
+    tools:context=".Activities.GeneralView.GeneralActivity">
 
+    <EditText
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="Search Product"
+        android:background="@drawable/black_border"
+        android:drawableEnd="@android:drawable/ic_menu_search"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
