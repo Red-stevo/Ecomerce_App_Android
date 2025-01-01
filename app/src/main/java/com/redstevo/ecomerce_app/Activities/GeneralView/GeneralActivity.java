@@ -1,5 +1,6 @@
 package com.redstevo.ecomerce_app.Activities.GeneralView;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -26,28 +27,39 @@ abstract public class GeneralActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageView userProfile = findViewById(R.id.user_profile);
-        userProfile.setOnClickListener(event -> {
 
-        });
-
-        ImageView userCart = findViewById(R.id.user_cart);
-        userCart.setOnClickListener(event -> {
-
-        });
 
         ImageView trackOrder = findViewById(R.id.track_order);
         trackOrder.setOnClickListener(event -> {
 
         });
+    }
 
-        EditText editText = findViewById(R.id.search_product);
+    public void handleSearching(EditText editText) {
         editText.setOnKeyListener((v, keyCode, event) -> {
-           if(event.getAction() == KeyEvent.ACTION_DOWN){
+            if(event.getAction() == KeyEvent.ACTION_DOWN){
                 String searchQuery = editText.getText().toString();
-               Log.d("SEARCH_BAR", "onKey: "+searchQuery);
+                Log.d("SEARCH_BAR", "onKey: "+searchQuery);
             }
             return true;
+        });
+    }
+
+    public void handleUserProfileClick(ImageView userProfile) {
+        userProfile.setOnClickListener(event -> {
+
+        });
+    }
+
+    public void handleUserCartClick(ImageView userCart) {
+        userCart.setOnClickListener(event -> {
+
+        });
+    }
+
+    public void handleTrackOrderClick(ImageView trackOrder) {
+        trackOrder.setOnClickListener(event -> {
+
         });
     }
 }

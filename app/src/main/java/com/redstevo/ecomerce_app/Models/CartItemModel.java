@@ -16,3 +16,4 @@ public class CartItemModel {
 
     private Float productPrice;
 }
+
