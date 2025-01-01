@@ -81,12 +81,20 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                cartItemModel.setProductQuantity(Math.max(Integer.parseInt(String.valueOf(s)), 1));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
+                if (!editText.getText().toString().isEmpty()){
+                    if (Integer.parseInt(String.valueOf(editText.getText())) >= 1){
+                        cartItemModel.setProductQuantity(
+                                Integer.parseInt(String.valueOf(editText.getText())));
+                    }else {
+                        cartItemModel.setProductQuantity(1);
+                        editText.setText(String.valueOf(1));
+                    }
+                }
             }
         });
     }
