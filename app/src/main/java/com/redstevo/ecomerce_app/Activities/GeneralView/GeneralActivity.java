@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.redstevo.ecomerce_app.R;
 
-public class GeneralActivity extends AppCompatActivity {
+abstract public class GeneralActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
