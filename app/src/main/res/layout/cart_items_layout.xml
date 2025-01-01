@@ -6,11 +6,13 @@
     android:layout_height="60dp">
 
     <ImageView
+        android:id="@+id/cart_item_image"
         android:layout_width="73dp"
         android:layout_height="60dp"
         android:contentDescription="@string/cart_image_desc" />
 
     <TextView
+        android:id="@+id/cart_item_name"
         android:layout_width="154dp"
         android:layout_height="match_parent"
         android:text="@string/product_name" />
@@ -21,6 +23,7 @@
         android:padding="2dp">
 
         <TextView
+            android:id="@+id/cart_minus_quantity"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -32,6 +35,7 @@
             tools:layout_editor_absoluteY="0dp" />
 
         <EditText
+            android:id="@+id/cart_item_quantity"
             android:layout_width="46dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -46,6 +50,7 @@
             tools:ignore="LabelFor" />
 
         <TextView
+            android:id="@+id/cart_plus_quantity"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -59,6 +64,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/cart_item_price"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:textAlignment="center"

@@ -31,7 +31,6 @@ public class ImageVideoPreviewAdapter extends RecyclerView.Adapter<ImageVideoPre
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        viewGroup.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         return new ViewHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.image_preview, viewGroup, false));
     }
@@ -51,8 +50,8 @@ public class ImageVideoPreviewAdapter extends RecyclerView.Adapter<ImageVideoPre
         return imagePreviewModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imagePreview;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView imagePreview;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
