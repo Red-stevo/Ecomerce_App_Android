@@ -25,6 +25,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,15 +38,6 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.material)
-    // implementation(libs.recyclerview.v7)
-    // implementation(libs.cardview.v7)
-
-    // Unit Testing Dependencies
-    //testImplementation(libs.junit)
-
-    // Instrumented Testing Dependencies
-    androidTestImplementation(libs.junit.v115)
-    androidTestImplementation(libs.espresso.core.v351)
 
     // Networking Libraries
     implementation(libs.retrofit)
@@ -55,6 +47,11 @@ dependencies {
     // Flexbox Layout Dependency
     implementation(libs.flexbox)
 
+    // Lombok
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+
+    // Glide
+//    implementation(libs.glide)
+//    kapt(libs.glide.compiler) // Use kapt for annotation processing
 }
