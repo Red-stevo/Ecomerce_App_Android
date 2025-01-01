@@ -54,4 +54,7 @@ dependencies {
 
     // Flexbox Layout Dependency
     implementation(libs.flexbox)
+
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 }

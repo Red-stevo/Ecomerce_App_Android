@@ -37,11 +37,13 @@
             android:layout_margin="5dp"
             android:autofillHints="1"
             android:background="@drawable/no_border"
+            android:inputType="number"
             android:text="@string/_4"
             android:textAlignment="center"
             android:textSize="28sp"
             tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="2dp" />
+            tools:layout_editor_absoluteY="2dp"
+            tools:ignore="LabelFor" />
 
         <TextView
             android:layout_width="wrap_content"
