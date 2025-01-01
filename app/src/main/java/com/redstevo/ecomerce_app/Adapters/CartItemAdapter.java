@@ -1,6 +1,8 @@
 package com.redstevo.ecomerce_app.Adapters;
 
 import android.net.Uri;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +45,50 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
         holder.productPrice.setText("Ksh "+cartItemModel.getProductPrice());
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
+
+        handleMinusQuantity(holder.minusQuantity, cartItemModel);
+        handlePlusQuantity(holder.plusQuantity, cartItemModel);
+        handleQuantityUpdate(holder.productQuantity, cartItemModel);
     }
 
     @Override
     public int getItemCount() {
         return cartItemModelList.size();
+    }
+
+    private void handlePlusQuantity(TextView plusQuantity, CartItemModel cartItemModel){
+        plusQuantity.setOnClickListener((event) -> {
+            cartItemModel.setProductQuantity(cartItemModel.getProductQuantity() + 1);
+        });
+    }
+
+    private void handleMinusQuantity(TextView minusQuantity, CartItemModel cartItemModel){
+        minusQuantity.setOnClickListener((event) -> {
+
+            if (cartItemModel.getProductQuantity() >= 2)
+                cartItemModel.setProductQuantity(cartItemModel.getProductQuantity() - 1);
+            else
+                cartItemModel.setProductQuantity(1);
+        });
+    }
+
+    private void handleQuantityUpdate(EditText editText, CartItemModel cartItemModel){
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                cartItemModel.setProductQuantity(Math.max(Integer.parseInt(String.valueOf(s)), 1));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Setter
@@ -62,12 +103,21 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
         private TextView productPrice;
 
+        private TextView minusQuantity;
+
+        private TextView plusQuantity;
+
+
+
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             this.imageUrl = itemView.findViewById(R.id.cart_item_image);
             this.productName = itemView.findViewById(R.id.cart_item_name);
             this.productQuantity = itemView.findViewById(R.id.cart_item_quantity);
             this.productPrice = itemView.findViewById(R.id.cart_item_price);
+            this.minusQuantity = itemView.findViewById(R.id.cart_minus_quantity);
+            this.plusQuantity = itemView.findViewById(R.id.cart_plus_quantity);
+
         }
     }
 }
