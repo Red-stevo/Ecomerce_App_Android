@@ -1,6 +1,6 @@
 package com.redstevo.ecomerce_app.Adapters;
 
-import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +29,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
     private List<CartItemModel> cartItemModelList;
 
-    private Context context;
-
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,7 +38,11 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-
+        CartItemModel cartItemModel = cartItemModelList.get(position);
+       // holder.imageUrl.setImageURI(Uri.parse(cartItemModel.getImageUrl()));
+        holder.productPrice.setText(String.valueOf(cartItemModel.getProductPrice()));
+        holder.productName.setText(cartItemModel.getProductName());
+        holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
     }
 
     @Override

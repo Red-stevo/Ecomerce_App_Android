@@ -279,8 +279,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
 
             if (imageBitmapData.isEmpty() || imagePreviewModels.isEmpty()){
-                Toast.makeText(this, "At Least One Image is Required.",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "At Least One Image is Required.",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
