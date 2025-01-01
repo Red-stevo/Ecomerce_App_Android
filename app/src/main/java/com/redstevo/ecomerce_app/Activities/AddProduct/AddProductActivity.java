@@ -84,7 +84,7 @@ public class AddProductActivity extends AppCompatActivity {
                         if (data != null) {
                             ImagePreviewModel imagePreviewModel = new ImagePreviewModel();
                             imagePreviewModel.setImageVideoUri(data.getData());
-
+                            System.out.println(imagePreviewModel.getImageVideoUri());
                             imagePreviewModels.add(imagePreviewModel);
                             populateRecycleView(imagePreviewModels);
 

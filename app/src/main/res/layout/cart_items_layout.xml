@@ -3,44 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-
+    android:background="@color/whiteFade"
+    android:layout_marginBottom="5dp"
     android:layout_height="60dp">
 
     <ImageView
         android:id="@+id/cart_item_image"
-        android:layout_width="73dp"
+        android:layout_width="87dp"
         android:layout_height="60dp"
         android:contentDescription="@string/cart_image_desc" />
 
     <TextView
         android:id="@+id/cart_item_name"
-        android:layout_width="154dp"
+        android:layout_width="153dp"
         android:layout_height="match_parent"
         android:text="@string/product_name" />
 
     <LinearLayout
-        android:layout_width="124dp"
+        android:layout_width="70dp"
         android:layout_height="match_parent"
         android:padding="2dp">
 
         <TextView
             android:id="@+id/cart_minus_quantity"
-            android:layout_width="35dp"
+            android:layout_width="15dp"
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/minus"
-            android:textSize="20sp"
+            android:textSize="26sp"
             tools:layout_editor_absoluteX="25dp"
             tools:layout_editor_absoluteY="0dp" />
 
         <EditText
             android:id="@+id/cart_item_quantity"
-            android:layout_width="53dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:autofillHints="1"
             android:background="@drawable/no_border"
             android:inputType="number"
             android:text="@string/_4"
+            android:textAlignment="center"
             android:paddingBottom="20dp"
             tools:layout_editor_absoluteX="43dp"
             tools:layout_editor_absoluteY="0dp"
@@ -48,7 +50,7 @@
 
         <TextView
             android:id="@+id/cart_plus_quantity"
-            android:layout_width="35dp"
+            android:layout_width="15dp"
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/plus"
@@ -60,10 +62,10 @@
 
     <TextView
         android:id="@+id/cart_item_price"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="match_parent"
+        android:text="Ksh 2300000"
         android:textAlignment="center"
-        android:textColor="@color/red"
-        android:text="Ksh 2300000"/>
+        android:textColor="@color/red" />
 
 </LinearLayout>

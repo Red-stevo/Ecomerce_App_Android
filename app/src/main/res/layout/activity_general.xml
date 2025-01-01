@@ -30,13 +30,13 @@
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexboxLayout"
         android:layout_width="410dp"
-        android:layout_height="588dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="583dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642">
+        app:layout_constraintTop_toBottomOf="@+id/search_product">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
