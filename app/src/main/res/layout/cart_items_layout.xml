@@ -7,51 +7,60 @@
     android:layout_height="60dp">
 
     <ImageView
-        android:layout_width="55dp"
+        android:layout_width="73dp"
         android:layout_height="60dp"
         android:contentDescription="@string/cart_image_desc" />
 
     <TextView
-        android:layout_width="133dp"
+        android:layout_width="154dp"
         android:layout_height="match_parent"
         android:text="@string/product_name" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="130dp"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="124dp"
+        android:layout_height="match_parent"
+        android:padding="2dp">
 
-        <ImageView
-            android:layout_width="27dp"
-            android:layout_height="54dp"
-            android:contentDescription="@string/add"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="6dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/minus"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <EditText
-            android:layout_width="29dp"
-            android:layout_height="55dp"
-            android:text="4"
-            tools:layout_editor_absoluteX="41dp"
-            tools:layout_editor_absoluteY="3dp" />
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:autofillHints="1"
+            android:background="@drawable/no_border"
+            android:text="@string/_4"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="2dp" />
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/add"
-            android:contentDescription="@string/subtract"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.571" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/plus"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="-2dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="77dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="TextView" />
-
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:text="Ksh 2300000"/>
 </LinearLayout>

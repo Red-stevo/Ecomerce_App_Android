@@ -72,4 +72,7 @@
     <string name="cart_image_desc">Cart product image</string>
     <string name="add">Add quantity Icon</string>
     <string name="subtract">Minus the quantity of products.</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="_4">4</string>
 </resources>

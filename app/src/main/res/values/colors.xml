@@ -6,4 +6,5 @@
     <color name="fade_blue">#D0001DFF</color>
     <color name="red">#FF000A</color>
     <color name="green">#17FF00</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
