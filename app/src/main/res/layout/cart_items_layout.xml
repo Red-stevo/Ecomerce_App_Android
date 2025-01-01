@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
+
     android:layout_height="60dp">
 
     <ImageView
@@ -24,42 +25,36 @@
 
         <TextView
             android:id="@+id/cart_minus_quantity"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/minus"
-            android:textAlignment="center"
-            android:textSize="50sp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="25dp"
             tools:layout_editor_absoluteY="0dp" />
 
         <EditText
             android:id="@+id/cart_item_quantity"
-            android:layout_width="46dp"
+            android:layout_width="53dp"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:autofillHints="1"
             android:background="@drawable/no_border"
             android:inputType="number"
             android:text="@string/_4"
-            android:textAlignment="center"
-            android:textSize="28sp"
+            android:paddingBottom="20dp"
             tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="2dp"
+            tools:layout_editor_absoluteY="0dp"
             tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/cart_plus_quantity"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/plus"
-            android:textAlignment="center"
-            android:textSize="40sp"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="-2dp" />
+            tools:layout_editor_absoluteY="0dp" />
 
     </LinearLayout>
 
