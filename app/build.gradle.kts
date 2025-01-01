@@ -51,4 +51,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
+
+    // Flexbox Layout Dependency
+    implementation(libs.flexbox)
 }
