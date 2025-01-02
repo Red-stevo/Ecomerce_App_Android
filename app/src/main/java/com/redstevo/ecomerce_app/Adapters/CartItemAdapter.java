@@ -46,8 +46,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
 
-        handleMinusQuantity(holder.minusQuantity, cartItemModel);
-        handlePlusQuantity(holder.plusQuantity, cartItemModel);
+        handleMinusQuantity(holder.minusQuantity, holder.productQuantity, cartItemModel);
+        handlePlusQuantity(holder.plusQuantity, holder.productQuantity, cartItemModel);
         handleQuantityUpdate(holder.productQuantity, cartItemModel);
     }
 
@@ -56,19 +56,23 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
         return cartItemModelList.size();
     }
 
-    private void handlePlusQuantity(TextView plusQuantity, CartItemModel cartItemModel){
-        plusQuantity.setOnClickListener((event) -> {
+    private void handlePlusQuantity(
+            TextView plusQuantity, EditText quantityInput, CartItemModel cartItemModel){
+        plusQuantity.setOnClickListener(event -> {
             cartItemModel.setProductQuantity(cartItemModel.getProductQuantity() + 1);
+            quantityInput.setText(String.valueOf(cartItemModel.getProductQuantity()));
         });
     }
 
-    private void handleMinusQuantity(TextView minusQuantity, CartItemModel cartItemModel){
-        minusQuantity.setOnClickListener((event) -> {
+    private void handleMinusQuantity(
+            TextView minusQuantity, EditText quantityInput, CartItemModel cartItemModel){
+        minusQuantity.setOnClickListener(event -> {
 
             if (cartItemModel.getProductQuantity() >= 2)
                 cartItemModel.setProductQuantity(cartItemModel.getProductQuantity() - 1);
             else
                 cartItemModel.setProductQuantity(1);
+            quantityInput.setText(String.valueOf(cartItemModel.getProductQuantity()));
         });
     }
 
