@@ -22,7 +22,7 @@
         android:theme="@style/Theme.Ecomerce_App"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.UserCart.CartActivity"
+            android:name=".Activities.ProductsView.SearchProduct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.UserCart.CartActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Activities.Login.LoginActivity"
             android:exported="false" />
