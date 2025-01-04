@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".Activities.GeneralView.GeneralActivity">
 
+    <!-- Search EditText with responsive margins and width -->
     <EditText
         android:id="@+id/search_product"
-        android:layout_width="fill_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints="Search Product"
         android:background="@drawable/black_border"
         android:drawableEnd="@android:drawable/ic_menu_search"
@@ -27,32 +28,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- FlexboxLayout with responsive width and height -->
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexboxLayout"
-        android:layout_width="380dp"
-        android:layout_height="582dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         app:flexWrap="wrap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_product">
+        app:layout_constraintTop_toBottomOf="@+id/search_product"
+        app:layout_constraintBottom_toTopOf="@+id/user_profile" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+    <!-- RecyclerView inside FlexboxLayout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     </com.google.android.flexbox.FlexboxLayout>
 
+    <!-- User Profile Image, aligned to the left at the bottom -->
     <ImageView
         android:id="@+id/user_profile"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="60dp"
         android:contentDescription="@string/user_profile_link"
@@ -61,9 +65,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/username_icon" />
 
+    <!-- User Cart Image, aligned in the center at the bottom -->
     <ImageView
         android:id="@+id/user_cart"
         android:layout_width="50dp"
@@ -74,22 +79,23 @@
         app:layout_constraintEnd_toStartOf="@+id/track_order"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
         app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/cart_icon" />
 
+    <!-- Track Order Image, aligned to the right at the bottom -->
     <ImageView
         android:id="@+id/track_order"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/track_order_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/user_cart"
         app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/order_track" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
