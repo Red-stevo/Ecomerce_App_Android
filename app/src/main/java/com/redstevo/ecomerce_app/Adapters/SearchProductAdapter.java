@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,7 +39,13 @@ public class SearchProductAdapter
 
 
         SearchProductModel searchProductModel = searchProductModelList.get(position);
-        //holder.getProductImageView();
+        Picasso
+                .get()
+                .load(searchProductModel.getProductUrl())
+                .placeholder(R.drawable.ImageNotFound)
+                .error(R.drawable.ImageNotFound)
+                .into(holder.getProductImageView());
+
         holder.getProductNameView().setText(searchProductModel.getProductName());
         priceString.append("KES ");
         priceString.append(searchProductModel.getProductPrice());
