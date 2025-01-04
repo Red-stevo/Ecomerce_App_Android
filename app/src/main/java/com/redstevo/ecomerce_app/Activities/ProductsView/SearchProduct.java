@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
+import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
+
+import java.util.List;
 
 public class SearchProduct extends GeneralActivity {
 
@@ -20,7 +23,9 @@ public class SearchProduct extends GeneralActivity {
 
         String query = sharedPreferences.getString("query", "Related Products");
 
-        Log.d("QUERY", "onCreate: "+query);
+        //call service to get data.
+
+        //populate the recycle view
 
         //add event listener to the search bar.
         EditText searchBar = findViewById(R.id.search_product);
@@ -33,4 +38,10 @@ public class SearchProduct extends GeneralActivity {
             return false;
         });
     }
+
+    private List<SearchProductModel> getSearchProducts(String query) {
+
+        return  null;
+    }
+
 }

@@ -1,0 +1,76 @@
+package com.redstevo.ecomerce_app.Adapters;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.redstevo.ecomerce_app.Models.SearchProductModel;
+import com.redstevo.ecomerce_app.R;
+
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+public class SearchProductAdapter
+        extends RecyclerView.Adapter<SearchProductAdapter.SearchProductsHolder> {
+
+    private List<SearchProductModel> searchProductModelList;
+
+
+    @NonNull
+    @Override
+    public SearchProductsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new SearchProductsHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.product_display, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SearchProductsHolder holder, int position) {
+        SearchProductModel searchProductModel = searchProductModelList.get(position);
+        //holder.getProductImageView();
+        holder.getProductNameView().setText(searchProductModel.getProductName());
+        holder.getProductPriceView().setText("KES " + searchProductModel.getProductPrice());
+        holder.getProductDiscountPercentView().setText(
+                ((searchProductModel.getProductDiscount()
+                        / searchProductModel.getProductPrice()) * 100)+"% OFF"
+        );
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return searchProductModelList.size();
+    }
+
+
+
+    @Getter
+    public static class SearchProductsHolder extends RecyclerView.ViewHolder {
+
+        private final ImageView productImageView;
+
+        private final TextView productNameView;
+
+        private final TextView productPriceView;
+
+        private final TextView productDiscountPercentView;
+
+        public SearchProductsHolder(@NonNull View itemView) {
+            super(itemView);
+
+            this.productImageView = itemView.findViewById(R.id.product_display_image);
+            this.productNameView = itemView.findViewById(R.id.product_display_name);
+            this.productPriceView = itemView.findViewById(R.id.product_price_view);
+            this.productDiscountPercentView = itemView
+                    .findViewById(R.id.product_discount_percent_view);
+        }
+    }
+}
