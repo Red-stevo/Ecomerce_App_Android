@@ -45,7 +45,7 @@ public class SearchProduct extends GeneralActivity {
 
                 searchBar.setText("");
             }
-            return false;
+            return true;
         });
     }
 

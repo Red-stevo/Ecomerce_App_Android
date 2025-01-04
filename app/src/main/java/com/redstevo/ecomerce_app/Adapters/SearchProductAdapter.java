@@ -42,7 +42,7 @@ public class SearchProductAdapter
         Picasso
                 .get()
                 .load(searchProductModel.getProductUrl())
-                .placeholder(R.drawable.image_not_found)
+                .placeholder(R.drawable.loading_image)
                 .error(R.drawable.image_not_found)
                 .into(holder.getProductImageView());
 
