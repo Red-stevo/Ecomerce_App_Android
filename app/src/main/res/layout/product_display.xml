@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/search_products_display_layout"
-    android:layout_width="160dp"
+    android:layout_width="170dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
@@ -21,7 +21,6 @@
         <TextView
             android:id="@+id/product_display_name"
             android:layout_width="match_parent"
-            android:text="Best Product in town J4 Shoes, size 20 - 48 available"
             android:layout_height="wrap_content"
             android:padding="2dp" />
 
@@ -37,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:layout_marginEnd="2dp"
-                android:text="ksh 234000000.50"
                 android:textSize="15sp" />
 
             <TextView
@@ -46,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:padding="1dp"
-                android:text="23% off"
                 android:textSize="15sp" />
 
         </com.google.android.flexbox.FlexboxLayout>
