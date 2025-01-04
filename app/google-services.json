@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "187414818101",
+    "project_id": "myapplication-fce0cb20",
+    "storage_bucket": "myapplication-fce0cb20.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187414818101:android:a999bae7204d3dc41ab07c",
+        "android_client_info": {
+          "package_name": "com.redstevo.ecomerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYmdntpV9QKGeMN8sxs5S9S6m2F8ybXo0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

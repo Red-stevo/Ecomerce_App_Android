@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.redstevo.ecomerce_app" />
+                  <option name="mobileSdkAppId" value="1:187414818101:android:a999bae7204d3dc41ab07c" />
+                  <option name="projectId" value="myapplication-fce0cb20" />
+                  <option name="projectNumber" value="187414818101" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

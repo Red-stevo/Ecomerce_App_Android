@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -49,6 +50,7 @@ dependencies {
 
     // Picasso Library
     implementation(libs.picasso)
+    implementation(libs.firebase.database)
 
     // Lombok
     compileOnly(libs.lombok)
