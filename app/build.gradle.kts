@@ -47,11 +47,10 @@ dependencies {
     // Flexbox Layout Dependency
     implementation(libs.flexbox)
 
+    // Picasso Library
+    implementation(libs.picasso)
+
     // Lombok
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
-
-    // Glide
-//    implementation(libs.glide)
-//    kapt(libs.glide.compiler) // Use kapt for annotation processing
 }
