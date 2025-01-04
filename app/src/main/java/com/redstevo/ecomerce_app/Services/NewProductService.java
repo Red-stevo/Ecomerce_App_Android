@@ -16,6 +16,9 @@ public class NewProductService {
 
     public String saveNewProduct(List<NewProductModel> newProductModelList) {
         DatabaseReference newProductRef = database.getReference("products");
+
+
+        return null;
     }
 
 }

@@ -51,6 +51,7 @@ dependencies {
     // Picasso Library
     implementation(libs.picasso)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
 
     // Lombok
     compileOnly(libs.lombok)
