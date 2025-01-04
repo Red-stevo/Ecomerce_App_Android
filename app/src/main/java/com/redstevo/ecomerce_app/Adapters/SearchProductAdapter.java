@@ -33,14 +33,20 @@ public class SearchProductAdapter
 
     @Override
     public void onBindViewHolder(@NonNull SearchProductsHolder holder, int position) {
+        StringBuilder priceString = new StringBuilder();
+        StringBuilder discount = new StringBuilder();
+
+
         SearchProductModel searchProductModel = searchProductModelList.get(position);
         //holder.getProductImageView();
         holder.getProductNameView().setText(searchProductModel.getProductName());
-        holder.getProductPriceView().setText("KES " + searchProductModel.getProductPrice());
-        holder.getProductDiscountPercentView().setText(
-                ((searchProductModel.getProductDiscount()
-                        / searchProductModel.getProductPrice()) * 100)+"% OFF"
-        );
+        priceString.append("KES ");
+        priceString.append(searchProductModel.getProductPrice());
+        holder.getProductPriceView().setText(priceString);
+        discount.append(
+                (searchProductModel.getProductDiscount() / searchProductModel.getProductPrice()) * 100);
+        discount.append("% OFF");
+        holder.getProductDiscountPercentView().setText(discount);
 
 
     }
