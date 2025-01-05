@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-@Builder
 public class NewProductModel {
     public NewProductModel(
             String productName, String productDescription, Float productPrice, Float productDiscount,

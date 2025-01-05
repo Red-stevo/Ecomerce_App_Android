@@ -25,6 +25,7 @@ import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.Models.NewProductModel;
 import com.redstevo.ecomerce_app.R;
+import com.redstevo.ecomerce_app.Services.NewProductService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +41,13 @@ public class AddProductActivity extends AppCompatActivity {
     private List<Bitmap> imageBitmapData;
 
     private int currentProductView;
+
+    private NewProductService newProductService;
+
+
+    public AddProductActivity() {
+        newProductService = new NewProductService();
+    }
 
 
     @Override
@@ -161,6 +169,8 @@ public class AddProductActivity extends AppCompatActivity {
         saveAll.setOnClickListener(event -> {
             handleNextButton(productTitle, productDescription, productPrice, productDiscount,
                     productCount);
+
+            newProductService.saveNewProduct(newProductModels, this);
         });
     }
 
