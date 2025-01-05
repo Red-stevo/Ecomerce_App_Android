@@ -61,7 +61,7 @@
         android:layout_width="294dp"
         android:layout_height="132dp"
         android:fontFamily="serif-monospace"
-        android:text="@string/login_title"
+        android:text="WELCOME BACK,PLEASE LOGIN"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
