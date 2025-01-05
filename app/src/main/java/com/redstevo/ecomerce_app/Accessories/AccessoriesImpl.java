@@ -1,6 +1,9 @@
 package com.redstevo.ecomerce_app.Accessories;
 
 import android.graphics.Bitmap;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.Firebase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -47,15 +51,17 @@ public class AccessoriesImpl implements InputCheck {
 
             UploadTask uploadTask = imageReference.putBytes(bytes);
 
-            uploadTask.onSuccessTask(taskSnapshot -> {
+            uploadTask.addOnSuccessListener(taskSnapshot -> {
                 imageReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                    return;
-                });
-                return null;
+                    imageUrls.add(uri.toString());
+
+                    Log.d("IMAGE", "uploadImages: "+uri);
+
+                    if (imageUrls.size() == imagePreviewModelList.size())
+                        callback.onComplete(imageUrls);
+                }).addOnFailureListener(callback::onError);
             });
         });
-
-
         return Collections.emptyList();
     }
 }

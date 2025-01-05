@@ -7,5 +7,5 @@ import java.util.List;
 public interface OnImageUploadComplete {
     void onComplete(List<String> imageUrls);
 
-    void onError(ImagesUploadFailed imagesUploadFailed);
+    void onError(Exception exception);
 }
