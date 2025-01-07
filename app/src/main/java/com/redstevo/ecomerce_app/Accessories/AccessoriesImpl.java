@@ -3,22 +3,15 @@ package com.redstevo.ecomerce_app.Accessories;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.firebase.Firebase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.redstevo.ecomerce_app.CustomerException.weakPasswordException;
-import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 
 public class AccessoriesImpl implements InputCheck {
     @Override
@@ -35,7 +28,7 @@ public class AccessoriesImpl implements InputCheck {
     }
 
     @Override
-    public List<String> uploadImages(
+    public void uploadImages(
             List<Bitmap> imagePreviewModelList, OnImageUploadComplete callback) {
 
         List<String> imageUrls = new ArrayList<>();
@@ -62,6 +55,5 @@ public class AccessoriesImpl implements InputCheck {
                 }).addOnFailureListener(callback::onError);
             });
         });
-        return Collections.emptyList();
     }
 }
