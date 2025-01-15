@@ -53,7 +53,7 @@ public class CartActivity extends GeneralActivity {
     }
 
     private void populateCartView(RecyclerView recyclerView, List<CartItemModel> cartItemModelList) {
-        CartItemAdapter cartItemAdapter = new CartItemAdapter(cartItemModelList);
+        CartItemAdapter cartItemAdapter = new CartItemAdapter(cartItemModelList, this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
