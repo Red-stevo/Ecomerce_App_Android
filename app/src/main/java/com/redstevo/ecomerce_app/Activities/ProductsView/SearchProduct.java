@@ -4,10 +4,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
 import com.redstevo.ecomerce_app.Models.SearchProductModel;
@@ -19,12 +26,35 @@ import java.util.stream.Collectors;
 
 public class SearchProduct extends GeneralActivity {
 
+    private List<SearchProductModel> searchProductModelList;
+    private SearchProductAdapter searchProductAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
         SharedPreferences sharedPreferences = super.getSharedPreferences();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("product");
 
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                searchProductModelList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    SearchProductModel productModel = dataSnapshot.getValue(SearchProductModel.class);
+                    if (productModel != null){
+                        searchProductModelList.add(productModel);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(SearchProduct.this,"Failed to load products",Toast.LENGTH_SHORT).show();
+            }
+        });
         //populate the recycle view
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         populateProductsView(
