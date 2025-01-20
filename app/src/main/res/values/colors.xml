@@ -9,4 +9,18 @@
     <color name="fadeOrange">#2AFF5722</color>
     <color name="green">#17FF00</color>
     <color name="transparent">#00FFFFFF</color>
+
+    <color name="colorPrimary">#121212</color>
+    <color name="colorPrimaryDark">#1E1E1E</color>
+    <color name="colorAccent">#BB86FC</color>
+    <color name="backgroundColor">#121212</color>
+    <color name="surfaceColor">#1E1E1E</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#B3B3B3</color>
+    <color name="textColorDisabled">#808080</color>
+    <color name="dividerColor">#2E2E2E</color>
+    <color name="errorColor">#CF6679</color>
+    <color name="successColor">#03DAC5</color>
+    <color name="warningColor">#FFB74D</color>
+
 </resources>
