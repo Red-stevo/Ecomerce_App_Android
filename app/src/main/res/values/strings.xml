@@ -76,4 +76,6 @@
     <string name="minus">-</string>
     <string name="_4">4</string>
     <string name="product_display">product display image</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

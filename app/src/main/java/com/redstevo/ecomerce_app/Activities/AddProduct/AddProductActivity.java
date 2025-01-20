@@ -42,7 +42,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     private int currentProductView;
 
-    private NewProductService newProductService;
+    private final NewProductService newProductService;
 
 
     public AddProductActivity() {
@@ -73,7 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         // Handle addition of video or image
         FloatingActionButton uploadImageVideo = findViewById(R.id.upload_image_and_videos);
-        uploadImageVideo.setOnClickListener(event -> {
+        uploadImageVideo.setOnClickListener(view -> {
             Intent uploadIntent = new Intent(Intent.ACTION_PICK);
             uploadIntent.setType("*/*");
             String[] mimeTypes = {"video/*", "image/*"};
