@@ -55,13 +55,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
 
-        holder.layout.setOnClickListener((view) -> {
-            Intent i = new Intent(context, SearchProduct.class);
-            startActivity( context, i,null);
-            Toast.makeText(context, "Clicked"+position, Toast.LENGTH_SHORT).show();
-        });
-
-
 
         handleMinusQuantity(holder.minusQuantity, holder.productQuantity, cartItemModel);
         handlePlusQuantity(holder.plusQuantity, holder.productQuantity, cartItemModel);
