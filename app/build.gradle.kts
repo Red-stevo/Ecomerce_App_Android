@@ -57,4 +57,8 @@ dependencies {
     // Lombok
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+
+    //cloudinary
+    implementation(libs.cloudinary.android)
+
 }

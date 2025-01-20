@@ -1,6 +1,7 @@
 [versions]
 agp = "8.7.3"
 androidxJunit = "1.2.1"
+cloudinaryAndroid = "3.0.2"
 espressoCore = "3.6.1"
 junit = "4.13.2"
 appcompat = "1.7.0"
@@ -17,6 +18,7 @@ firebaseFirestore = "25.1.1"
 
 
 [libraries]
+cloudinary-android = { module = "com.cloudinary:cloudinary-android", version.ref = "cloudinaryAndroid" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 lombok = { module = "org.projectlombok:lombok", version = "1.18.30" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version = "3.0.0" }
