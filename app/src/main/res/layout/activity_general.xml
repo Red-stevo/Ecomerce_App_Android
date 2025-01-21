@@ -48,6 +48,8 @@
         <!-- RecyclerView inside FlexboxLayout -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
+            android:background="@drawable/recycler_view_stroke"
+            android:foregroundGravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
