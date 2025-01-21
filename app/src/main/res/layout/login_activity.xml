@@ -8,60 +8,52 @@
     tools:context=".Activities.Login.LoginActivity">
 
 
-    <!--*android:src="@drawable/login_page_bg" -->
-
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dividerColor"
         android:contentDescription="@string/bg_login_description"
         android:scaleType="centerCrop"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:src="@drawable/login_page_bg" />
 
     <EditText
         android:id="@+id/password_input"
-        android:layout_width="250dp"
+        android:layout_width="306dp"
         android:layout_height="47dp"
         android:layout_marginTop="40dp"
         android:autofillHints="name"
         android:background="@drawable/border_shape"
         android:drawableStart="@drawable/password_icon"
         android:drawablePadding="20dp"
-        android:gravity="center_vertical|start"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_input" />
 
     <EditText
         android:id="@+id/username_input"
-        android:layout_width="250dp"
+        android:layout_width="306dp"
         android:layout_height="47dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="204dp"
         android:autofillHints="password"
         android:background="@drawable/border_shape"
         android:drawableStart="@drawable/username_icon"
         android:drawablePadding="20dp"
         android:ems="10"
         android:hint="@string/username"
-        android:textSize="20dp"
-        android:gravity="center_vertical|start"
         android:inputType="text"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -70,7 +62,7 @@
         android:layout_width="294dp"
         android:layout_height="132dp"
         android:fontFamily="serif-monospace"
-        android:text="WELCOME BACK,PLEASE LOGIN"
+        android:text="@string/login_title"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -87,13 +79,10 @@
         android:id="@+id/login_btn"
         android:layout_width="227dp"
         android:layout_height="46dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/border_shape"
-        android:backgroundTint="#f2630d"
+        android:backgroundTint="#EB0C27E9"
         android:text="@string/login"
-        android:textColor="@color/white"
-        android:textSize="28dp"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input" />
@@ -102,13 +91,12 @@
         android:id="@+id/register_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:text="@string/register"
-        android:textAlignment="textEnd"
-        android:textColor="#6f8191"
+        android:textColor="@color/blue"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
