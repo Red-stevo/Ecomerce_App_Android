@@ -1,10 +1,6 @@
 package com.redstevo.ecomerce_app.Adapters;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,12 +10,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.Models.CartItemModel;
 import com.redstevo.ecomerce_app.R;
 
@@ -50,7 +45,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         CartItemModel cartItemModel = cartItemModelList.get(position);
-        //holder.imageUrl.setImageURI(Uri.parse(cartItemModel.getImageUrl()));
+
+        Picasso
+                .get()
+                .load(cartItemModel.getImageUrl())
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.image_not_found)
+                .into(holder.imageUrl);
+
         holder.productPrice.setText("Ksh "+cartItemModel.getProductPrice());
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
