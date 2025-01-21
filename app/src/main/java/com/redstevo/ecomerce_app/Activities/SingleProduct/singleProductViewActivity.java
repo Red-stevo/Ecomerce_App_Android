@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.redstevo.ecomerce_app.Adapters.ProductImageAdapter;
 import com.redstevo.ecomerce_app.Models.ProductDetailsModel;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
@@ -21,8 +22,8 @@ public class singleProductViewActivity extends AppCompatActivity {
 
     private final GetProduct getProduct;
 
-    public singleProductViewActivity(GetProduct getProduct) {
-        this.getProduct = getProduct;
+    public singleProductViewActivity() {
+        this.getProduct = new GetProduct();
     }
 
 
@@ -60,7 +61,8 @@ public class singleProductViewActivity extends AppCompatActivity {
         ProductDetailsModel detailsModel = getProduct.getProductByKey(productId);
         progressDialog.hide();
 
-
+        selectImageView.setAdapter(new ProductImageAdapter(
+                this, detailsModel.getProductImagesUrls().size(), productImageView));
 
         productTitleView.setText(detailsModel.getProductName());
         productDescriptionView.setText(detailsModel.getProductDescription());
