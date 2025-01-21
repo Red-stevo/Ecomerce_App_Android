@@ -13,8 +13,10 @@
             android:id="@+id/image_preview_field"
             android:layout_width="108dp"
             android:layout_height="108dp"
-            android:contentDescription="@string/image_desc" />
-
+            android:layout_margin="0dp"
+            android:background="@color/black"
+            android:contentDescription="@string/image_desc"
+            android:padding="0dp" />
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
