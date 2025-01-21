@@ -20,7 +20,7 @@
         android:drawableEnd="@android:drawable/ic_menu_search"
         android:hint="@string/search"
         android:textColor="#BFBFBF"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:inputType="text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"

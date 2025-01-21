@@ -21,7 +21,7 @@
     <string name="upload">Upload images and video</string>
     <string name="image_desc">Selected Product Image</string>
     <string name="remove_image_icon">Remove Image Icon</string>
-    <string name="previous">Previous</string>
+    <string name="previous">Prev</string>
     <string name="next">Next</string>
     <string name="zero">0</string>
     <string name="float_zero">0.00</string>
@@ -78,4 +78,7 @@
     <string name="product_display">product display image</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="welcome_back_please_login">WELCOME BACK,PLEASE LOGIN</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="ksh_2300000">Ksh 2300000</string>
 </resources>
