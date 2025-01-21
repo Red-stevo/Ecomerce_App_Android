@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Base.Theme.Ecommerce_App" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#f2630d</item>
+        <item name="colorPrimaryDark">#A54E555B</item>
+        <item name="colorAccent">#FFFFFF</item>
 
 
-        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="android:colorBackground">@color/black</item>
         <item name="colorSurface">@color/surfaceColor</item>
 
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
-        <item name="android:textColorHint">@color/textColorDisabled</item>
+        <item name="android:textColorHint">@color/black</item>
 
         <item name="dividerColor">@color/dividerColor</item>
         <item name="colorError">@color/errorColor</item>

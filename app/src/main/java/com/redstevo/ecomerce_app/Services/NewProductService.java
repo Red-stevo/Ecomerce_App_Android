@@ -14,9 +14,9 @@ import java.util.List;
 
 
 public class NewProductService {
-    FirebaseFirestore database;
+    private final FirebaseFirestore database;
 
-    InputCheck accessory;
+    private final InputCheck accessory;
 
     public NewProductService() {
         this.database = FirebaseFirestore.getInstance();
@@ -26,7 +26,7 @@ public class NewProductService {
     public void saveNewProduct(List<NewProductModel> newProductModelList, Context context) {
 
         newProductModelList.forEach(product -> {
-            accessory.uploadImages(product.getProductImages(), new OnImageUploadComplete() {
+            accessory.uploadImages(context, product.getProductImages(), new OnImageUploadComplete() {
                 @Override
                 public void onComplete(List<String> imageUrls) {
                     ProductModel productModel = new ProductModel(product.getProductName(),
