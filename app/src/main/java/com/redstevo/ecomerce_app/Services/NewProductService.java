@@ -3,7 +3,7 @@ package com.redstevo.ecomerce_app.Services;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.FirebaseDatabase;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
 import com.redstevo.ecomerce_app.Accessories.OnImageUploadComplete;
@@ -12,14 +12,13 @@ import com.redstevo.ecomerce_app.Models.ProductModel;
 
 import java.util.List;
 
-
 public class NewProductService {
-    private final FirebaseFirestore database;
+    private final FirebaseDatabase database;
 
     private final InputCheck accessory;
 
     public NewProductService() {
-        this.database = FirebaseFirestore.getInstance();
+        database = FirebaseDatabase.getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/");
         accessory = new AccessoriesImpl();
     }
 
@@ -33,10 +32,10 @@ public class NewProductService {
                             product.getProductDescription(), imageUrls, product.getProductPrice(),
                             product.getProductDiscount());
 
-                    database.collection("products")
-                            .add(productModel)
-                            .addOnFailureListener(e ->  {
-                                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    database.getReference("products")
+                            .setValue(productModel)
+                            .addOnFailureListener(e -> {
+                               Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                             });
                 }
                 @Override

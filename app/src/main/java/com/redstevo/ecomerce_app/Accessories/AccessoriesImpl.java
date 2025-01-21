@@ -31,22 +31,25 @@ public class AccessoriesImpl implements InputCheck {
                     " a small letter and a special character.(@!#$%^&*()_+=/?><.,~`)");
     }
 
-    @Override
-    public void uploadImages(Context context,
-            List<Bitmap> imagePreviewModelList, OnImageUploadComplete callback) {
-
-        List<String> imageUrls = new ArrayList<>();
-
+    public void initCloudinaryManager(Context context) {
         Configuration configuration = new Configuration();
         configuration.apiKey = "813761264889447";
         configuration.apiSecret = "s9HCzuAuiAJbTyestMw9P9zJwAI";
         configuration.cloudName = "de91mnunt";
 
         MediaManager.init(context, configuration);
+    }
+
+
+    @Override
+    public void uploadImages(Context context,
+            List<Bitmap> imagePreviewModelList, OnImageUploadComplete callback) {
+
+        List<String> imageUrls = new ArrayList<>();
 
         imagePreviewModelList.forEach(image -> {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            image.compress(Bitmap.CompressFormat.PNG, 100, baos);
 
 
             MediaManager.get().upload(baos.toByteArray()).callback(new UploadCallback() {
