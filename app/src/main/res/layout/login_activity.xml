@@ -45,7 +45,7 @@
         android:drawableStart="@drawable/username_icon"
         android:drawablePadding="20dp"
         android:ems="10"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:inputType="text"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
