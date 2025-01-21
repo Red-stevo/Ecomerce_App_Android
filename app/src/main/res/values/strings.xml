@@ -88,4 +88,5 @@
     <string name="product_title">Product Title</string>
     <string name="order_now">Order Now</string>
     <string name="add_to_cart">Add to Cart</string>
+    <string name="circle_des">Cirlce Icon for IMage selection</string>
 </resources>

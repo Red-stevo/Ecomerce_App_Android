@@ -16,7 +16,6 @@ import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
 
 import java.text.DecimalFormat;
-import java.text.Format;
 
 public class singleProductViewActivity extends AppCompatActivity {
 
@@ -38,9 +37,9 @@ public class singleProductViewActivity extends AppCompatActivity {
         RecyclerView selectImageView = findViewById(R.id.product_selection_view);
         TextView productTitleView = findViewById(R.id.product_title_view);
         TextView productDescriptionView = findViewById(R.id.product_description_view);
-        TextView productPriceView = null;
-        TextView productDiscountPercentageView = null;
-        TextView productCountView = null;
+        TextView productPriceView = findViewById(R.id.price);
+        TextView productDiscountPercentageView = findViewById(R.id.discount);
+        TextView productCountView = findViewById(R.id.count);
         Button orderNowButton = findViewById(R.id.order_now_btn);
         Button addCartButton = findViewById(R.id.add_to_cart_btn);
         RecyclerView productReviewView = findViewById(R.id.product_reviews_section);
@@ -60,6 +59,8 @@ public class singleProductViewActivity extends AppCompatActivity {
 
         ProductDetailsModel detailsModel = getProduct.getProductByKey(productId);
         progressDialog.hide();
+
+
 
         productTitleView.setText(detailsModel.getProductName());
         productDescriptionView.setText(detailsModel.getProductDescription());
