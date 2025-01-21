@@ -22,11 +22,6 @@
         android:theme="@style/Base.Theme.Ecommerce_App"
         tools:targetApi="31">
 
-       <!-- cloudinary  config
-        <meta-data
-            android:name="CLOUDINARY_URL"
-            android:value="cloudinary://813761264889447:s9HCzuAuiAJbTyestMw9P9zJwAI@de91mnunt" />-->
-
 
         <activity
             android:name=".Activities.AddProduct.AddProductActivity"

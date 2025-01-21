@@ -1,19 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.google.gms.google.services)
+    id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "com.redstevo.ecomerce_app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.redstevo.ecomerce_app"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,41 +30,28 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    packaging {
+        resources {
+            excludes += "META-INF/DEPENDENCIES"
+        }
+    }
 }
 
 dependencies {
-    // Core AndroidX Dependencies
     implementation(libs.appcompat)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.material)
-
-    // Networking Libraries
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
-
-    // Flexbox Layout Dependency
     implementation(libs.flexbox)
-
-    // Picasso Library
     implementation(libs.picasso)
     implementation(libs.firebase.database)
-    implementation(libs.firebase.storage)
-    implementation(libs.firebase.firestore)
-
-    // Lombok
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
-
-    //cloudinary
     implementation(libs.cloudinary.android)
-
-
-    // Algolia Search Client
     implementation(libs.algoliasearch.core)
     implementation(libs.algoliasearch.apache)
-
-
 }
-
