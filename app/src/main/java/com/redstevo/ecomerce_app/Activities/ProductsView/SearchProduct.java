@@ -64,7 +64,7 @@ public class SearchProduct extends GeneralActivity {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("product");
         List<SearchProductModel> productModels = new ArrayList<>();
-        if ("Related Products".equals(query)){
+        if ("Related Products".equals(query) || query == null){
             databaseReference.addListenerForSingleValueEvent((new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
