@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.Models.NewProductModel;
@@ -30,6 +31,7 @@ import com.redstevo.ecomerce_app.Services.NewProductService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -44,9 +46,12 @@ public class AddProductActivity extends AppCompatActivity {
 
     private final NewProductService newProductService;
 
+    private final AccessoriesImpl accessories;
+
 
     public AddProductActivity() {
         newProductService = new NewProductService();
+        accessories = new AccessoriesImpl();
     }
 
 
@@ -54,6 +59,13 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+
+        //cloudinary
+        accessories.initCloudinaryManager(this);
+
+        //algolia setup
+
+
 
         imagePreviewModels = new ArrayList<>();
         imageBitmapData = new ArrayList<>();

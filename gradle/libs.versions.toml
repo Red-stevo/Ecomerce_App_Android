@@ -1,13 +1,23 @@
 [versions]
 agp = "8.7.3"
+algoliasearch = "4.11.0"
+algoliasearchAndroid = "3.16.1"
+algoliasearchClientAndroid = "4.8.2"
+algoliasearchClientAndroidVersion = "3.27.0"
+algoliasearchCore = "3.16.10"
 androidxJunit = "1.2.1"
+appcompatVersion = "1.6.1"
 cloudinaryAndroid = "3.0.2"
+coreKtx = "1.15.0"
 espressoCore = "3.6.1"
+gson = "2.10.1"
 junit = "4.13.2"
 appcompat = "1.7.0"
+kotlinxCoroutinesAndroid = "1.7.3"
 material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
+materialVersion = "1.9.0"
 okhttp = "4.9.3"
 retrofit = "2.9.0"
 picasso = "2.71828"
@@ -18,13 +28,13 @@ firebaseFirestore = "25.1.1"
 
 
 [libraries]
+algoliasearch-apache = { module = "com.algolia:algoliasearch-apache", version.ref = "algoliasearchCore" }
+algoliasearch-core = { module = "com.algolia:algoliasearch-core", version.ref = "algoliasearchCore" }
 cloudinary-android = { module = "com.cloudinary:cloudinary-android", version.ref = "cloudinaryAndroid" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 lombok = { module = "org.projectlombok:lombok", version = "1.18.30" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version = "3.0.0" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }

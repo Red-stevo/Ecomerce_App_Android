@@ -21,4 +21,6 @@ public class ProductModel {
     private Float productPrice;
 
     private Float productDiscount;
+
+    private Integer productCount;
 }
