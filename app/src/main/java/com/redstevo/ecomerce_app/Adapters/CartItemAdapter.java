@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,7 +45,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         CartItemModel cartItemModel = cartItemModelList.get(position);
-        //holder.imageUrl.setImageURI(Uri.parse(cartItemModel.getImageUrl()));
+
+        Picasso
+                .get()
+                .load(cartItemModel.getImageUrl())
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.image_not_found)
+                .into(holder.imageUrl);
+
         holder.productPrice.setText("Ksh "+cartItemModel.getProductPrice());
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
