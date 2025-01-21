@@ -50,6 +50,7 @@ dependencies {
 
     // Picasso Library
     implementation(libs.picasso)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.firestore)

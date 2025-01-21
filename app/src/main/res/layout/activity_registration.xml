@@ -37,7 +37,7 @@
         tools:targetApi="p" />
 
     <EditText
-        android:id="@+id/reg_username"
+        android:id="@+id/reg_email"
         android:layout_width="306dp"
         android:layout_height="47dp"
         android:layout_marginTop="84dp"
@@ -49,7 +49,7 @@
         android:paddingEnd="10dp"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:inputType="text"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_username" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_email" />
 
     <EditText
         android:id="@+id/reg_confirm_password"
