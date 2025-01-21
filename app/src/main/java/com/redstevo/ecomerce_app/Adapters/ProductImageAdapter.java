@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.redstevo.ecomerce_app.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,9 +25,10 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
 
     private final Context context;
 
-    private final int imagesCount;
 
     private final ImageView imageView;
+
+    private List<String> imagesUrls;
 
     @NonNull
     @Override
@@ -36,14 +41,19 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageDrawable(context.getDrawable(R.drawable.image_video_ring));
 
-        holder.cardView.setOnClickListener(view -> {
-            Toast.makeText(context, position, Toast.LENGTH_LONG).show();
+        holder.imageView.setOnClickListener(view -> {
+            Picasso
+                    .get()
+                    .load(imagesUrls.get(position))
+                    .placeholder(R.drawable.loading_image)
+                    .error(R.drawable.image_not_found)
+                    .into(imageView);
         });
     }
 
     @Override
     public int getItemCount() {
-        return imagesCount;
+        return imagesUrls.size();
     }
 
     @Getter

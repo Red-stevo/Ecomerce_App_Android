@@ -6,8 +6,11 @@
 
     <ImageView
         android:id="@+id/image_selector"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:contentDescription="@string/circle_des" />
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/circle_des"
+        android:src="@drawable/image_video_ring"/>
 
 </androidx.cardview.widget.CardView>
