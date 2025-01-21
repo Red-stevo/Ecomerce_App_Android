@@ -81,4 +81,11 @@
     <string name="welcome_back_please_login">WELCOME BACK,PLEASE LOGIN</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="ksh_2300000">Ksh 2300000</string>
+    <string name="price">Price</string>
+    <string name="count">Count</string>
+    <string name="discount">Discount</string>
+    <string name="product">Product Description</string>
+    <string name="product_title">Product Title</string>
+    <string name="order_now">Order Now</string>
+    <string name="add_to_cart">Add to Cart</string>
 </resources>
