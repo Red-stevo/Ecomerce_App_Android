@@ -65,7 +65,7 @@
         android:id="@+id/cart_item_price"
         android:layout_width="95dp"
         android:layout_height="match_parent"
-        android:text="Ksh 2300000"
+        android:text="@string/ksh_2300000"
         android:textAlignment="center"
         android:textColor="@color/red" />
 
