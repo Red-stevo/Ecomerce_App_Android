@@ -31,7 +31,6 @@ import com.redstevo.ecomerce_app.Services.NewProductService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -129,7 +128,8 @@ public class AddProductActivity extends AppCompatActivity {
         /*Handle next Button*/
 
         nextButton.setOnClickListener(view -> {
-            handleNextButton(productTitle, productDescription, productPrice, productDiscount, productCount);
+            handleNextButton(productTitle, productDescription, productPrice,
+                    productDiscount, productCount);
         });
 
 
@@ -186,7 +186,9 @@ public class AddProductActivity extends AppCompatActivity {
         });
     }
 
-    private void handleNextButton(EditText productTitle, EditText productDescription, EditText productPrice, EditText productDiscount, EditText productCount) {
+    private void handleNextButton(EditText productTitle, EditText productDescription,
+                                  EditText productPrice, EditText productDiscount,
+                                  EditText productCount) {
         NewProductModel newProductModel;
         /*Check that all fields are saved.*/
         if (checkEmptyFields(
@@ -274,8 +276,8 @@ public class AddProductActivity extends AppCompatActivity {
         // Load the custom shape drawable from the XML file
         Drawable redBorderBackground = AppCompatResources.getDrawable(AddProductActivity.this,
                 R.drawable.red_border);
-        Drawable blackBorderBackground = AppCompatResources.getDrawable(AddProductActivity.this,
-                R.drawable.black_border);
+        Drawable blackBorderBackground = AppCompatResources.getDrawable(
+                AddProductActivity.this, R.drawable.black_border);
 
 
         for (EditText editText : editTexts) {
@@ -301,7 +303,8 @@ public class AddProductActivity extends AppCompatActivity {
             }
 
             if (imageBitmapData.isEmpty() || imagePreviewModels.isEmpty()){
-                Toast.makeText(this, "At Least One Image is Required.",Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "At Least One Image is Required.",
+                        Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -311,7 +314,8 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void populateRecycleView(List<ImagePreviewModel> imagePreviewModelList) {
         RecyclerView recyclerView = findViewById(R.id.preview_image_and_videos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new ImageVideoPreviewAdapter(imagePreviewModelList, this));
     }

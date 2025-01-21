@@ -1,30 +1,18 @@
 [versions]
 agp = "8.7.3"
-algoliasearch = "4.11.0"
-algoliasearchAndroid = "3.16.1"
-algoliasearchClientAndroid = "4.8.2"
-algoliasearchClientAndroidVersion = "3.27.0"
+
 algoliasearchCore = "3.16.10"
-androidxJunit = "1.2.1"
-appcompatVersion = "1.6.1"
 cloudinaryAndroid = "3.0.2"
-coreKtx = "1.15.0"
-espressoCore = "3.6.1"
-gson = "2.10.1"
-junit = "4.13.2"
 appcompat = "1.7.0"
-kotlinxCoroutinesAndroid = "1.7.3"
 material = "1.12.0"
-activity = "1.9.3"
+activity = "1.10.0"
 constraintlayout = "2.2.0"
-materialVersion = "1.9.0"
-okhttp = "4.9.3"
+okhttp = "4.11.0"
 retrofit = "2.9.0"
 picasso = "2.71828"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
-firebaseStorage = "21.0.1"
-firebaseFirestore = "25.1.1"
+
 
 
 [libraries]
@@ -42,9 +30,6 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
-firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
