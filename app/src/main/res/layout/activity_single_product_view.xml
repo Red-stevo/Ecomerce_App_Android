@@ -9,8 +9,8 @@
         android:id="@+id/single_product_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,6 +19,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_selection_view"
+        android:background="@drawable/black_border"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
@@ -33,29 +34,87 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/product_selection_view"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/black_border"
+        android:gravity="center_vertical|start"
+        android:text="@string/product_title"
+        android:textColor="#B1B1B1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_selection_view" />
 
     <TextView
         android:id="@+id/product_description_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/product_title_view"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/black_border"
+        android:gravity="center_vertical|start"
+        android:text="@string/product"
+        android:textColor="#B1B1B1"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_title_view" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/black_border"
+        android:gravity="center_vertical|center"
+        android:text="@string/price"
+        android:textColor="#B1B1B1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_description_view" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/black_border"
+        android:gravity="center_vertical|center"
+        android:text="@string/count"
+        android:textColor="#B1B1B1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_description_view" />
+
+    <TextView
+        android:id="@+id/discount"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/black_border"
+        android:gravity="center_vertical|center"
+        android:text="@string/discount"
+        android:textColor="#B1B1B1"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_description_view" />
 
     <Button
         android:id="@+id/order_now_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="95dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:text="@string/order_now"
+        android:background="@drawable/border_shape"
+        android:backgroundTint="#6f8191"
+        android:gravity="center_vertical|center"
+        android:textColor="#ffff"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/add_to_cart_btn"
@@ -63,33 +122,40 @@
 
     <Button
         android:id="@+id/add_to_cart_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_width="95dp"
+        android:layout_height="47dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/add_to_cart"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/border_shape"
+        android:backgroundTint="#6f8191"
+        android:gravity="center_vertical|center"
+        android:textColor="#ffff"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/order_now_btn"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_description_view" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_reviews_section"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/black_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/add_to_cart_btn" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/related_products_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/black_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_reviews_section" />
 

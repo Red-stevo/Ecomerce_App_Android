@@ -4,26 +4,40 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
 import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchProduct extends GeneralActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
         SharedPreferences sharedPreferences = super.getSharedPreferences();
+
+
+
 
         //populate the recycle view
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -48,7 +62,74 @@ public class SearchProduct extends GeneralActivity {
 
     private List<SearchProductModel> getSearchProducts(String query) {
 
-        List<String> urls = new ArrayList<>(List.of(
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("product");
+        List<SearchProductModel> productModels = new ArrayList<>();
+        if ("Related Products".equals(query) || query == null){
+            databaseReference.addListenerForSingleValueEvent((new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot dt : snapshot.getChildren()){
+                        SearchProductModel searchProductModel = dt.getValue(SearchProductModel.class);
+                        if (searchProductModel != null)
+                            productModels.add(searchProductModel);
+                    }
+                    Collections.shuffle(productModels);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SearchProduct.this,"could not find products",Toast.LENGTH_SHORT).show();
+                }
+            }));
+        } else {
+            Query queryByName = databaseReference.child("name")
+                    .startAt(query).endAt(query+"\uf8ff");
+            Query queryByCategory = databaseReference.child("category")
+                            .startAt(query).endAt(query+"\uf8ff");
+
+            queryByName.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                        SearchProductModel model = dataSnapshot.getValue(SearchProductModel.class);
+                        if (model != null)
+                            productModels.add(model);
+                    }
+                    Collections.shuffle(productModels);
+
+                    queryByCategory.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                                SearchProductModel model = dataSnapshot.getValue(SearchProductModel.class);
+                                if (model != null)
+                                    productModels.add(model);
+                            }
+                            Collections.shuffle(productModels);
+                        }
+
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(SearchProduct.this,"product not found",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SearchProduct.this,"product not found",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        return productModels.stream().map(model->new SearchProductModel(model.getProductId(),model.getProductName(),
+                model.getProductUrl(),model.getProductPrice(),model.getProductDiscount())).collect(Collectors.toList());
+
+
+       /* List<String> urls = new ArrayList<>(List.of(
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g9ziyrYoAGUtig18K-k3pgHaHa%26pid%3DApi&f=1&ipt=88270b045421afa7f47ac303203c985e07d488400172626d0fec18565d24e8eb&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.elPqPSN0p8F7zIerDBRSUQHaHa%26pid%3DApi&f=1&ipt=87b353ef470684e9fb4d24dedc5acba849256818cbcd7003882359396547239b&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.K8qhS0TCefDe6l6Ke7HZeAHaHa%26pid%3DApi&f=1&ipt=e93d742f8d486f72a61586c55b8ed2c1b20974d84b78837465d13541af092ce0&ipo=images",
@@ -61,9 +142,10 @@ public class SearchProduct extends GeneralActivity {
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP._tpWbnSsHb5CO-ZmX00exAHaE8%26pid%3DApi&f=1&ipt=54c5945f8880f95501fa53542dac649d2fb133e56a45cb76b0f23a4bdbd12b47&ipo=images"
         ));
 
+
        return urls.stream().map(url -> new SearchProductModel(
                "wqr4332", "Girl's Dresses", url,
-               2750.00F, 350.00F)).collect(Collectors.toList());
+               2750.00F, 350.00F)).collect(Collectors.toList());*/
     }
 
     private void populateProductsView(

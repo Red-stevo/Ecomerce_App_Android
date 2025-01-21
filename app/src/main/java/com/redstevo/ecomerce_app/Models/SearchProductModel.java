@@ -18,4 +18,6 @@ public class SearchProductModel {
     private Float productPrice;
 
     private Float productDiscount;
+
+
 }
