@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
@@ -22,6 +23,7 @@ import com.redstevo.ecomerce_app.R;
 public class RegistrationActivity extends AppCompatActivity {
 
     InputCheck inputCheck = new AccessoriesImpl();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,6 +183,7 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         /*handle user registration.*/
+
 
 
     }
