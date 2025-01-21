@@ -15,5 +15,6 @@ public class CartItemModel {
     private Integer productQuantity;
 
     private Float productPrice;
+
 }
 

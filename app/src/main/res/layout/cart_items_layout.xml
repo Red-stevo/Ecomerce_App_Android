@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cart_item_view"
     android:layout_width="match_parent"
+    android:layout_height="60dp"
     android:orientation="horizontal"
     android:background="@color/whiteFade"
-    android:layout_marginBottom="5dp"
-    android:layout_height="60dp">
+    android:layout_marginBottom="5dp">
 
     <ImageView
         android:id="@+id/cart_item_image"
@@ -16,48 +18,51 @@
 
     <TextView
         android:id="@+id/cart_item_name"
-        android:layout_width="153dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:text="@string/product_name" />
+        android:layout_weight="1"
+        android:text="@string/product_name"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
 
     <LinearLayout
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="2dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/cart_minus_quantity"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/minus"
             android:textSize="26sp"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:padding="8dp" />
 
         <EditText
             android:id="@+id/cart_item_quantity"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:autofillHints="1"
+            android:gravity="center"
             android:background="@drawable/no_border"
             android:inputType="number"
             android:text="@string/_4"
-            android:textAlignment="center"
-            android:paddingBottom="20dp"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="0dp"
+            android:autofillHints="none"
+            android:padding="8dp"
             tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/cart_plus_quantity"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/plus"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:padding="8dp" />
 
     </LinearLayout>
 
@@ -67,6 +72,7 @@
         android:layout_height="match_parent"
         android:text="@string/ksh_2300000"
         android:textAlignment="center"
-        android:textColor="@color/red" />
+        android:textColor="@color/red"
+        android:gravity="center" />
 
 </LinearLayout>
