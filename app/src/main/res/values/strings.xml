@@ -78,4 +78,6 @@
     <string name="product_display">product display image</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="order_now">Order Now</string>
+    <string name="add_to_cart">Add to Cart</string>
 </resources>

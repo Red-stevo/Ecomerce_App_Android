@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Activities.AddProduct;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -181,8 +182,10 @@ public class AddProductActivity extends AppCompatActivity {
         saveAll.setOnClickListener(event -> {
             handleNextButton(productTitle, productDescription, productPrice, productDiscount,
                     productCount);
-
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.show();
             newProductService.saveNewProduct(newProductModels, this);
+            progressDialog.hide();
         });
     }
 
