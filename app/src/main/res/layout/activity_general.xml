@@ -19,6 +19,8 @@
         android:background="@drawable/black_border"
         android:drawableEnd="@android:drawable/ic_menu_search"
         android:hint="@string/search"
+        android:textColor="#BFBFBF"
+        android:textSize="20dp"
         android:inputType="text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -37,17 +39,17 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:flexWrap="wrap"
+        app:layout_constraintBottom_toTopOf="@+id/user_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_product"
-        app:layout_constraintBottom_toTopOf="@+id/user_profile" >
+        app:layout_constraintTop_toBottomOf="@+id/search_product">
 
-    <!-- RecyclerView inside FlexboxLayout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <!-- RecyclerView inside FlexboxLayout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </com.google.android.flexbox.FlexboxLayout>
 
