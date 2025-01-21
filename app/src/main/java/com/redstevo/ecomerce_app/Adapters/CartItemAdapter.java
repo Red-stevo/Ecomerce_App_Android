@@ -1,5 +1,9 @@
 package com.redstevo.ecomerce_app.Adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.Models.CartItemModel;
 import com.redstevo.ecomerce_app.R;
 
@@ -31,6 +38,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
     private List<CartItemModel> cartItemModelList;
 
+    private Context context;
+
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,6 +54,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
         holder.productPrice.setText("Ksh "+cartItemModel.getProductPrice());
         holder.productName.setText(cartItemModel.getProductName());
         holder.productQuantity.setText(String.valueOf(cartItemModel.getProductQuantity()));
+
 
         handleMinusQuantity(holder.minusQuantity, holder.productQuantity, cartItemModel);
         handlePlusQuantity(holder.plusQuantity, holder.productQuantity, cartItemModel);
@@ -119,6 +129,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
 
         private TextView plusQuantity;
 
+        private LinearLayout layout;
+
 
 
         public ItemHolder(@NonNull View itemView) {
@@ -129,6 +141,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
             this.productPrice = itemView.findViewById(R.id.cart_item_price);
             this.minusQuantity = itemView.findViewById(R.id.cart_minus_quantity);
             this.plusQuantity = itemView.findViewById(R.id.cart_plus_quantity);
+            this.layout = itemView.findViewById(R.id.cart_item_view);
 
         }
     }

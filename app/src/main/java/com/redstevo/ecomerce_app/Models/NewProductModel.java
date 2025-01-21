@@ -4,6 +4,12 @@ import android.graphics.Bitmap;
 
 import java.util.List;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
 public class NewProductModel {
     public NewProductModel(
             String productName, String productDescription, Float productPrice, Float productDiscount,
@@ -18,61 +24,7 @@ public class NewProductModel {
         isFilled = true;
     }
 
-    public String getProductName() {
-        return productName;
-    }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public Float getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(Float productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public Float getProductDiscount() {
-        return productDiscount;
-    }
-
-    public void setProductDiscount(Float productDiscount) {
-        this.productDiscount = productDiscount;
-    }
-
-    public Integer getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Integer productCount) {
-        this.productCount = productCount;
-    }
-
-    public List<Bitmap> getProductImages() {
-        return productImages;
-    }
-
-    public void setProductImages(List<Bitmap> productImages) {
-        this.productImages = productImages;
-    }
-
-    public List<ImagePreviewModel> getProductImagesUri() {
-        return productImagesUri;
-    }
-
-    public void setProductImagesUri(List<ImagePreviewModel> productImagesUri) {
-        this.productImagesUri = productImagesUri;
-    }
 
     private String productName;
 

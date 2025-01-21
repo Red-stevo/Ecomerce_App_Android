@@ -19,10 +19,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ecomerce_App"
+        android:theme="@style/Base.Theme.Ecommerce_App"
         tools:targetApi="31">
+
+        <!--cloudinary  config-->
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://813761264889447:s9HCzuAuiAJbTyestMw9P9zJwAI@de91mnunt" />
+
         <activity
-            android:name=".Activities.SingleProduct.singleProductViewActivity"
+            android:name=".Activities.AddProduct.AddProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,13 +36,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.ProductsView.SearchProduct"
-            android:exported="false" />
+
         <activity
             android:name=".Activities.UserCart.CartActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".Activities.ProductsView.SearchProduct"
+            android:exported="false" />
         <activity
             android:name=".Activities.Login.LoginActivity"
             android:exported="false" />
@@ -44,9 +51,8 @@
             android:name=".Activities.Registration.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AddProduct.AddProductActivity"
+            android:name=".Activities.SingleProduct.singleProductViewActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

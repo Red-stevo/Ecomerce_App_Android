@@ -52,8 +52,13 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.firestore)
 
     // Lombok
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+
+    //cloudinary
+    implementation(libs.cloudinary.android)
+
 }

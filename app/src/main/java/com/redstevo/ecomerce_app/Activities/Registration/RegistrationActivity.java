@@ -37,6 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
 
+
         /*Handle the registration button click.*/
         Button regButton = findViewById(R.id.register_btn);
         regButton.setOnClickListener(this::onClick);

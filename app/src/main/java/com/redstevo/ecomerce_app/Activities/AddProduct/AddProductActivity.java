@@ -25,6 +25,7 @@ import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.Models.NewProductModel;
 import com.redstevo.ecomerce_app.R;
+import com.redstevo.ecomerce_app.Services.NewProductService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +41,13 @@ public class AddProductActivity extends AppCompatActivity {
     private List<Bitmap> imageBitmapData;
 
     private int currentProductView;
+
+    private final NewProductService newProductService;
+
+
+    public AddProductActivity() {
+        newProductService = new NewProductService();
+    }
 
 
     @Override
@@ -65,7 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         // Handle addition of video or image
         FloatingActionButton uploadImageVideo = findViewById(R.id.upload_image_and_videos);
-        uploadImageVideo.setOnClickListener(event -> {
+        uploadImageVideo.setOnClickListener(view -> {
             Intent uploadIntent = new Intent(Intent.ACTION_PICK);
             uploadIntent.setType("*/*");
             String[] mimeTypes = {"video/*", "image/*"};
@@ -161,6 +169,8 @@ public class AddProductActivity extends AppCompatActivity {
         saveAll.setOnClickListener(event -> {
             handleNextButton(productTitle, productDescription, productPrice, productDiscount,
                     productCount);
+
+            newProductService.saveNewProduct(newProductModels, this);
         });
     }
 
