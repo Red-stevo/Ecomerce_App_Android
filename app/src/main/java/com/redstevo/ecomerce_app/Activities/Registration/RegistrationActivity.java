@@ -11,9 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
@@ -22,11 +30,18 @@ import com.redstevo.ecomerce_app.R;
 public class RegistrationActivity extends AppCompatActivity {
 
     InputCheck inputCheck = new AccessoriesImpl();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser != null){
+            firebaseUser.reload();
+        }
 
         /*handle the login page link*/
         TextView textView = findViewById(R.id.login_page_link);
@@ -48,8 +63,8 @@ public class RegistrationActivity extends AppCompatActivity {
         /*check if any filed is empty*/
 
         //Username
-        EditText usernameRegInput = findViewById(R.id.reg_username);
-        String username = String.valueOf(usernameRegInput.getText());
+        EditText usernameRegInput = findViewById(R.id.reg_email);
+        String email = String.valueOf(usernameRegInput.getText());
 
         //Password
         EditText passwordRegInput = findViewById(R.id.reg_password);
@@ -61,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         /*check if empty*/
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(RegistrationActivity.this, "All Fields Are Required.",
                     Toast.LENGTH_LONG).show();
             return;
@@ -181,6 +196,23 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         /*handle user registration.*/
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(RegistrationActivity.this,"createUserWithEmail:success",Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // If sign in fails, display a message to the user.
+
+                            Toast.makeText(RegistrationActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
 
 
     }

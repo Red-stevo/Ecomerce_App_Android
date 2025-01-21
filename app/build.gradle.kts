@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.flexbox)
     implementation(libs.picasso)
     implementation(libs.firebase.database)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.auth)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
     implementation(libs.cloudinary.android)

@@ -2,7 +2,7 @@
     <string name="app_name">Onshop</string>
     <string name="login_title">WelCome Back, Please Login</string>
     <string name="register">Register</string>
-    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="reg_page_title">Create Your Account and Start Shopping Today!</string>
