@@ -2,7 +2,6 @@ package com.redstevo.ecomerce_app.Accessories;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -16,6 +15,8 @@ import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
 import com.redstevo.ecomerce_app.CustomerException.weakPasswordException;
+
+import lombok.val;
 
 public class AccessoriesImpl implements InputCheck {
     @Override

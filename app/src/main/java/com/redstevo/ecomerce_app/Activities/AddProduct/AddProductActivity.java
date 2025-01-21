@@ -31,6 +31,7 @@ import com.redstevo.ecomerce_app.Services.NewProductService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -58,7 +59,13 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+
+        //cloudinary
         accessories.initCloudinaryManager(this);
+
+        //algolia setup
+
+
 
         imagePreviewModels = new ArrayList<>();
         imageBitmapData = new ArrayList<>();

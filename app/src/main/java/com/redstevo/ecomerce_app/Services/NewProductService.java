@@ -3,6 +3,10 @@ package com.redstevo.ecomerce_app.Services;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.algolia.search.DefaultSearchClient;
+import com.algolia.search.SearchClient;
+import com.algolia.search.SearchIndex;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
@@ -30,12 +34,21 @@ public class NewProductService {
                 public void onComplete(List<String> imageUrls) {
                     ProductModel productModel = new ProductModel(product.getProductName(),
                             product.getProductDescription(), imageUrls, product.getProductPrice(),
-                            product.getProductDiscount());
+                            product.getProductDiscount(), product.getProductCount());
 
                     database.getReference("products")
                             .setValue(productModel)
                             .addOnFailureListener(e -> {
                                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }).addOnSuccessListener(unused -> {
+                                /*saving products data to algolia.*/
+                                SearchClient client =
+                                        DefaultSearchClient.create("R9W4M96A8S",
+                                                "6dbcc8015a29941136670834d6bc7299");
+
+                                SearchIndex<ProductModel> index = client
+                                        .initIndex("products", ProductModel.class);
+                                index.saveObject(productModel).waitTask();
                             });
                 }
                 @Override

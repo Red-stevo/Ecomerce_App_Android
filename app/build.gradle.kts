@@ -61,4 +61,11 @@ dependencies {
     //cloudinary
     implementation(libs.cloudinary.android)
 
+
+    // Algolia Search Client
+    implementation(libs.algoliasearch.core)
+    implementation(libs.algoliasearch.apache)
+
+
 }
+
