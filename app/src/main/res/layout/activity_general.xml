@@ -19,6 +19,8 @@
         android:background="@drawable/black_border"
         android:drawableEnd="@android:drawable/ic_menu_search"
         android:hint="@string/search"
+        android:textColor="#BFBFBF"
+        android:textSize="20sp"
         android:inputType="text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -37,65 +39,65 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:flexWrap="wrap"
+        app:layout_constraintBottom_toTopOf="@+id/user_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_product"
-        app:layout_constraintBottom_toTopOf="@+id/user_profile" >
+        app:layout_constraintTop_toBottomOf="@+id/search_product">
 
-    <!-- RecyclerView inside FlexboxLayout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <!-- RecyclerView inside FlexboxLayout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:foregroundGravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </com.google.android.flexbox.FlexboxLayout>
 
     <!-- User Profile Image, aligned to the left at the bottom -->
-    <ImageView
-        android:id="@+id/user_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
-        android:contentDescription="@string/user_profile_link"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/user_cart"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/username_icon" />
 
     <!-- User Cart Image, aligned in the center at the bottom -->
+
+    <!-- Track Order Image, aligned to the right at the bottom -->
+
+    <ImageView
+        android:id="@+id/user_profile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/user_profile_link"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/username_icon" />
+
     <ImageView
         android:id="@+id/user_cart"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/user_cart_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/track_order"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
-        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/cart_icon" />
+        app:srcCompat="@drawable/cart_icon"
+        app:tint="@color/white" />
 
-    <!-- Track Order Image, aligned to the right at the bottom -->
     <ImageView
         android:id="@+id/track_order"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/track_order_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_cart"
-        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/order_track" />
+        app:srcCompat="@drawable/order_track"
+        app:tint="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

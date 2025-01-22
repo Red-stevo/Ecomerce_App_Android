@@ -21,24 +21,52 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Ecommerce_App"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".Activities.Order.OrderNowActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.AddProduct.AddProductActivity"
             android:exported="false">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 &lt;!&ndash;<action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
-
         <activity
             android:name=".Activities.UserCart.CartActivity"
-            android:exported="false" />
+            android:exported="false">
 
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
         <activity
             android:name=".Activities.ProductsView.SearchProduct"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Activities.Login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Registration.RegistrationActivity"
+            android:exported="false">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".Activities.SingleProduct.singleProductViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,19 +74,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity
-            android:name=".Activities.Login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.Registration.RegistrationActivity"
-            android:exported="false" >
-
-        </activity>
-        <activity
-            android:name=".Activities.SingleProduct.singleProductViewActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

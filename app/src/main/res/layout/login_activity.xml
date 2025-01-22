@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/dividerColor"
         android:contentDescription="@string/bg_login_description"
         android:scaleType="centerCrop"
         android:src="@drawable/login_page_bg" />
@@ -30,6 +31,7 @@
         android:paddingEnd="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +48,8 @@
         android:drawablePadding="20dp"
         android:ems="10"
         android:hint="@string/email"
+        android:textSize="20sp"
+        android:gravity="center_vertical|start"
         android:inputType="text"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
@@ -61,7 +65,7 @@
         android:layout_width="294dp"
         android:layout_height="132dp"
         android:fontFamily="serif-monospace"
-        android:text="@string/login_title"
+        android:text="@string/welcome_back_please_login"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -82,6 +86,9 @@
         android:background="@drawable/border_shape"
         android:backgroundTint="#EB0C27E9"
         android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_input" />

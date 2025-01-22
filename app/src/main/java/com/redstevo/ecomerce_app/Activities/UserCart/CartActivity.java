@@ -1,10 +1,19 @@
 package com.redstevo.ecomerce_app.Activities.UserCart;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Adapters.CartItemAdapter;
 import com.redstevo.ecomerce_app.Models.CartItemModel;
@@ -14,6 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartActivity extends GeneralActivity {
+    private final DatabaseReference reference;
+    public CartActivity() {
+        reference = FirebaseDatabase
+                .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
+                .getReference();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,32 +39,7 @@ public class CartActivity extends GeneralActivity {
         super.handleTrackOrderClick(findViewById(R.id.track_order));
         super.handleUserProfileClick(findViewById(R.id.user_profile));
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-        List<String> images = new ArrayList<>(List.of(
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F28/ORIGINAL/NONE/185498628",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F28/ORIGINAL/NONE/185498628",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F28/ORIGINAL/NONE/185498628",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367",
-                "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F27/ORIGINAL/NONE/1725014367"
-        ));
-
-        List<CartItemModel> cartItemModelList = new ArrayList<>();
-
-        for (int i = 0; i < images.size(); i++) {
-            CartItemModel cartItemModel = new CartItemModel(
-                    images.get(i),
-                    "Children Blue Dresses", 3 + i,
-                    2300.00F * i - 1000);
-
-            cartItemModelList.add(cartItemModel);
-        }
-
-        populateCartView(recyclerView, cartItemModelList);
+        populateCartView(findViewById(R.id.recyclerView), getUserCartItems("AAA", this));
     }
 
     private void populateCartView(RecyclerView recyclerView, List<CartItemModel> cartItemModelList) {
@@ -60,5 +50,38 @@ public class CartActivity extends GeneralActivity {
                         false));
         recyclerView.setAdapter(cartItemAdapter);
 
+    }
+
+
+    private List<CartItemModel> getUserCartItems(String userId, Context context) {
+        List<CartItemModel> cartItems = new ArrayList<>();
+       /* String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
+
+        reference.child("cart" + userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Log.d("FETCH CART", "onDataChange: "+String.valueOf(dataSnapshot.getValue()));
+
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            CartItemModel cartItem = snapshot.getValue(CartItemModel.class);
+                            Log.d("FETCH CART", "onDataChange: "+String.valueOf(snapshot));
+                            if (cartItem != null) {
+                                cartItems.add(cartItem);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.d("FETCH CART", "Error: ");
+                        Toast.makeText(context,
+                                "Failed to load cart items: " + databaseError.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+        return cartItems;
     }
 }
