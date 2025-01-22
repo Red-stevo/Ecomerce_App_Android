@@ -1,12 +1,10 @@
 package com.redstevo.ecomerce_app.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -40,6 +38,14 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageDrawable(context.getDrawable(R.drawable.image_video_ring));
+        if (position == 0){
+            Picasso
+                    .get()
+                    .load(imagesUrls.get(position))
+                    .placeholder(R.drawable.loading_image)
+                    .error(R.drawable.image_not_found)
+                    .into(imageView);
+        }
 
         holder.imageView.setOnClickListener(view -> {
             Picasso

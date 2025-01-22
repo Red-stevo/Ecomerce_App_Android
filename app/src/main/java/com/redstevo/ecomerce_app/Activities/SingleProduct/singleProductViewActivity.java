@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayoutManager;
@@ -86,15 +87,12 @@ public class singleProductViewActivity extends AppCompatActivity {
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.p8ybcMhBkrHbJVUgsIVqyQHaHa%26pid%3DApi&f=1&ipt=fb8c7fa333b961a4aa3287ed485091604c2cbe0a8ab5fb75071bc90164857680&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP._tpWbnSsHb5CO-ZmX00exAHaE8%26pid%3DApi&f=1&ipt=54c5945f8880f95501fa53542dac649d2fb133e56a45cb76b0f23a4bdbd12b47&ipo=images"
         ));
-
-
-
-        Log.d("REDSTEVO !@#$ DATA", detailsModel.toString());
         progressDialog.hide();
 
         ProductImageAdapter productImageAdapter = new ProductImageAdapter(
                 this, productImageView,detailsModel.getProductImagesUrls());
-        selectImageView.setLayoutManager(new FlexboxLayoutManager(this));
+        selectImageView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false));
         selectImageView.setHasFixedSize(false);
         selectImageView.setAdapter(productImageAdapter);
 
