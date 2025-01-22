@@ -1,5 +1,6 @@
 package com.redstevo.ecomerce_app.Activities.GeneralView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
 import com.redstevo.ecomerce_app.R;
 
 import lombok.Getter;
@@ -68,7 +70,7 @@ abstract public class GeneralActivity extends AppCompatActivity {
 
     public void handleUserCartClick(ImageView userCart) {
         userCart.setOnClickListener(event -> {
-
+            startActivity(new Intent(this, CartActivity.class));
         });
     }
 

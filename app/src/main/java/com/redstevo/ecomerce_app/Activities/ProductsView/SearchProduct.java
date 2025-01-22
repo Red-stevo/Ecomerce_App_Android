@@ -2,6 +2,7 @@ package com.redstevo.ecomerce_app.Activities.ProductsView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,15 +29,15 @@ import java.util.stream.Collectors;
 
 public class SearchProduct extends GeneralActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
+        super.handleSearching(findViewById(R.id.search_product));
+        super.handleUserCartClick(findViewById(R.id.user_cart));
+        super.handleTrackOrderClick(findViewById(R.id.track_order));
+        super.handleUserProfileClick(findViewById(R.id.user_profile));
         SharedPreferences sharedPreferences = super.getSharedPreferences();
-
-
 
 
         //populate the recycle view
@@ -53,7 +54,7 @@ public class SearchProduct extends GeneralActivity {
             if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
                 populateProductsView(getSearchProducts(String.valueOf(searchBar.getText())),
                         recyclerView);
-
+                Log.d("SEARCH_BAR", "onKey: "+searchBar.getText().toString());
                 searchBar.setText("");
             }
             return true;
@@ -129,7 +130,7 @@ public class SearchProduct extends GeneralActivity {
                 model.getProductUrl(),model.getProductPrice(),model.getProductDiscount())).collect(Collectors.toList());
 
 
-       /* List<String> urls = new ArrayList<>(List.of(
+  /*      List<String> urls = new ArrayList<>(List.of(
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g9ziyrYoAGUtig18K-k3pgHaHa%26pid%3DApi&f=1&ipt=88270b045421afa7f47ac303203c985e07d488400172626d0fec18565d24e8eb&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.elPqPSN0p8F7zIerDBRSUQHaHa%26pid%3DApi&f=1&ipt=87b353ef470684e9fb4d24dedc5acba849256818cbcd7003882359396547239b&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.K8qhS0TCefDe6l6Ke7HZeAHaHa%26pid%3DApi&f=1&ipt=e93d742f8d486f72a61586c55b8ed2c1b20974d84b78837465d13541af092ce0&ipo=images",

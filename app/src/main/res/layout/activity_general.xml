@@ -80,12 +80,12 @@
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/user_cart_link"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/track_order"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
-        app:srcCompat="@drawable/cart_icon" />
+        app:srcCompat="@drawable/cart_icon"
+        app:tint="@color/white" />
 
     <ImageView
         android:id="@+id/track_order"
@@ -94,10 +94,10 @@
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/track_order_link"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/order_track" />
+        app:srcCompat="@drawable/order_track"
+        app:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
