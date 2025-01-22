@@ -56,4 +56,6 @@ dependencies {
     implementation(libs.cloudinary.android)
     implementation(libs.algoliasearch.core)
     implementation(libs.algoliasearch.apache)
+    implementation(libs.meilisearch.java)
+
 }
