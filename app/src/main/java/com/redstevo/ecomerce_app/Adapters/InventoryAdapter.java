@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.redstevo.ecomerce_app.Models.InventoryItem;
 import com.redstevo.ecomerce_app.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,6 +36,11 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         holder.productName.setText(item.getName());
         holder.productCount.setText(String.valueOf(item.getCount()));
         holder.productPrice.setText(String.format("$%.2f", item.getPrice()));
+        Picasso.get()
+                .load(item.getImageUrl())
+                /*.placeholder(R.id.image_preview_field)
+                .error()*/
+                .into(holder.inImage);
     }
 
     @Override
@@ -43,12 +50,14 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView productName, productCount, productPrice;
+        ImageView inImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productName = itemView.findViewById(R.id.tvProductName);
             productCount = itemView.findViewById(R.id.tvProductCount);
             productPrice = itemView.findViewById(R.id.tvProductPrice);
+            inImage = itemView.findViewById(R.id.inImage);
         }
     }
 }
