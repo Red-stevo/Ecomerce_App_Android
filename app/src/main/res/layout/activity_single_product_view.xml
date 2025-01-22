@@ -19,11 +19,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_selection_view"
-        android:background="@drawable/black_border"
         android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/black_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/single_product_image_view" />
 
@@ -31,7 +32,7 @@
         android:id="@+id/product_title_view"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/black_border"
         android:gravity="center_vertical|start"
         android:text="@string/product_title"
@@ -39,7 +40,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_selection_view" />
 
@@ -60,7 +61,7 @@
 
     <TextView
         android:id="@+id/price"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
@@ -75,7 +76,7 @@
 
     <TextView
         android:id="@+id/count"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
@@ -90,7 +91,7 @@
 
     <TextView
         android:id="@+id/discount"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
