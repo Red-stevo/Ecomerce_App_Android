@@ -64,7 +64,6 @@ public class SearchProduct extends GeneralActivity {
     }
 
     private void getSearchProducts(String query, RecyclerView recyclerView) {
-        query = "f";
         meiliSearchService.searchProducts(query, this, recyclerView);
     }
 

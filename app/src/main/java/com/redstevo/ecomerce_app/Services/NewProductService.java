@@ -46,6 +46,8 @@ public class NewProductService {
                         .addOnFailureListener(e -> {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }).addOnSuccessListener(unused -> {
+
+                            productModel.setProductUrls(List.of(productModel.getProductUrls().get(0)));
                             Log.d("Products added", "addProducting: ");
                             meiliSearchService.addProducts(productModel, context);
                         });
