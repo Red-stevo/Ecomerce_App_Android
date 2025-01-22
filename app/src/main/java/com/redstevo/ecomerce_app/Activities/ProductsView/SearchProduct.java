@@ -2,36 +2,41 @@ package com.redstevo.ecomerce_app.Activities.ProductsView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.algolia.search.DefaultSearchClient;
-import com.algolia.search.SearchClient;
-import com.algolia.search.SearchIndex;
-import com.algolia.search.models.indexing.Query;
-import com.algolia.search.models.indexing.SearchResult;
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
 import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchProduct extends GeneralActivity {
 
 
-    SearchIndex<SearchProductModel> searchIndex;
+    /*SearchIndex<SearchProductModel> searchIndex;
     SearchClient client;
     public SearchProduct(){
         this.client = DefaultSearchClient.create("R9W4M96A8S", "6dbcc8015a29941136670834d6bc7299");
         this.searchIndex = client.initIndex("products", SearchProductModel.class);
-    }
+    }*/
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
+            .getReference("products");
 
 
     @Override
@@ -39,6 +44,7 @@ public class SearchProduct extends GeneralActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
         SharedPreferences sharedPreferences = super.getSharedPreferences();
+
 
 
 
@@ -68,17 +74,80 @@ public class SearchProduct extends GeneralActivity {
 
 
         List<SearchProductModel> productModels = new ArrayList<>();
-        SearchResult<SearchProductModel> result;
+        Log.d("CHECKING", "CHECK");
         if ("Related Products".equals(query) || query == null){
-            result = searchIndex.search(new Query()).setHitsPerPage(50);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Log.d("CHECKED", "data found : "+snapshot.getChildrenCount());
+                    productModels.clear();
+                    for (DataSnapshot snapshot1: snapshot.getChildren()){
+                        SearchProductModel model = snapshot1.getValue(SearchProductModel.class);
+                        assert model != null;
+                        String name = model.getProductName();
+                        Log.d("EXAMPLE NAME+++=>", "name is::"+name);
+
+                        productModels.add(model);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SearchProduct.this,"failed to load product",Toast.LENGTH_SHORT).show();
+                    Log.d("FAILURE","could not get");
+                }
+            });
         } else {
+             com.google.firebase.database.Query nameQuery = databaseReference.orderByChild("productName")
+                    .startAt(query)
+                    .endAt(query + "\uf8ff");
 
-            result = searchIndex.search(new Query(query)).setHitsPerPage(50);
+            /*Query categoryQuery = databaseReference.orderByChild("category")
+                    .startAt(query)
+                    .endAt(query + "\uf8ff");*/
+
+            // Combine results from both queries
+            nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot productSnapshot : snapshot.getChildren()) {
+                        SearchProductModel product = productSnapshot.getValue(SearchProductModel.class);
+                        if (product != null) {
+                            productModels.add(product);
+                        }
+                    }
+
+                    // Run category query
+                    /*categoryQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot categorySnapshot) {
+                            for (DataSnapshot productSnapshot : categorySnapshot.getChildren()) {
+                                SearchProductModel product = productSnapshot.getValue(SearchProductModel.class);
+                                if (product != null && !productModels.contains(product)) {
+                                    productModels.add(product); // Avoid duplicates
+                                }
+                            }
+
+                            // Handle the combined product list
+                            Log.d("ProductList", "Filtered Products: " + productModels.toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("FetchError", error.getMessage());
+                        }
+                    });*/
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SearchProduct.this,"could not load product", Toast.LENGTH_LONG).show();
+                    Log.e("FetchError", error.getMessage());
+                }
+            });
         }
-        if (!result.getHits().isEmpty())
-             productModels = result.getHits();
 
-        Collections.shuffle(productModels);
         return productModels.stream().map(model->new SearchProductModel(model.getProductId(),model.getProductName(),
                 model.getProductUrl(),model.getProductPrice(),model.getProductDiscount())).collect(Collectors.toList());
 

@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
+import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
 import com.redstevo.ecomerce_app.R;
 
@@ -204,6 +205,11 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this,"createUserWithEmail:success",Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+                            assert user != null;
+                            user.sendEmailVerification();
+
+                            /*Intent intent = new Intent(RegistrationActivity.this, GeneralActivity.class);
+                            startActivity(intent);*/
                         } else {
                             // If sign in fails, display a message to the user.
 
