@@ -1,10 +1,10 @@
 package com.redstevo.ecomerce_app.Activities.Inventory;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,73 +21,57 @@ import com.redstevo.ecomerce_app.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
-
 
 public class InventoryActivity extends GeneralActivity {
 
     DatabaseReference databaseReference;
-    private RecyclerView recyclerView;
     private InventoryAdapter inventoryAdapter;
     private List<InventoryItem> inventoryItem;
 
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inventory_view);
+       // FirebaseApp.initializeApp(this);
 
 
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("products");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/");
+        databaseReference = firebaseDatabase.getReference("cartAAA");
 
-        recyclerView = findViewById(R.id.rvInventory);
+        RecyclerView recyclerView = findViewById(R.id.rvInventory);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         inventoryItem = new ArrayList<>();
         inventoryAdapter = new InventoryAdapter(inventoryItem);
         recyclerView.setAdapter(inventoryAdapter);
 
+        Log.d("CHECK", "Checking reference path: " + databaseReference.getPath());
         Log.d("CHECK","checking if data is present in "+ databaseReference.getKey());
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("DATA"," list is"+dataSnapshot.getValue());
 
-                //InventoryItem item = dataSnapshot.getValue(InventoryItem.class);
 
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-        /*databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("DATA", "the data is "+snapshot.getChildren());
-                inventoryItem.clear();
                 Log.d("INVENTORY"," "+snapshot);
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    InventoryItem item = new InventoryItem();
-                    item.setName(snapshot1.child("productName").getValue(String.class));
-                    item.setCount(snapshot1.child("count").getValue(Integer.class));
-                    item.setPrice(snapshot1.child("price").getValue(Double.class));
 
-                    inventoryItem.add(item);
+
+
                 }
-                inventoryAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
     }
 }
