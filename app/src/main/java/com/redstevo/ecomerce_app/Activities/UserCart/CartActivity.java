@@ -59,15 +59,10 @@ public class CartActivity extends GeneralActivity {
 
         reference.child("cart" + userId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
-
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.d("FETCH CART", "onDataChange: "+String.valueOf(dataSnapshot.getValue()));
-
-
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             CartItemModel cartItem = snapshot.getValue(CartItemModel.class);
-                            Log.d("FETCH CART", "onDataChange: "+String.valueOf(snapshot));
                             if (cartItem != null) {
                                 cartItems.add(cartItem);
                             }
@@ -76,7 +71,6 @@ public class CartActivity extends GeneralActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("FETCH CART", "Error: ");
                         Toast.makeText(context,
                                 "Failed to load cart items: " + databaseError.getMessage(),
                                 Toast.LENGTH_LONG).show();
