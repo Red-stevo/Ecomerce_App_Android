@@ -8,7 +8,9 @@ firebaseBom = "33.8.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
+meilisearchJava = "0.14.2"
 okhttp = "4.11.0"
+okhttpVersion = "4.9.0"
 retrofit = "2.9.0"
 picasso = "2.71828"
 googleGmsGoogleServices = "4.4.2"
@@ -22,7 +24,7 @@ algoliasearch-core = { module = "com.algolia:algoliasearch-core", version.ref = 
 cloudinary-android = { module = "com.cloudinary:cloudinary-android", version.ref = "cloudinaryAndroid" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
-google-firebase-bom = { module = "com.google.firebase:firebase-bom" }
+meilisearch-java = { module = "com.meilisearch.sdk:meilisearch-java", version.ref = "meilisearchJava" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 lombok = { module = "org.projectlombok:lombok", version = "1.18.30" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version = "3.0.0" }

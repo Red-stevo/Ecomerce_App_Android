@@ -23,7 +23,9 @@ import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class singleProductViewActivity extends AppCompatActivity {
 
@@ -33,9 +35,10 @@ public class singleProductViewActivity extends AppCompatActivity {
 
     public singleProductViewActivity() {
         this.getProduct = new GetProduct();
+        String userId = "AAA";
         reference = FirebaseDatabase
                 .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
-                .getReference();
+                .getReference("cart"+userId);
     }
 
 
@@ -46,6 +49,8 @@ public class singleProductViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
 
+        if (productId == null)
+            productId = "123WEQ";
 
         //setting even listeners.
         findViewById(R.id.order_now_btn).setOnClickListener(view -> {
@@ -123,21 +128,21 @@ public class singleProductViewActivity extends AppCompatActivity {
 
         ProductDetailsModel finalDetailsModel = detailsModel;
         addCart.setOnClickListener(view -> {
-            String userId = "AAA";
-            String key  = reference.child("cart"+userId).push().getKey();
 
-            if (key != null) {
-                reference.child(key)
-                        .setValue(new CartItemModel(finalDetailsModel.getProductImagesUrls().get(0),
-                                finalDetailsModel.getProductName(), 1,
-                                finalDetailsModel.getProductPrice()))
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-                        }).addOnSuccessListener(unused -> {
-                            Toast.makeText(this, "Product Added To Cart", Toast.LENGTH_SHORT)
-                                    .show();
-                        });
-            }
+            CartItemModel cartData = new CartItemModel(UUID.randomUUID().toString(),
+                    finalDetailsModel.getProductImagesUrls().get(0),
+                    finalDetailsModel.getProductName(), 1,
+                    finalDetailsModel.getProductPrice());
+
+
+            reference.child(cartData.getCartId())
+                    .setValue(cartData)
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }).addOnSuccessListener(unused -> {
+                        Toast.makeText(this, "Product Added To Cart", Toast.LENGTH_SHORT)
+                                .show();
+                    });
         });
     }
 }

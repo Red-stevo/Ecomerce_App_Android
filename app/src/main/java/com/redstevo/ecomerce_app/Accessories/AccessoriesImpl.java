@@ -14,7 +14,11 @@ import com.cloudinary.Configuration;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.google.gson.JsonObject;
+import com.meilisearch.sdk.Index;
+import com.meilisearch.sdk.model.TaskInfo;
 import com.redstevo.ecomerce_app.CustomerException.weakPasswordException;
+import com.redstevo.ecomerce_app.Models.NewProductModel;
 
 import lombok.val;
 

@@ -2,7 +2,6 @@ package com.redstevo.ecomerce_app.Activities.UserCart;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,10 +23,13 @@ import java.util.List;
 
 public class CartActivity extends GeneralActivity {
     private final DatabaseReference reference;
+
     public CartActivity() {
+        /* String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
+        String userId = "AAA";
         reference = FirebaseDatabase
                 .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
-                .getReference();
+                .getReference("cart" + userId);
     }
 
     @Override
@@ -39,7 +41,14 @@ public class CartActivity extends GeneralActivity {
         super.handleTrackOrderClick(findViewById(R.id.track_order));
         super.handleUserProfileClick(findViewById(R.id.user_profile));
 
-        populateCartView(findViewById(R.id.recyclerView), getUserCartItems("AAA", this));
+        getUserCartItems(this, findViewById(R.id.recyclerView));
+
+        String userId = getIntent().getStringExtra("USER_ID");
+        if (userId != null){
+            getUserCartItems(CartActivity.this,findViewById(R.id.user_cart));
+        }else {
+            Toast.makeText(CartActivity.this,"no cart found",Toast.LENGTH_LONG).show();
+        }
     }
 
     private void populateCartView(RecyclerView recyclerView, List<CartItemModel> cartItemModelList) {
@@ -53,35 +62,25 @@ public class CartActivity extends GeneralActivity {
     }
 
 
-    private List<CartItemModel> getUserCartItems(String userId, Context context) {
+    private void getUserCartItems(Context context, RecyclerView recyclerView) {
         List<CartItemModel> cartItems = new ArrayList<>();
-       /* String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 
-        reference.child("cart" + userId)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    CartItemModel cartItem = snapshot.getValue(CartItemModel.class);
+                    if (cartItem != null) cartItems.add(cartItem);
+                }
+                populateCartView(recyclerView, cartItems);
+            }
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.d("FETCH CART", "onDataChange: "+String.valueOf(dataSnapshot.getValue()));
-
-
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            CartItemModel cartItem = snapshot.getValue(CartItemModel.class);
-                            Log.d("FETCH CART", "onDataChange: "+String.valueOf(snapshot));
-                            if (cartItem != null) {
-                                cartItems.add(cartItem);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("FETCH CART", "Error: ");
-                        Toast.makeText(context,
-                                "Failed to load cart items: " + databaseError.getMessage(),
-                                Toast.LENGTH_LONG).show();
-                    }
-                });
-        return cartItems;
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(context,
+                        "Failed to load cart items: " + databaseError.getMessage(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
