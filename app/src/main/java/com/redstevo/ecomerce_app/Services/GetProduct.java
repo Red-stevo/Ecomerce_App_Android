@@ -1,7 +1,7 @@
 package com.redstevo.ecomerce_app.Services;
 
 import android.util.Log;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 
@@ -22,7 +22,7 @@ public class GetProduct {
 
 
     public ProductDetailsModel getProductByKey(String key){
-        key = "/-OH7MPdJHh3kwdI8YWbO"; ///-OH7M3reF6qlMca1lVB-
+
         final ProductDetailsModel[] productDetailsModel = new ProductDetailsModel[1];
 
         reference.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -30,8 +30,6 @@ public class GetProduct {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     productDetailsModel[0] = snapshot.getValue(ProductDetailsModel.class);
-                    assert productDetailsModel[0] != null;
-                    Log.d("REDSTEVO !@#$ DATA", productDetailsModel[0].toString());
                 }
             }
 
