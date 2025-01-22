@@ -36,9 +36,9 @@ public class NewProductService {
                         .uploadImages(context, product.getProductImages(), new OnImageUploadComplete() {
             @Override
             public void onComplete(List<String> imageUrls) {
-                ProductModel productModel = new ProductModel(UUID.randomUUID().toString(), product.getProductName(),
-                        product.getProductDescription(), imageUrls, product.getProductPrice(),
-                        product.getProductDiscount(), product.getProductCount());
+                ProductModel productModel = new ProductModel(UUID.randomUUID().toString(),
+                        product.getProductName(), product.getProductDescription(), imageUrls,
+                        product.getProductPrice(), product.getProductDiscount(), product.getProductCount());
 
                 reference.child(productModel.getProductId())
                         .setValue(productModel)
@@ -47,7 +47,6 @@ public class NewProductService {
                         }).addOnSuccessListener(unused -> {
                             meiliSearchService.addProducts(productModel, context);
                         });
-
             }
             @Override
             public void onError(Exception exception) {
