@@ -3,18 +3,22 @@ package com.redstevo.ecomerce_app.Activities.SingleProduct;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.redstevo.ecomerce_app.Activities.Order.OrderNowActivity;
 import com.redstevo.ecomerce_app.Adapters.ProductImageAdapter;
+import com.redstevo.ecomerce_app.Models.CartItemModel;
 import com.redstevo.ecomerce_app.Models.ProductDetailsModel;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
@@ -26,8 +30,13 @@ public class singleProductViewActivity extends AppCompatActivity {
 
     private final GetProduct getProduct;
 
+    private final DatabaseReference reference;
+
     public singleProductViewActivity() {
         this.getProduct = new GetProduct();
+        reference = FirebaseDatabase
+                .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
+                .getReference();
     }
 
 
@@ -38,6 +47,13 @@ public class singleProductViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
 
+
+        //setting even listeners.
+        findViewById(R.id.order_now_btn).setOnClickListener(view -> {
+            startActivity(new Intent(this, OrderNowActivity.class));
+        });
+
+
         ImageView productImageView = findViewById(R.id.single_product_image_view);
         RecyclerView selectImageView = findViewById(R.id.product_selection_view);
         TextView productTitleView = findViewById(R.id.product_title_view);
@@ -45,19 +61,19 @@ public class singleProductViewActivity extends AppCompatActivity {
         TextView productPriceView = findViewById(R.id.price);
         TextView productDiscountPercentageView = findViewById(R.id.discount);
         TextView productCountView = findViewById(R.id.singleProductViewCount);
-        Button orderNowButton = findViewById(R.id.order_now_btn);
         Button addCartButton = findViewById(R.id.add_to_cart_btn);
         RecyclerView productReviewView = findViewById(R.id.product_reviews_section);
         RecyclerView productRelatedProductsView = findViewById(R.id.related_products_view);
 
         populateProductDetails(productId, productImageView, productTitleView, selectImageView,
-                productDescriptionView, productCountView, productPriceView, productDiscountPercentageView);
+                productDescriptionView, productCountView, productPriceView,
+                productDiscountPercentageView, addCartButton);
     }
 
     private void populateProductDetails(
             String productId, ImageView productImageView, TextView productTitleView,
             RecyclerView selectImageView, TextView productDescriptionView, TextView productCountView,
-            TextView productPriceView, TextView productDiscountPercentageView) {
+            TextView productPriceView, TextView productDiscountPercentageView, Button addCart) {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.show();
@@ -75,6 +91,7 @@ public class singleProductViewActivity extends AppCompatActivity {
                 " fast to clean.Your child will never be more beautiful, come visit us today" +
                 "and find out how much more she could be.");
         detailsModel.setProductName("Children Dresses");
+
         detailsModel.setProductImagesUrls(List.of(
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g9ziyrYoAGUtig18K-k3pgHaHa%26pid%3DApi&f=1&ipt=88270b045421afa7f47ac303203c985e07d488400172626d0fec18565d24e8eb&ipo=images",
                 "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.elPqPSN0p8F7zIerDBRSUQHaHa%26pid%3DApi&f=1&ipt=87b353ef470684e9fb4d24dedc5acba849256818cbcd7003882359396547239b&ipo=images",
@@ -103,5 +120,25 @@ public class singleProductViewActivity extends AppCompatActivity {
         productDiscountPercentageView.setText(String.valueOf(
                 new DecimalFormat("#.00").format((
                 detailsModel.getProductDiscount())/ detailsModel.getProductPrice() * 100) +" % OFF"));
+
+
+        ProductDetailsModel finalDetailsModel = detailsModel;
+        addCart.setOnClickListener(view -> {
+            String userId = "AAA";
+            String key  = reference.child("cart"+userId).push().getKey();
+
+            if (key != null) {
+                reference.child(key)
+                        .setValue(new CartItemModel(finalDetailsModel.getProductImagesUrls().get(0),
+                                finalDetailsModel.getProductName(), 1,
+                                finalDetailsModel.getProductPrice()))
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }).addOnSuccessListener(unused -> {
+                            Toast.makeText(this, "Product Added To Cart", Toast.LENGTH_SHORT)
+                                    .show();
+                        });
+            }
+        });
     }
 }

@@ -39,8 +39,7 @@ public class NewProductService {
                             product.getProductDescription(), imageUrls, product.getProductPrice(),
                             product.getProductDiscount(), product.getProductCount());
 
-                     reference.child("products");
-                     String key = reference.push().getKey();
+                    String key = reference.child("products").push().getKey();
 
                      if (key != null){
                          reference.child(key)
