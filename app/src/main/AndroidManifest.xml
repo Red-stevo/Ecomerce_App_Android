@@ -26,15 +26,12 @@
             android:exported="false" />
         <activity
             android:name=".Activities.AddProduct.AddProductActivity"
-            android:exported="false">
+            android:exported="true">
 
-            <!--
             <intent-filter>
-                &lt;!&ndash;<action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".Activities.UserCart.CartActivity"
@@ -76,10 +73,7 @@
         </activity>
         <activity android:name=".Activities.Inventory.InventoryActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
     </application>
 

@@ -64,7 +64,7 @@ public class singleProductViewActivity extends AppCompatActivity {
         TextView productDescriptionView = findViewById(R.id.product_description_view);
         TextView productPriceView = findViewById(R.id.price);
         TextView productDiscountPercentageView = findViewById(R.id.discount);
-        TextView productCountView = findViewById(R.id.count);
+        TextView productCountView = findViewById(R.id.singleProductViewCount);
         Button addCartButton = findViewById(R.id.add_to_cart_btn);
         RecyclerView productReviewView = findViewById(R.id.product_reviews_section);
         RecyclerView productRelatedProductsView = findViewById(R.id.related_products_view);

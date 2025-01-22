@@ -40,7 +40,7 @@ public class InventoryActivity extends GeneralActivity {
 
 
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("products");
 
         recyclerView = findViewById(R.id.rvInventory);
@@ -54,14 +54,15 @@ public class InventoryActivity extends GeneralActivity {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("DATA"," list is"+dataSnapshot);
-                InventoryItem item = dataSnapshot.getValue(InventoryItem.class);
-                System.out.println(item);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d("DATA"," list is"+dataSnapshot.getValue());
+
+                //InventoryItem item = dataSnapshot.getValue(InventoryItem.class);
+
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
