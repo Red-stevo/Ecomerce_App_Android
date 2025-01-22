@@ -10,6 +10,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartItemModel {
+
+    private String cartId;
+
     private String imageUrl;
 
     private String productName;

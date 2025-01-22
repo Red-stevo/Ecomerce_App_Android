@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Image Container with Rounded Edges -->
+
+    <!-- Title Text -->
+
+    <RelativeLayout
+        android:id="@+id/image_container"
+        android:layout_width="500dp"
+        android:layout_height="400dp"
+        android:background="@drawable/rounded_container_background">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dress" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="8dp"
+        android:text="@string/find_your_nbest_styles"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/ssdd"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="16sp" />
+
+    <!-- Get Started Button -->
+    <Button
+        android:id="@+id/get_started_button"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/subtitle_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="sans-serif"
+        android:text="@string/get_starteds"
+        android:gravity="center_vertical|center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</RelativeLayout>

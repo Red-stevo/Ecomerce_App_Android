@@ -14,7 +14,7 @@
         android:background="@color/dividerColor"
         android:contentDescription="@string/bg_login_description"
         android:scaleType="centerCrop"
-        android:src="@drawable/login_page_bg" />
+        />
 
     <EditText
         android:id="@+id/password_input"
@@ -84,7 +84,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/border_shape"
-        android:backgroundTint="#EB0C27E9"
+        android:backgroundTint="#f2630d"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="28sp"
@@ -97,12 +97,12 @@
         android:id="@+id/register_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="@string/register"
-        android:textColor="@color/blue"
+        android:textColor="#f2630d"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
