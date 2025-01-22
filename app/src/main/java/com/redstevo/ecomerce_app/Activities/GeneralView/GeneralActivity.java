@@ -1,8 +1,8 @@
 package com.redstevo.ecomerce_app.Activities.GeneralView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
 import com.redstevo.ecomerce_app.R;
 
 import lombok.Getter;
@@ -53,7 +54,6 @@ abstract public class GeneralActivity extends AppCompatActivity {
         editText.setOnKeyListener((v, keyCode, event) -> {
             if(event.getAction() == KeyEvent.ACTION_DOWN){
                 String searchQuery = editText.getText().toString();
-                Log.d("SEARCH_BAR", "onKey: "+searchQuery);
                 sharedPreferences.edit().putString("query", searchQuery).apply();
             }
             return true;
@@ -68,7 +68,8 @@ abstract public class GeneralActivity extends AppCompatActivity {
 
     public void handleUserCartClick(ImageView userCart) {
         userCart.setOnClickListener(event -> {
-
+            startActivity(new Intent(this, CartActivity.class));
+            finish();
         });
     }
 
