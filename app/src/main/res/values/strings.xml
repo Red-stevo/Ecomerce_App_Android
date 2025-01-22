@@ -91,6 +91,7 @@
     <string name="circle_des">Cirlce Icon for IMage selection</string>
     <string name="shop">Continue Shopping</string>
     <string name="coming">This Page is Coming Soon</string>
+    <string name="inventory">Inventory</string>
     <string name="circle_desc">circle</string>
     <string name="get_started">Get Started</string>
     <string name="join_and_discover_the_best_style_naccording_to_your_passion">Join and discover the best style\naccording to your passion</string>
@@ -99,4 +100,5 @@
     <string name="find_your_nbest_styles">Find Your\nBest Style</string>
     <string name="ssdd">Join and discover the best style\naccording to your passion</string>
     <string name="get_starteds">Get Started</string>
+
 </resources>
