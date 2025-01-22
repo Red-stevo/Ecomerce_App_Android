@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Services;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +46,7 @@ public class NewProductService {
                         .addOnFailureListener(e -> {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }).addOnSuccessListener(unused -> {
+                            Log.d("Products added", "addProducting: ");
                             meiliSearchService.addProducts(productModel, context);
                         });
             }
