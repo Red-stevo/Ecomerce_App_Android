@@ -10,13 +10,13 @@
     <RelativeLayout
         android:id="@+id/image_container"
         android:layout_width="500dp"
-        android:layout_height="440dp"
+        android:layout_height="400dp"
         android:background="@drawable/rounded_container_background">
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
             android:src="@drawable/dress" />
@@ -29,12 +29,12 @@
         android:layout_below="@id/image_container"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Find Your\nBest Style"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="8dp"
+        android:text="@string/find_your_nbest_styles"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
-        android:fontFamily="@font/your_font_here"
-        android:lineSpacingExtra="8dp"
         android:textStyle="bold" />
 
     <!-- Subtitle -->
@@ -45,12 +45,12 @@
         android:layout_below="@id/title_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Join and discover the best style\naccording to your passion"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/ssdd"
         android:textAlignment="center"
         android:textColor="@color/gray"
-        android:textSize="16sp"
-        android:fontFamily="@font/your_font_here"
-        android:lineSpacingExtra="4dp" />
+        android:textSize="16sp" />
 
     <!-- Get Started Button -->
     <Button
@@ -61,9 +61,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_background"
-        android:text="Get Started"
+        android:fontFamily="sans-serif"
+        android:text="@string/get_starteds"
+        android:gravity="center_vertical|center"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        android:fontFamily="@font/your_font_here"
+        android:textSize="20sp"
         android:textStyle="bold" />
 </RelativeLayout>
