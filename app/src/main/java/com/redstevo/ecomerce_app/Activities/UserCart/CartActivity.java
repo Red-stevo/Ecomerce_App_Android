@@ -2,7 +2,6 @@ package com.redstevo.ecomerce_app.Activities.UserCart;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import com.redstevo.ecomerce_app.Models.CartItemModel;
 import com.redstevo.ecomerce_app.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CartActivity extends GeneralActivity {
