@@ -47,7 +47,7 @@ public class SearchProduct extends GeneralActivity {
         SharedPreferences sharedPreferences = super.getSharedPreferences();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        getSearchProducts(sharedPreferences.getString("query", "Related Products"), recyclerView);
+        getSearchProducts(sharedPreferences.getString("query", " "), recyclerView);
 
 
         //add event listener to the search bar.

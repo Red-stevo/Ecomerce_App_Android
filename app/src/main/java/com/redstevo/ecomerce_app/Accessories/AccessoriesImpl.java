@@ -70,7 +70,8 @@ public class AccessoriesImpl implements InputCheck {
 
                 @Override
                 public void onSuccess(String requestId, Map resultData) {
-                    imageUrls.add(String.valueOf(resultData.get("url")));
+
+                    imageUrls.add(String.valueOf(resultData.get("secure_url")));
 
                     if (imageUrls.size() == imagePreviewModelList.size())
                         callback.onComplete(imageUrls);
