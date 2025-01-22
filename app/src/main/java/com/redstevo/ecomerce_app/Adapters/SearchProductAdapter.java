@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.redstevo.ecomerce_app.Models.ProductModel;
 import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
 import com.squareup.picasso.Picasso;
@@ -22,7 +23,7 @@ import lombok.Getter;
 public class SearchProductAdapter
         extends RecyclerView.Adapter<SearchProductAdapter.SearchProductsHolder> {
 
-    private List<SearchProductModel> searchProductModelList;
+    private List<ProductModel> searchProductModelList;
 
 
     @NonNull
@@ -38,10 +39,10 @@ public class SearchProductAdapter
         StringBuilder discount = new StringBuilder();
 
 
-        SearchProductModel searchProductModel = searchProductModelList.get(position);
+        ProductModel searchProductModel = searchProductModelList.get(position);
         Picasso
                 .get()
-                .load(searchProductModel.getProductUrl())
+                .load(searchProductModel.getProductUrls().get(0))
                 .placeholder(R.drawable.loading_image)
                 .error(R.drawable.image_not_found)
                 .into(holder.getProductImageView());
