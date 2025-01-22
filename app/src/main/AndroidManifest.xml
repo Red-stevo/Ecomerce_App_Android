@@ -27,13 +27,10 @@
 
         <activity
             android:name=".Activities.AddProduct.AddProductActivity" android:exported="false">
-<!--
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
-
         </activity>
 
 
@@ -50,10 +47,10 @@
         <activity
             android:name=".Activities.ProductsView.SearchProduct" android:exported="true">
 
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
 
         </activity>
 
@@ -74,13 +71,17 @@
             -->
         </activity>
         <activity
-            android:name=".Activities.SingleProduct.singleProductViewActivity"
-            android:exported="false">
-          <!--  <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".Activities.SingleProduct.singleProductViewActivity" android:exported="false">
+        </activity>
+        
+        <activity android:name=".Activities.Inventory.InventoryActivity"
+            android:exported="true">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
     </application>
 
