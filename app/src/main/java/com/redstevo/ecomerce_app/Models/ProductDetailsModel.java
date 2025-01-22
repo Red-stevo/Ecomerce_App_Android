@@ -19,9 +19,6 @@ public class ProductDetailsModel {
 
     private  Float productDiscount;
 
-    private List<String> productImagesUrls;
+    private List<String> productUrls;
 
-    public ProductDetailsModel() {
-
-    }
 }
