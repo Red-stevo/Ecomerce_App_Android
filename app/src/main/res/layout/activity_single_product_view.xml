@@ -60,7 +60,7 @@
 
     <TextView
         android:id="@+id/price"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
@@ -75,7 +75,7 @@
 
     <TextView
         android:id="@+id/count"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
@@ -90,7 +90,7 @@
 
     <TextView
         android:id="@+id/discount"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/black_border"
