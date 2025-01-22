@@ -23,7 +23,6 @@ import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 

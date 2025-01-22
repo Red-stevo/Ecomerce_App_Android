@@ -78,7 +78,7 @@ public class MeiliSearchService {
 
                 ((android.app.Activity) context).runOnUiThread(() -> {
                     SearchProductAdapter searchProductAdapter =
-                            new SearchProductAdapter(searchProductModelList);
+                            new SearchProductAdapter(searchProductModelList, context);
 
                     recyclerView.setLayoutManager(new FlexboxLayoutManager(context));
                     recyclerView.setHasFixedSize(false);
