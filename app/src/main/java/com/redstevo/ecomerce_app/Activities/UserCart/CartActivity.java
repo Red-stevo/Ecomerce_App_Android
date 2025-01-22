@@ -42,6 +42,13 @@ public class CartActivity extends GeneralActivity {
         super.handleUserProfileClick(findViewById(R.id.user_profile));
 
         getUserCartItems(this, findViewById(R.id.recyclerView));
+
+        String userId = getIntent().getStringExtra("USER_ID");
+        if (userId != null){
+            getUserCartItems(CartActivity.this,findViewById(R.id.user_cart));
+        }else {
+            Toast.makeText(CartActivity.this,"no cart found",Toast.LENGTH_LONG).show();
+        }
     }
 
     private void populateCartView(RecyclerView recyclerView, List<CartItemModel> cartItemModelList) {
