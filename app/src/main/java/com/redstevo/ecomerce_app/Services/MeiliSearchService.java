@@ -1,7 +1,6 @@
 package com.redstevo.ecomerce_app.Services;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +14,6 @@ import com.meilisearch.sdk.model.SearchResult;
 import com.meilisearch.sdk.model.TaskInfo;
 import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
 import com.redstevo.ecomerce_app.Models.ProductModel;
-import com.redstevo.ecomerce_app.Models.SearchProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,11 +66,7 @@ public class MeiliSearchService {
                 searchResult.getHits().forEach(data -> {
                     ProductModel productModel = new ProductModel();
 
-                    if (String.valueOf(data.get("productCount")).equals("0.0")){
-                        productModel.setProductCount(0);
-                    }else
-                        productModel.setProductCount(Integer.parseInt(String.valueOf(data.get("productCount"))));
-
+                    productModel.setProductCount(Integer.parseInt(String.valueOf(data.get("productCount")).split("\\.")[0]));
                     productModel.setProductId(String.valueOf(data.get("productId")));
                     productModel.setProductPrice(Float.parseFloat(String.valueOf(data.get("productPrice"))));
                     productModel.setProductDiscount(Float.parseFloat(String.valueOf(data.get("productDiscount"))));
@@ -83,7 +77,8 @@ public class MeiliSearchService {
                 });
 
                 ((android.app.Activity) context).runOnUiThread(() -> {
-                    SearchProductAdapter searchProductAdapter = new SearchProductAdapter(searchProductModelList);
+                    SearchProductAdapter searchProductAdapter =
+                            new SearchProductAdapter(searchProductModelList);
 
                     recyclerView.setLayoutManager(new FlexboxLayoutManager(context));
                     recyclerView.setHasFixedSize(false);
@@ -92,7 +87,8 @@ public class MeiliSearchService {
 
             } catch (Exception e) {
                 ((android.app.Activity) context).runOnUiThread(() ->
-                        Toast.makeText(context, "Search error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Search error: " + e.getMessage(),
+                                Toast.LENGTH_SHORT).show()
                 );
             }
         });
