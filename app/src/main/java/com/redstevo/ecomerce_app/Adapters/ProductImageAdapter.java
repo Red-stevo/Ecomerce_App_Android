@@ -44,6 +44,7 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
                     .load(imagesUrls.get(position))
                     .placeholder(R.drawable.loading_image)
                     .error(R.drawable.image_not_found)
+                    .fit()
                     .into(imageView);
         }
 

@@ -30,47 +30,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- FlexboxLayout with responsive width and height -->
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexboxLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="14dp"
         app:flexWrap="wrap"
+        app:justifyContent="center"
+        app:alignItems="center"
         app:layout_constraintBottom_toTopOf="@+id/user_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_product">
 
-        <!-- RecyclerView inside FlexboxLayout -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:foregroundGravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="10dp" />
+</com.google.android.flexbox.FlexboxLayout>
 
-    </com.google.android.flexbox.FlexboxLayout>
 
-    <!-- User Profile Image, aligned to the left at the bottom -->
-
-    <!-- User Cart Image, aligned in the center at the bottom -->
-
-    <!-- Track Order Image, aligned to the right at the bottom -->
-
-    <ImageView
+<ImageView
         android:id="@+id/user_profile"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="60dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/user_profile_link"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/username_icon" />
+        app:srcCompat="@drawable/username_icon"
+        app:tint="@color/white" />
 
     <ImageView
         android:id="@+id/user_cart"

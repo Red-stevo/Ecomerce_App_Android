@@ -51,6 +51,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemHo
                 .load(cartItemModel.getImageUrl())
                 .placeholder(R.drawable.loading_image)
                 .error(R.drawable.image_not_found)
+                .fit()
                 .into(holder.imageUrl);
 
         holder.productPrice.setText("Ksh "+cartItemModel.getProductPrice());

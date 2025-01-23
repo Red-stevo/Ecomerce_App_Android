@@ -54,6 +54,7 @@ public class SearchProductAdapter
                 .load(imageUrl)
                 .placeholder(R.drawable.loading_image)
                 .error(R.drawable.image_not_found)
+                .fit()
                 .into(holder.getProductImageView());
 
         holder.getProductNameView().setText(searchProductModel.getProductName());

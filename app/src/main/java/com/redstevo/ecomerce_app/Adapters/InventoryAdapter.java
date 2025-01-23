@@ -38,8 +38,9 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         holder.productPrice.setText(String.format("$%.2f", item.getPrice()));
         Picasso.get()
                 .load(item.getImageUrl())
-                /*.placeholder(R.id.image_preview_field)
-                .error()*/
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.image_not_found)
+                .fit()
                 .into(holder.inImage);
     }
 
