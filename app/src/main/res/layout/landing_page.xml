@@ -3,10 +3,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Image Container with Rounded Edges -->
-
-    <!-- Title Text -->
-
     <RelativeLayout
         android:id="@+id/image_container"
         android:layout_width="500dp"
@@ -18,6 +14,7 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/landing_page_image"
             android:scaleType="centerCrop"
             android:src="@drawable/dress" />
     </RelativeLayout>
@@ -37,7 +34,6 @@
         android:textSize="28sp"
         android:textStyle="bold" />
 
-    <!-- Subtitle -->
     <TextView
         android:id="@+id/subtitle_text"
         android:layout_width="wrap_content"
@@ -52,7 +48,6 @@
         android:textColor="@color/gray"
         android:textSize="16sp" />
 
-    <!-- Get Started Button -->
     <Button
         android:id="@+id/get_started_button"
         android:layout_width="200dp"
@@ -67,4 +62,5 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
+
 </RelativeLayout>
