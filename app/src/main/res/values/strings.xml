@@ -102,5 +102,6 @@
     <string name="get_starteds">Get Started</string>
     <string name="product_image">Image</string>
     <string name="landing_page_image">Landing Page Image</string>
+    <string name="selector">selector</string>
 
 </resources>
