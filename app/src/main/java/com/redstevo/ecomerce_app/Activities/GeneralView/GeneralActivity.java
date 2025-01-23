@@ -14,7 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.redstevo.ecomerce_app.Activities.Order.OrdersActivity;
 import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
+import com.redstevo.ecomerce_app.Activities.profile.UserProfile;
 import com.redstevo.ecomerce_app.R;
 
 import lombok.Getter;
@@ -42,12 +44,6 @@ abstract public class GeneralActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
-        ImageView trackOrder = findViewById(R.id.track_order);
-        trackOrder.setOnClickListener(event -> {
-
-        });
     }
 
     public void handleSearching(EditText editText) {
@@ -62,7 +58,8 @@ abstract public class GeneralActivity extends AppCompatActivity {
 
     public void handleUserProfileClick(ImageView userProfile) {
         userProfile.setOnClickListener(event -> {
-
+            startActivity(new Intent(this, UserProfile.class));
+            finish();
         });
     }
 
@@ -75,7 +72,8 @@ abstract public class GeneralActivity extends AppCompatActivity {
 
     public void handleTrackOrderClick(ImageView trackOrder) {
         trackOrder.setOnClickListener(event -> {
-
+            startActivity(new Intent(this, OrdersActivity.class));
+            finish();
         });
     }
 }
