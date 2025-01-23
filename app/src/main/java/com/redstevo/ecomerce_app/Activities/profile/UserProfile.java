@@ -60,6 +60,7 @@ public class UserProfile extends GeneralActivity {
 
         ImageView cartImage = findViewById(R.id.cart_image);
         cartImage.setOnClickListener(v->{
+            assert user != null;
             String userId  = user.getUid();
             Intent cartIntent = new Intent(UserProfile.this, CartActivity.class);
             cartIntent.putExtra("USER_ID",userId);
