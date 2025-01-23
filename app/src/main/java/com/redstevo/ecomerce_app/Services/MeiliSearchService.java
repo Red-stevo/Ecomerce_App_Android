@@ -10,8 +10,6 @@ import com.google.gson.Gson;
 import com.meilisearch.sdk.Client;
 import com.meilisearch.sdk.Config;
 import com.meilisearch.sdk.Index;
-import com.meilisearch.sdk.model.SearchResult;
-import com.meilisearch.sdk.model.TaskInfo;
 import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
 import com.redstevo.ecomerce_app.Models.ProductModel;
 
@@ -36,19 +34,13 @@ public class MeiliSearchService {
 
     public void addProducts(ProductModel product, Context context) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
         executor.execute(() -> {
             try {
-                Index index = getIndex("products");
-                Gson gson = new Gson();
-                String productJson = gson.toJson(product);
-                TaskInfo response = index.addDocuments(productJson);
-
+                getIndex("products").addDocuments(new Gson().toJson(product));
             } catch (Exception e) {
                 Toast.makeText(context, "Error Posting product", Toast.LENGTH_SHORT).show();
             }
         });
-
         executor.shutdown();
     }
 
@@ -60,10 +52,7 @@ public class MeiliSearchService {
 
         executor.execute(() -> {
             try {
-                Index index = getIndex("products");
-                SearchResult searchResult = index.search(query);
-
-                searchResult.getHits().forEach(data -> {
+                getIndex("products").search(query).getHits().forEach(data -> {
                     ProductModel productModel = new ProductModel();
 
                     productModel.setProductCount(Integer.parseInt(String.valueOf(data.get("productCount")).split("\\.")[0]));
@@ -77,12 +66,9 @@ public class MeiliSearchService {
                 });
 
                 ((android.app.Activity) context).runOnUiThread(() -> {
-                    SearchProductAdapter searchProductAdapter =
-                            new SearchProductAdapter(searchProductModelList, context);
-
                     recyclerView.setLayoutManager(new FlexboxLayoutManager(context));
                     recyclerView.setHasFixedSize(false);
-                    recyclerView.setAdapter(searchProductAdapter);
+                    recyclerView.setAdapter(new SearchProductAdapter(searchProductModelList, context));
                 });
 
             } catch (Exception e) {

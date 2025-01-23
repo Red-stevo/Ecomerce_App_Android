@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Activities.SingleProduct;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,13 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.redstevo.ecomerce_app.Activities.Order.OrderNowActivity;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.GetProduct;
+import com.redstevo.ecomerce_app.Services.MeiliSearchService;
 
 public class singleProductViewActivity extends AppCompatActivity {
 
     private final GetProduct getProduct;
 
+    private final MeiliSearchService meiliSearchService;
+
+    private SharedPreferences sharedPreferences;
+
     public singleProductViewActivity() {
         this.getProduct = new GetProduct();
+        this.meiliSearchService = new MeiliSearchService();
     }
 
 
@@ -29,6 +36,7 @@ public class singleProductViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_product_view);
         Intent intent = getIntent();
         String productId = intent.getStringExtra("productId");
+        sharedPreferences = super.getSharedPreferences("dataUtils", MODE_PRIVATE);
 
 
         //setting even listeners.
@@ -51,5 +59,8 @@ public class singleProductViewActivity extends AppCompatActivity {
         getProduct.getProductByKey(productId,this, productImageView,
                 productTitleView, selectImageView, productDescriptionView, productCountView,
                 productPriceView, productDiscountPercentageView, addCartButton);
+
+        meiliSearchService.searchProducts(sharedPreferences.getString("query", " "),
+               this, productRelatedProductsView);
     }
 }

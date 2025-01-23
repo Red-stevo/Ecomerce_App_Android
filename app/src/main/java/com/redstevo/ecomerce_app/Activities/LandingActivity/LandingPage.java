@@ -20,9 +20,8 @@ import java.util.TimerTask;
 public class LandingPage extends AppCompatActivity {
 
     @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
 
         RelativeLayout landingImage = findViewById(R.id.image_container);
