@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Activities.Registration.RegistrationActivity;
@@ -56,10 +55,11 @@ public class LoginActivity extends AppCompatActivity {
             String password = String.valueOf(loginPasswordInput.getText());
 
             /*Check if the fields are empty*/
-            if (email.isEmpty() || password.isEmpty())
-                Toast.makeText(LoginActivity.this,
-                        "All fields Must Be Filled!", Toast.LENGTH_LONG).show();
-
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(LoginActivity.this, "All fields Must Be Filled!",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
