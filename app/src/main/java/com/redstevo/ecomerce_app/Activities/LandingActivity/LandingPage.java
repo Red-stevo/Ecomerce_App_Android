@@ -1,17 +1,21 @@
 package com.redstevo.ecomerce_app.Activities.LandingActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
 import com.redstevo.ecomerce_app.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LandingPage extends AppCompatActivity {
 
@@ -29,10 +33,23 @@ public class LandingPage extends AppCompatActivity {
 
         Animation slideDown = AnimationUtils.loadAnimation(this, R.anim.top_down_movement);
         Animation slideRight = AnimationUtils.loadAnimation(this, R.anim.slide_right);
+        Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_left);
 
         landingImage.setAnimation(slideDown);
         landingTitle.setAnimation(slideRight);
         landingMessage.setAnimation(slideRight);
+        getStartedBtn.setAnimation(slideUp);
 
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                redirectLoginActivity();
+            }
+        }, 3000);
+
+    }
+
+    protected void redirectLoginActivity(){
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
