@@ -36,7 +36,7 @@
             android:id="@+id/tvUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="mirowe@gmail.com"
+            android:text="mirowebob@gmail.com"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray" />
 
