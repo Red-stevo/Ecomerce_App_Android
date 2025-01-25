@@ -30,7 +30,7 @@ public class CartActivity extends GeneralActivity {
          String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         reference = FirebaseDatabase
                 .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
-                .getReference("cart" + userId);
+                .getReference("cart_" + userId);
     }
 
     @Override

@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.redstevo.ecomerce_app.Activities.Order.OrderNowActivity;
+import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
 import com.redstevo.ecomerce_app.Activities.profile.UserProfile;
 import com.redstevo.ecomerce_app.R;
@@ -49,6 +50,7 @@ abstract public class GeneralActivity extends AppCompatActivity {
             if(event.getAction() == KeyEvent.ACTION_DOWN){
                 String searchQuery = editText.getText().toString();
                 sharedPreferences.edit().putString("query", searchQuery).apply();
+                startActivity(new Intent(this, SearchProduct.class));
             }
             return true;
         });

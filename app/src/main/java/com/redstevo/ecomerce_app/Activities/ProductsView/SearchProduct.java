@@ -20,6 +20,7 @@ public class SearchProduct extends GeneralActivity {
         meiliSearchService = new MeiliSearchService();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +31,14 @@ public class SearchProduct extends GeneralActivity {
         super.handleUserProfileClick(findViewById(R.id.user_profile));
         SharedPreferences sharedPreferences = super.getSharedPreferences();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        EditText searchBar = findViewById(R.id.search_product);
 
         getSearchProducts(sharedPreferences.getString("query", ""), recyclerView);
 
         //add event listener to the search bar.
-        EditText searchBar = findViewById(R.id.search_product);
-
         searchBar.setOnKeyListener((v, keyCode, event) -> {
             if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
                getSearchProducts(String.valueOf(searchBar.getText()), recyclerView);
-                Log.d("SEARCH_BAR", "onKey: "+searchBar.getText().toString());
                 searchBar.setText("");
             }
             return true;
@@ -47,7 +46,7 @@ public class SearchProduct extends GeneralActivity {
     }
 
     private void getSearchProducts(String query, RecyclerView recyclerView) {
-        Log.d("SEARCH_BAR", "onKey: "+ query);
+        Log.d("SEARCH_BAR", query);
         meiliSearchService.searchProducts(query, this, recyclerView);
     }
 
