@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.redstevo.ecomerce_app.Activities.Inventory.InventoryActivity;
 import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Activities.Registration.RegistrationActivity;
@@ -66,7 +67,12 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             assert user != null;
                             user.reload();
-                            startActivity(new Intent(this, SearchProduct.class));
+
+                            if(user.getUid().equals("1pZ4GyMsvthPIJlkmxXMTiPuPgi1")) {
+                                startActivity(new Intent(this, InventoryActivity.class));
+                            }else{
+                                startActivity(new Intent(this, SearchProduct.class));
+                            }
 
                         } else {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",

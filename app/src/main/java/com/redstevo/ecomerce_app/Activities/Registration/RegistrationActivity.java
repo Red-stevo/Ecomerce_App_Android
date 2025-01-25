@@ -24,8 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
 import com.redstevo.ecomerce_app.Accessories.InputCheck;
-import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
+import com.redstevo.ecomerce_app.Activities.Inventory.InventoryActivity;
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
+import com.redstevo.ecomerce_app.Activities.ProductsView.SearchProduct;
 import com.redstevo.ecomerce_app.R;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -199,24 +200,20 @@ public class RegistrationActivity extends AppCompatActivity {
         /*handle user registration.*/
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(RegistrationActivity.this,"createUserWithEmail:success",Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            assert user != null;
-                            user.sendEmailVerification();
-
-                            /*Intent intent = new Intent(RegistrationActivity.this, GeneralActivity.class);
-                            startActivity(intent);*/
-                        } else {
-                            // If sign in fails, display a message to the user.
-
-                            Toast.makeText(RegistrationActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        assert user != null;
+                        user.sendEmailVerification();
+                        if(user.getUid().equals("1pZ4GyMsvthPIJlkmxXMTiPuPgi1")) {
+                            startActivity(new Intent(this, InventoryActivity.class));
+                        }else{
+                            startActivity(new Intent(this, SearchProduct.class));
                         }
+
+                    } else {
+                        Toast.makeText(RegistrationActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
