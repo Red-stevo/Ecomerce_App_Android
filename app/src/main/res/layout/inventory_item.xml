@@ -7,43 +7,48 @@
     android:elevation="4dp"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvProductName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="@string/product_name"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:ellipsize="end"
-        android:singleLine="true" />
 
     <ImageView
         android:id="@+id/inImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="18dp"
+        android:contentDescription="@string/todo"
         android:scaleType="centerCrop" />
 
     <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="@string/product_name"
+        android:textSize="16sp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+
+    <TextView
         android:id="@+id/tvProductCount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/count"
         android:textSize="16sp"
-        android:textColor="@android:color/black" />
+        android:layout_marginEnd="10dp"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tvProductPrice"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="end"
         android:text="@string/price"
         android:textSize="16sp"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

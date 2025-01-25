@@ -59,21 +59,18 @@ abstract public class GeneralActivity extends AppCompatActivity {
     public void handleUserProfileClick(ImageView userProfile) {
         userProfile.setOnClickListener(event -> {
             startActivity(new Intent(this, UserProfile.class));
-            finish();
         });
     }
 
     public void handleUserCartClick(ImageView userCart) {
         userCart.setOnClickListener(event -> {
             startActivity(new Intent(this, CartActivity.class));
-            finish();
         });
     }
 
     public void handleTrackOrderClick(ImageView trackOrder) {
         trackOrder.setOnClickListener(event -> {
             startActivity(new Intent(this, OrdersActivity.class));
-            finish();
         });
     }
 }
