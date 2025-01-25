@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.flexbox.FlexboxLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +36,9 @@ public class InventoryActivity extends GeneralActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general);
         super.handleUserProfileClick(findViewById(R.id.user_profile));
+
+        findViewById(R.id.search_product).setVisibility(View.INVISIBLE);
+        findViewById(R.id.text_title).setVisibility(View.VISIBLE);
 
         /*add event listener.*/
         ImageView imageView = findViewById(R.id.user_cart);

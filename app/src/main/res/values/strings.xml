@@ -104,5 +104,6 @@
     <string name="landing_page_image">Landing Page Image</string>
     <string name="selector">selector</string>
     <string name="todo">TODO</string>
+    <string name="inventory_prod">Products Inventory</string>
 
 </resources>

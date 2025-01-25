@@ -8,6 +8,27 @@
     tools:context=".Activities.GeneralView.GeneralActivity">
 
     <!-- Search EditText with responsive margins and width -->
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="Search Product"
+        android:background="@drawable/black_border"
+        android:textColor="#BFBFBF"
+        android:textSize="30sp"
+        android:text="@string/inventory_prod"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/search_product"
         android:layout_width="0dp"
