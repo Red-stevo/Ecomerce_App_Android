@@ -20,7 +20,6 @@ public class SearchProduct extends GeneralActivity {
         meiliSearchService = new MeiliSearchService();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +28,10 @@ public class SearchProduct extends GeneralActivity {
         super.handleUserCartClick(findViewById(R.id.user_cart));
         super.handleTrackOrderClick(findViewById(R.id.track_order));
         super.handleUserProfileClick(findViewById(R.id.user_profile));
-        SharedPreferences sharedPreferences = super.getSharedPreferences();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         EditText searchBar = findViewById(R.id.search_product);
 
-        getSearchProducts(sharedPreferences.getString("query", ""), recyclerView);
+        getSearchProducts(" ", recyclerView);
 
         //add event listener to the search bar.
         searchBar.setOnKeyListener((v, keyCode, event) -> {
