@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
-import com.redstevo.ecomerce_app.Activities.Order.OrdersActivity;
+import com.redstevo.ecomerce_app.Activities.Order.OrderNowActivity;
 import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
 import com.redstevo.ecomerce_app.R;
 
@@ -41,29 +41,18 @@ public class UserProfile extends GeneralActivity {
             Intent intent = new Intent(UserProfile.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();
         });
 
         ImageView ordersImage = findViewById(R.id.orders_image);
         ordersImage.setOnClickListener(v->{
-            assert user != null;
-            String userId = user.getUid();
-            Intent intent = new Intent(UserProfile.this, OrdersActivity.class);
-            intent.putExtra("USER_ID",userId);
+            Intent intent = new Intent(UserProfile.this, OrderNowActivity.class);
             startActivity(intent);
-
-
         });
-
-
 
 
         ImageView cartImage = findViewById(R.id.cart_image);
         cartImage.setOnClickListener(v->{
-            assert user != null;
-            String userId  = user.getUid();
             Intent cartIntent = new Intent(UserProfile.this, CartActivity.class);
-            cartIntent.putExtra("USER_ID",userId);
             startActivity(cartIntent);
         });
 

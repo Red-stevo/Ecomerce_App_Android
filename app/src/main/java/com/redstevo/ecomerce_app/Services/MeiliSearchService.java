@@ -1,6 +1,7 @@
 package com.redstevo.ecomerce_app.Services;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +65,7 @@ public class MeiliSearchService {
 
                     searchProductModelList.add(productModel);
                 });
-
+                Log.d("SEARCH_BAR", searchProductModelList.toString());
                 ((android.app.Activity) context).runOnUiThread(() -> {
                     recyclerView.setLayoutManager(new FlexboxLayoutManager(context));
                     recyclerView.setHasFixedSize(false);

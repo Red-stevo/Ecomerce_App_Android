@@ -14,7 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.redstevo.ecomerce_app.Activities.Order.OrdersActivity;
+import com.redstevo.ecomerce_app.Activities.Order.OrderNowActivity;
 import com.redstevo.ecomerce_app.Activities.UserCart.CartActivity;
 import com.redstevo.ecomerce_app.Activities.profile.UserProfile;
 import com.redstevo.ecomerce_app.R;
@@ -68,7 +68,7 @@ abstract public class GeneralActivity extends AppCompatActivity {
 
     public void handleTrackOrderClick(ImageView trackOrder) {
         trackOrder.setOnClickListener(event -> {
-            startActivity(new Intent(this, OrdersActivity.class));
+            startActivity(new Intent(this, OrderNowActivity.class));
         });
     }
 }

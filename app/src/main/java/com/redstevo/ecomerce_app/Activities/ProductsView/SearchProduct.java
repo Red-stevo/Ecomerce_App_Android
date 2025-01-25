@@ -5,28 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
-import com.redstevo.ecomerce_app.Adapters.SearchProductAdapter;
-import com.redstevo.ecomerce_app.Models.SearchProductModel;
 import com.redstevo.ecomerce_app.R;
 import com.redstevo.ecomerce_app.Services.MeiliSearchService;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SearchProduct extends GeneralActivity {
 
@@ -47,8 +31,7 @@ public class SearchProduct extends GeneralActivity {
         SharedPreferences sharedPreferences = super.getSharedPreferences();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        getSearchProducts(sharedPreferences.getString("query", " "), recyclerView);
-
+        getSearchProducts(sharedPreferences.getString("query", ""), recyclerView);
 
         //add event listener to the search bar.
         EditText searchBar = findViewById(R.id.search_product);
@@ -64,6 +47,7 @@ public class SearchProduct extends GeneralActivity {
     }
 
     private void getSearchProducts(String query, RecyclerView recyclerView) {
+        Log.d("SEARCH_BAR", "onKey: "+ query);
         meiliSearchService.searchProducts(query, this, recyclerView);
     }
 

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,7 @@ import com.redstevo.ecomerce_app.Models.CartItemModel;
 import com.redstevo.ecomerce_app.Models.ProductModel;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 import java.util.UUID;
 
 public class GetProduct {
@@ -103,10 +105,10 @@ public class GetProduct {
                     detailsModel.getProductPrice()
             );
 
-            String userId = "AAA";
+            String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
             DatabaseReference reference = FirebaseDatabase
                     .getInstance("https://myapplication-fce0cb20-default-rtdb.firebaseio.com/")
-                    .getReference("cart"+userId);
+                    .getReference("cart_"+userId);
 
             reference.child(cartData.getCartId())
                     .setValue(cartData)
