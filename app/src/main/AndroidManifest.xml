@@ -22,21 +22,16 @@
         android:theme="@style/Base.Theme.Ecommerce_App"
         tools:targetApi="31">
 
-  <!--      <activity android:name=".Activities.LandingActivity.LandingPage" android:exported="true">
+        <activity android:name=".Activities.LandingActivity.LandingPage" android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-        </activity>-->
-
-        <activity android:name=".Activities.Inventory.InventoryActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <activity android:name=".Activities.Inventory.InventoryActivity" android:exported="false" />
 
         <activity android:name=".Activities.Order.OrderNowActivity" android:exported="false" />
 

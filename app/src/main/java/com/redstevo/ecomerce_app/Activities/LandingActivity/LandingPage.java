@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.redstevo.ecomerce_app.Activities.Login.LoginActivity;
+import com.redstevo.ecomerce_app.Activities.Registration.RegistrationActivity;
 import com.redstevo.ecomerce_app.R;
 
 import java.util.Timer;
@@ -28,6 +29,10 @@ public class LandingPage extends AppCompatActivity {
         TextView landingTitle = findViewById(R.id.title_text);
         TextView landingMessage = findViewById(R.id.subtitle_text);
         Button getStartedBtn = findViewById(R.id.get_started_button);
+
+        getStartedBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, LoginActivity.class));
+        });
 
 
         Animation slideDown = AnimationUtils.loadAnimation(this, R.anim.top_down_movement);

@@ -34,11 +34,9 @@ abstract public class GeneralActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
-
-
+        setContentView(R.layout.activity_general);
         sharedPreferences = getSharedPreferences("dataUtils", MODE_PRIVATE);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_general);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

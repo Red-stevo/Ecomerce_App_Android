@@ -16,13 +16,13 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.redstevo.ecomerce_app.Accessories.AccessoriesImpl;
+import com.redstevo.ecomerce_app.Activities.GeneralView.GeneralActivity;
 import com.redstevo.ecomerce_app.Adapters.ImageVideoPreviewAdapter;
 import com.redstevo.ecomerce_app.Models.ImagePreviewModel;
 import com.redstevo.ecomerce_app.Models.NewProductModel;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class AddProductActivity extends AppCompatActivity {
+public class AddProductActivity  extends GeneralActivity {
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
     private List<NewProductModel> newProductModels;
